@@ -2,23 +2,36 @@ using System;
 using Library;
 
 /// <summary>
-/// Implementa el tipo IEfectos, puede ser utilizado en ataques especiales.
+/// Implementa el tipo IEfectos, este efecto hace que el pokémon enemigo esté dormido por un número aleatorio
+/// de turnos y no atacará.
 /// </summary>
 public class Dormir : AplicarDaño, IEfectos
 {
     public string nombreEfecto {get; set;} = "Dormir";
-    
-    /// <summary>
-    /// Un Pokémon puede estar dormido entre 1 y 4 turnos aleatoriamente, luego de ello se despierta y vuelve a la normalidad. 
-    /// </summary>
-    private int turnosRestante = 3;
+    private int turnosRestante { get; set; }
 
     /// <summary>
-    /// Avisa que el efecto aplicado en el objetivo (Pokemon enemigo es "Dormido")
+    /// Determina aleatoriamente cuantos turnos estará dormido el enemigo (entre 1 y 4)
+    /// </summary>
+    public Dormir()
+    {
+        turnosRestante = new Random().Next(1, 5);
+    }
+
+    /// <summary>
+    /// Si el pokémon está dormido no atacará
     /// </summary>
     public void AplicarEfecto(IPokemon objetivo)
     {
-        objetivo.Estado = "Dormido";
+        if (turnosRestante > 0)
+        {
+            objetivo.Estado = "Dormido";
+            turnosRestante--;
+        }
+        else
+        {
+            objetivo.Estado = "Despierto";
+        }
     }
 
 }
