@@ -350,17 +350,18 @@
         </member>
         <member name="T:Dormir">
             <summary>
-            Implementa el tipo IEfectos, puede ser utilizado en ataques especiales.
+            Implementa el tipo IEfectos, este efecto hace que el pokémon enemigo esté dormido por un número aleatorio
+            de turnos y no atacará.
             </summary>
         </member>
-        <member name="F:Dormir.turnosRestante">
+        <member name="M:Dormir.#ctor">
             <summary>
-            Un Pokémon puede estar dormido entre 1 y 4 turnos aleatoriamente, luego de ello se despierta y vuelve a la normalidad. 
+            Determina aleatoriamente cuantos turnos estará dormido el enemigo (entre 1 y 4)
             </summary>
         </member>
         <member name="M:Dormir.AplicarEfecto(Library.IPokemon)">
             <summary>
-            Avisa que el efecto aplicado en el objetivo (Pokemon enemigo es "Dormido")
+            Si el pokémon está dormido no atacará
             </summary>
         </member>
         <member name="T:Ucu.Poo.DiscordBot.Services.Bot">

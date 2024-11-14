@@ -3,17 +3,14 @@ using NUnit.Framework;
 
 namespace Tests;
 
+[TestFixture]
 public class JugadorPrincipalTest
 {
-    public CatalogoPokemons catalogoPokemons;
-    public CatalogoAtaques catalogoAtaques;
     public JugadorPrincipal jugador1;
     
     [SetUp]
     public void SetUp()
     {
-        catalogoPokemons = new CatalogoPokemons();
-        catalogoAtaques = new CatalogoAtaques();
         jugador1 = new JugadorPrincipal("Ana");
     }
     
@@ -196,6 +193,93 @@ public class JugadorPrincipalTest
         
         Assert.That(resultado,Is.EqualTo(jugador1.CambiarPokemonBatalla(-1)));
     }
-    
-    
+}
+
+[TestFixture]
+public class PokemonTest
+{
+    public JugadorPrincipal jugador;
+    public JugadorPrincipal jugador2;
+    public CatalogoAtaques catalogoAtaques;
+
+    [SetUp]
+    public void SetUp()
+    {
+        jugador = new JugadorPrincipal("Juan");
+        jugador2 = new JugadorPrincipal("Bob");
+        catalogoAtaques = new CatalogoAtaques();
+    }
+
+    [Test]
+    public void UsarAtaque_IndiceInvalido()
+    {
+        jugador.ElegirDelCatalogo(1);
+        jugador2.ElegirDelCatalogo(1);
+
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
+
+        string resultado = pokemon.UsarAtaque(-1, pokemonenemigo);
+
+        Assert.That("El ataque no es válido", Is.EqualTo(resultado));
+    }
+
+    [Test]
+    public void UsarAtaque_CalculoDeDañoConPonderador()
+    {
+        jugador.ElegirDelCatalogo(1);
+        jugador2.ElegirDelCatalogo(1);
+
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
+
+        pokemon.UsarAtaque(0, pokemonenemigo);
+
+        double ponderador = pokemon.TipoPokemon.Ponderador(pokemonenemigo.TipoPokemon);
+        double dañoEsperado = pokemon.Ataque - pokemonenemigo.Defensa * ponderador;
+        double vida = pokemonenemigo.VidaTotal - dañoEsperado;
+
+        Assert.That(vida, Is.EqualTo(pokemonenemigo.VidaActual));
+    }
+
+    [Test]
+    public void UsarAtaque_AtaqueEspecialNoDisponible()
+    {
+        jugador.ElegirDelCatalogo(1);
+        jugador2.ElegirDelCatalogo(1);
+
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
+
+        pokemon.turnoContadorEspecial = 1;
+
+        pokemon.AtaquesPorTipo();
+        jugador.ElegirAtaque(pokemon, pokemonenemigo, 0);
+
+        string resultadoEsperado = pokemon.UsarAtaque(0, pokemonenemigo);
+
+        string resultado = "El ataque especial no está disponible este turno.";
+
+        Assert.That(resultado, Is.EqualTo(resultadoEsperado));
+    }
+
+    [Test]
+    public void UsarAtaque_AtaqueEspecialCalulcaDaño()
+    {
+        jugador.ElegirDelCatalogo(1);
+        jugador2.ElegirDelCatalogo(1);
+
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
+        
+        pokemon.AtaquesPorTipo();
+        
+        pokemon.turnoContadorEspecial = 2;
+        
+        string resultado2 = pokemon.UsarAtaque(0, pokemonenemigo);
+        string resultadoEsperado2 = "Squirtle usó Acua Jet y causó 100 puntos de daño.";
+        
+        Assert.That(resultado2, Is.EqualTo(resultadoEsperado2));
+    }
+
 }
