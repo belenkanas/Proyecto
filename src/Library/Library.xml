@@ -4,32 +4,380 @@
         <name>Library</name>
     </assembly>
     <members>
-        <member name="T:ClassLibrary.Train">
+        <member name="T:Library.Ataque">
             <summary>
-            Esta clase representa un tren muy básico.
+            Esta clase define que tipo de ataque usará el jugador para atacar a otro pokemon. Contiene un valor booleano que define si es especial o no, y a partir de ahí calculará el daño que le realizará al otro personaje.
+            La idea de crear esta clase surge por el principio de SRP. Esto se debe a que tiene la responsabilidad de calcular el daño que le ocarionará al oponente.
             </summary>
         </member>
-        <member name="P:ClassLibrary.Train.IsEngineStarted">
+        <member name="M:Library.Ataque.#ctor(System.String,Library.ITipo,System.Double,System.Boolean)">
             <summary>
-            Obtiene un valor que indica si las maquinas del tren han sido encendidas o no.
+            Cada ataque al que puede acceder el jugador tiene distinto nombre, distinto valor de daño y si es especial o no.
             </summary>
-            <value><c>true</c> si las máquinas fueron encendidas, <c>false</c> en caso contrario.</value>
+            <param name="nombre"></param>
+            <param name="tipo"></param>
+            <param name="dañoBase"></param>
+            <param name="esEspecial"></param>
         </member>
-        <member name="M:ClassLibrary.Train.StartEngines">
-            <summary>
-            Enciende las máquinas del tren.
-            </summary>
-            <returns>
-            <c>true</c> si las máquinas pueden ser encendidas, <c>false</c> en caso contrario.
-            </returns>
+        <member name="M:Library.Ataque.CalcularDaño(Library.IPokemon,Library.IPokemon)">
+             <summary>
+             Recibe como parámetro el pokemon que realizará el ataque (perteneciente a la lista de pokemones del jugador actual)
+             como también el pokemon al que atacará (perteneciente al jugador contrario). 
+            calcula el daño que causará y luego evalúa si el ataque elegido es especial o no. Toma en cuenta el ponderador del tipo de pokemon definido en ITipo.
+             </summary>
         </member>
-        <member name="M:ClassLibrary.Train.StopEngines">
+        <member name="M:Library.BatallaFacade.CambiarPokemon(System.String,System.Int32)">
             <summary>
-            Detiene las máquinas del tren.
+            Ejecuta el cambio de Pokemon y gestiona el cambio de turno.
             </summary>
-            <returns>
-            <c>true</c> si las máquinas pueden ser detenidas, <c>false</c> en caso contrario.
-            </returns>
+            <param name="nombreJugador"></param>
+            <param name="indicePokemonACambiar"></param>
+        </member>
+        <member name="M:Library.BatallaFacade.CambiaPokemon(Library.JugadorPrincipal,System.Int32)">
+            <summary>
+            Ejecutar el cambio de Pokémon y gestionar el turno
+            </summary>
+        </member>
+        <member name="M:Library.BatallaFacade.VerificarFinTurno(Library.JugadorPrincipal)">
+            <summary>
+            Verificar si se pierde el turno después de una acción
+            </summary>
+        </member>
+        <member name="M:Library.BatallaFacade.BatallaSigue">
+            <summary>
+            Gestiona el turno actual
+            </summary>
+        </member>
+        <member name="M:Library.BatallaFacade.ListaDeEspera(Library.JugadorPrincipal)">
+            <summary>
+            Método para unirse a la lista de espera
+            </summary>
+            <param name="jugador"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.BatallaFacade.MostrarListaDeEspera">
+            <summary>
+            Muestra los jugadores que están en la lista de espera para jugar
+            </summary>
+        </member>
+        <member name="M:Library.BatallaFacade.IniciarBatallaListaDeEspera(System.Random)">
+            <summary>
+            Se fija si en la lista de espera hay 2 jugadores o más esperando para comenzar una batalla,
+            en el caso de que lo haya comienza la batalla entre los dos primeros jugadores de la lista
+            y los elimina de la lista de espera. Sino mostrará que no hay jugadores suficientes para iniciar
+            una batalla
+            </summary>
+        </member>
+        <member name="T:Library.CatalogoAtaques">
+            <summary>
+            Esta clase muestra la variedad de ataques disponibles para poder utilizar durante la batalla y el resto del programa.
+            Cada ataque es de un tipo de Pokemon y tiene su indice.
+            </summary>
+        </member>
+        <member name="M:Library.CatalogoAtaques.AgregarAtaques">
+            <summary>
+            Agrega los ataques disponibles del programa en el catálogo.
+            </summary>
+        </member>
+        <member name="T:Library.CatalogoPokemons">
+            <summary>
+            Catálogo que contiene todos los pokémons que el jugador puede elegir para su equipo
+            </summary>
+        </member>
+        <member name="M:Library.CatalogoPokemons.AgregarPokemons">
+            <summary>
+            Se agregan al catálogo los pokémons disponibles
+            </summary>
+            <returns>Pokémons disponibles para que el jugador seleccione</returns>
+        </member>
+        <member name="M:Library.CatalogoPokemons.MostrarCatalogo">
+            <summary>
+            Muestra todos los pokémons que hay en el catálogo 
+            </summary>
+        </member>
+        <member name="T:Library.Envenenar">
+            <summary>
+            De tipo IEfectos, hace que el pokemon atacado pierda 5% de su HP total cada turno. 
+            </summary>
+        </member>
+        <member name="M:Library.Envenenar.AplicarEfecto(Library.IPokemon)">
+            <summary>
+            El Pokémon puede seguir atacando, pero indica que está "envenenado"
+            </summary>
+            <param name="objetivo"></param>
+        </member>
+        <member name="T:Library.Paralizar">
+            <summary>
+            De tipo IEfectos, hace que el Pokemón objetivo pueda atacar o no aleatoriamente.
+            Usa el tipo Random.
+            </summary>
+        </member>
+        <member name="M:Library.Paralizar.PuedeAtacar">
+            <summary>
+             Si el Pokémon puede atacar o no se determina cuando intenta atacar.
+            </summary>
+        </member>
+        <member name="T:Library.Quemar">
+            <summary>
+            Este tipo de efecto hace que el pokemón objetivo pierda 10% de su HP cada turno.
+            </summary>
+        </member>
+        <member name="F:Library.Quemar.turnosRestante">
+            <summary>
+            // Numero de turnos que durara el efecto
+            </summary>
+        </member>
+        <member name="M:Library.Quemar.AplicarDañoPorTurno(Library.IPokemon)">
+            <summary>
+            Si un Pokémon está quemado perderá el 10% de su HP total cada turno. Resta de a uno los turnos que le queda.
+            </summary>
+            <param name="objetivo"></param>
+        </member>
+        <member name="T:Library.IEfectos">
+            <summary>
+            Por el principio ISP, esta interfaz representa los efectos de Dormir, Paralizar, Envenenar o Quemar que podrán usar los ataques especiales. 
+            </summary>
+        </member>
+        <member name="T:Library.IItem">
+            <summary>
+            De esta interfaz heredan los items que puede utilizar el pokemon (CuraTotal, Revivir, SuperPocion)
+            </summary>
+        </member>
+        <member name="T:Library.IJugador">
+            <summary>
+            Esta interfaz define las acciones que el jugador podrá realizar previamente y durante la batalla
+            </summary>
+        </member>
+        <member name="T:Library.IPokemon">
+            <summary>
+            Esta interfaz define los atributos y métodos de un pokémon
+            </summary>
+        </member>
+        <member name="T:Library.ITipo">
+            <summary>
+            Esta interfaz define el tipo de pokémon y determina la potencia de los ataques según el tipo de pókemon que será atacado
+            </summary>
+        </member>
+        <member name="M:Library.ITipo.Ponderador(Library.ITipo)">
+            <summary>
+            Mediante este método, se analiza frente a qué tipos es debil el pokemon y con cuales es fuerte.
+            El Ponderador indicará el tamaño del daño que se realizará.
+            </summary>
+            <param name="tipoOponente"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Library.JugadorPrincipal">
+            <summary>
+            Esta clase representa al usuario, quien hará uso de los distintos pokemones para su batalla
+            </summary>
+        </member>
+        <member name="M:Library.JugadorPrincipal.ElegirPokemon(System.Int32)">
+            <summary>
+            Durante la batalla, podrá elegir un pokémon por su índice
+            </summary>
+            <param name="indice">índice del pokémon elegido para la batalla</param>
+            <returns>Pokémon del equipo elegido para la batalla</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Se tira una excepción cuando el índice no entra dentro del rango
+            de los integrantes del equipo</exception>
+        </member>
+        <member name="M:Library.JugadorPrincipal.ElegirAtaque(Library.IPokemon,Library.IPokemon,System.Int32)">
+            <summary>
+            El pokémon a atacar elige un ataque para 
+            </summary>
+            <param name="pokemon"></param>
+            <param name="enemigo"></param>
+            <param name="indiceAtaque"></param>
+        </member>
+        <member name="M:Library.JugadorPrincipal.MostrarTurno">
+            <summary>
+            Muestra el turno del pokémon en la batalla
+            </summary>
+            <returns>Turno actual</returns>
+        </member>
+        <member name="M:Library.JugadorPrincipal.MostrarCatalogo">
+            <summary>
+            Muestra el catálogo con todos los pokémones disponibles para formar un equipo
+            </summary>
+            <param name="catalogo"></param>
+        </member>
+        <member name="M:Library.JugadorPrincipal.MostrarAtaquesDisponibles(System.Int32)">
+            <summary>
+            Muestra los ataques disponibles que tiene el pokémon a través de su índice dentro del equipo
+            </summary>
+            <param name="indice"></param>
+        </member>
+        <member name="M:Library.JugadorPrincipal.ElegirDelCatalogo(System.Int32)">
+            <summary>
+            Del catálogo elegir 6 pokémons para agregar a su equipo
+            </summary>
+            <param name="indice">número de pokémon en la lista del catálogo</param>
+        </member>
+        <member name="M:Library.JugadorPrincipal.MostrarEquipo">
+            <summary>
+            Muestra el equipo formado
+            </summary>
+            <returns>Todos los pokémon del equipo con su nombre y tipo</returns>
+        </member>
+        <member name="M:Library.JugadorPrincipal.PokemonesDerrotados">
+            <summary>
+            Verifica si todos los pokemones del equipo están derrotados.
+            </summary>
+            <returns>True si todos los Pokemones están derrotados, False en caso contrario.</returns>
+        </member>
+        <member name="M:Library.JugadorPrincipal.CambiarPokemonBatalla(System.Int32)">
+            <summary>
+            Cambia el pokemon actual por otro del equipo
+            </summary>
+            <param name="indice">Indice del Pokemon en el equipo</param>
+        </member>
+        <member name="M:Library.JugadorPrincipal.MostrarInventario">
+            <summary>
+            Muestra el inventario del jugador
+            </summary>
+        </member>
+        <member name="T:Library.Pokemon">
+            <summary>
+            Esta clase hereda de la interfaz, define todas las características de los personajes de la batalla.
+            </summary>
+        </member>
+        <member name="M:Library.Pokemon.UsarAtaque(System.Int32,Library.IPokemon)">
+            <summary>
+            Realiza un ataque a un pokémon enemigo
+            </summary>
+            <param name="indiceAtaque"></param>
+            <param name="enemigo"></param>
+        </member>
+        <member name="M:Library.Pokemon.RecibirDaño(System.Double)">
+            <summary>
+            Recibe daño del pokémon enemigo
+            </summary>
+            <param name="dano"></param>
+        </member>
+        <member name="M:Library.Pokemon.MostrarVida">
+            <summary>
+            Muestra la vida actual sobre la vida total del pokémon
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Library.Pokemon.AtaquesPorTipo">
+            <summary>
+            Agrega cada ataque del catálogo de ataques al tipo de pokemon correspondiente por tipo.
+            Esto se asegura de que no haya incongruencia entre los tipos de pokemon y ataque en el juego.
+            </summary>
+        </member>
+        <member name="M:Library.Pokemon.ObtenerAtaquesDisponibles">
+            <summary>
+            Muestra los ataques disponibles que tiene el pokemon según el turno. A cada 2 turnos, no tiene acceso a los ataques especiales.
+            </summary>
+            <returns>Devuelve lista de ataques disponibles según partida.</returns>
+        </member>
+        <member name="T:Library.CuraTotal">
+            <summary>
+            Item que cura a un Pokemon de efectos de ataques especiales (dormido, paralizado, envenenado o quemado).
+            </summary>
+        </member>
+        <member name="M:Library.CuraTotal.Usar(Library.IPokemon)">
+            <summary>
+            Metodo para quitar los efectos
+            </summary>
+            <param name="objetivo">Es el pokemon al que se le quitarán los efectos.</param>
+        </member>
+        <member name="T:Library.Revivir">
+            <summary>
+            Este tipo de Item logra que se reviva a un Pokemon con el 50% de su HP total.
+            </summary>
+        </member>
+        <member name="M:Library.Revivir.Usar(System.Double,System.Double)">
+            <summary>
+            Metodo para quitar los efectos
+            </summary>
+            <param name="VidaActual"></param>
+            <param name="VidaTotal"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Library.SuperPocion">
+            <summary>
+            Con este tipo de Item, se pueden usar hasta 4 y cada una recupera 70 puntos de HP.
+            </summary>
+        </member>
+        <member name="M:Library.SuperPocion.Usar(System.Double,System.Double)">
+            <summary>
+            Método para curar, recibe la vida actual y la total del pokemón e intenta reestablecerla.
+            </summary>
+            <param name="VidaActual"></param>
+            <param name="VidaTotal"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Library.Agua">
+            <summary>
+            Tipo de pokemon, debil contra Electrico y Planta, resistente contra Agua, Fuego y Hielo
+            </summary>
+        </member>
+        <member name="T:Library.Electrico">
+            <summary>
+            Tipo de Pokemon, débil contra Tierra, inmunne con Electrico.
+            </summary>
+        </member>
+        <member name="T:Library.Fuego">
+            <summary>
+            Tipo de Pokemon, débil frente a Agua y Tierra, resistente frente a Fuego y Planta
+            </summary>
+        </member>
+        <member name="T:Library.Hielo">
+            <summary>
+            Tipo de Pokemon, débil contra Fuego, resistente contra Hielo.
+            </summary>
+        </member>
+        <member name="T:Library.Planta">
+            <summary>
+            Tipo de Pokemon, débil contra Fuego y Hielo, resistente contra Agua, Electrico, Planta y Tierra.
+            </summary>
+        </member>
+        <member name="T:Library.Roca">
+            <summary>
+            Tipo de Pokemon, indica en su Ponderador frente a cuales es débil, fuerte o inmune para su ataque.
+            </summary>
+        </member>
+        <member name="F:AplicarDaño.turnosRestante">
+            <summary>
+            // Numero de turnos que durara el efecto
+            </summary>
+        </member>
+        <member name="M:AplicarDaño.AplicarDañoPorTurno(Library.IPokemon)">
+            <summary>
+            La cantidad de turnos que está dormido el Pokémon se determina cuando recibe el ataque.
+            </summary>
+        </member>
+        <member name="T:Dormir">
+            <summary>
+            Implementa el tipo IEfectos, puede ser utilizado en ataques especiales.
+            </summary>
+        </member>
+        <member name="F:Dormir.turnosRestante">
+            <summary>
+            Un Pokémon puede estar dormido entre 1 y 4 turnos aleatoriamente, luego de ello se despierta y vuelve a la normalidad. 
+            </summary>
+        </member>
+        <member name="M:Dormir.AplicarEfecto(Library.IPokemon)">
+            <summary>
+            Avisa que el efecto aplicado en el objetivo (Pokemon enemigo es "Dormido")
+            </summary>
+        </member>
+        <member name="T:Ucu.Poo.DiscordBot.Services.Bot">
+            <summary>
+            Esta clase implementa el bot de Discord.
+            </summary>
+        </member>
+        <member name="T:Ucu.Poo.DiscordBot.Services.BotLoader">
+            <summary>
+            Esta clase ejecuta el bot de Discord hasta que en la terminal donde se
+            ejecuta el bot se oprime la tecla 'Q'.
+            </summary>
+        </member>
+        <member name="T:Ucu.Poo.DiscordBot.Services.IBot">
+            <summary>
+            La interfaz del Bot de Discord para usar con inyección de dependencias.
+            </summary>
         </member>
     </members>
 </doc>
