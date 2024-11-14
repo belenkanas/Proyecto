@@ -282,4 +282,25 @@ public class PokemonTest
         Assert.That(resultado2, Is.EqualTo(resultadoEsperado2));
     }
 
+    [Test]
+    public void RecibirDaño()
+    {
+        jugador.ElegirDelCatalogo(3);
+        jugador2.ElegirDelCatalogo(1);
+
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
+
+        pokemonenemigo.RecibirDaño(30);
+        
+        Assert.That(pokemonenemigo.Estado, Is.Not.EqualTo("Derrotado"));
+
+        pokemon.AtaquesPorTipo();
+        pokemon.turnoContadorEspecial = 2;
+        pokemon.UsarAtaque(3, pokemonenemigo);
+        
+        Assert.That(pokemonenemigo.VidaActual, Is.EqualTo(0));
+        Assert.That(pokemonenemigo.Estado, Is.EqualTo("Derrotado"));
+    }
+
 }
