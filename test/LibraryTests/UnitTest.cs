@@ -208,17 +208,18 @@ public class PokemonTest
         jugador = new JugadorPrincipal("Juan");
         jugador2 = new JugadorPrincipal("Bob");
         catalogoAtaques = new CatalogoAtaques();
+        
+        jugador.ElegirDelCatalogo(3);
+        jugador2.ElegirDelCatalogo(1);
+        
     }
 
     [Test]
     public void UsarAtaque_IndiceInvalido()
     {
-        jugador.ElegirDelCatalogo(1);
-        jugador2.ElegirDelCatalogo(1);
-
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
-
+        
         string resultado = pokemon.UsarAtaque(-1, pokemonenemigo);
 
         Assert.That("El ataque no es válido", Is.EqualTo(resultado));
@@ -227,9 +228,6 @@ public class PokemonTest
     [Test]
     public void UsarAtaque_CalculoDeDañoConPonderador()
     {
-        jugador.ElegirDelCatalogo(1);
-        jugador2.ElegirDelCatalogo(1);
-
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
 
@@ -245,9 +243,6 @@ public class PokemonTest
     [Test]
     public void UsarAtaque_AtaqueEspecialNoDisponible()
     {
-        jugador.ElegirDelCatalogo(1);
-        jugador2.ElegirDelCatalogo(1);
-
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
 
@@ -266,9 +261,6 @@ public class PokemonTest
     [Test]
     public void UsarAtaque_AtaqueEspecialCalulcaDaño()
     {
-        jugador.ElegirDelCatalogo(1);
-        jugador2.ElegirDelCatalogo(1);
-
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
         
@@ -285,12 +277,9 @@ public class PokemonTest
     [Test]
     public void RecibirDaño()
     {
-        jugador.ElegirDelCatalogo(3);
-        jugador2.ElegirDelCatalogo(1);
-
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
-
+        
         pokemonenemigo.RecibirDaño(30);
         
         Assert.That(pokemonenemigo.Estado, Is.Not.EqualTo("Derrotado"));
@@ -301,6 +290,18 @@ public class PokemonTest
         
         Assert.That(pokemonenemigo.VidaActual, Is.EqualTo(0));
         Assert.That(pokemonenemigo.Estado, Is.EqualTo("Derrotado"));
+    }
+
+    [Test]
+    public void MostrarVida_Formato()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        
+        pokemon.RecibirDaño(20);
+        
+        string esperado = $"{pokemon.VidaActual}/{pokemon.VidaTotal}";
+        
+        Assert.That("80/100", Is.EqualTo(esperado));
     }
 
 }
