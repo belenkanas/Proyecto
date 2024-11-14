@@ -249,9 +249,9 @@ public class PokemonTest
         pokemon.turnoContadorEspecial = 1;
 
         pokemon.AtaquesPorTipo();
-        jugador.ElegirAtaque(pokemon, pokemonenemigo, 0);
+        jugador.ElegirAtaque(pokemon, pokemonenemigo, 3);
 
-        string resultadoEsperado = pokemon.UsarAtaque(0, pokemonenemigo);
+        string resultadoEsperado = pokemon.UsarAtaque(3, pokemonenemigo);
 
         string resultado = "El ataque especial no está disponible este turno.";
 
@@ -269,7 +269,7 @@ public class PokemonTest
         pokemon.turnoContadorEspecial = 2;
         
         string resultado2 = pokemon.UsarAtaque(0, pokemonenemigo);
-        string resultadoEsperado2 = "Squirtle usó Acua Jet y causó 100 puntos de daño.";
+        string resultadoEsperado2 = "Pikachu usó Chispa y causó 7 puntos de daño.";
         
         Assert.That(resultado2, Is.EqualTo(resultadoEsperado2));
     }
@@ -302,6 +302,43 @@ public class PokemonTest
         string esperado = $"{pokemon.VidaActual}/{pokemon.VidaTotal}";
         
         Assert.That("80/100", Is.EqualTo(esperado));
+    }
+    
+    [Test]
+    public void AgregaAtaquesDelMismoTipoDePokemon_AgregandoOtrosTipos()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+
+        pokemon.AtaquesPorTipo();
+
+        var ataques = new List<Ataque>()
+        {
+            new Ataque("Chispa", new Electrico(), 7, false),
+            new Ataque("Impactrueno", new Electrico(), 8, false),
+            new Ataque("Rayo", new Electrico(), 55, true),
+            new Ataque("Trueno", new Electrico(), 100, true),
+            new Ataque("Ascuas", new Fuego(), 10, false)
+        };
+        
+        Assert.That(ataques, Is.Not.EqualTo(pokemon.Ataques));
+    }
+    
+    [Test]
+    public void AgregaAtaquesDelMismoTipoDePokemon()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+
+        pokemon.AtaquesPorTipo();
+
+        var ataques = new List<Ataque>()
+        {
+            new Ataque("Chispa", new Electrico(), 7, false),
+            new Ataque("Impactrueno", new Electrico(), 8, false),
+            new Ataque("Rayo", new Electrico(), 55, true),
+            new Ataque("Trueno", new Electrico(), 100, true)
+        };
+        
+        Assert.That(ataques.Count, Is.EqualTo(pokemon.Ataques.Count));
     }
 
 }
