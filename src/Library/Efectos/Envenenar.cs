@@ -13,7 +13,7 @@ public class Envenenar : AplicarDaño, IEfectos
     /// <param name="objetivo"></param>
     public void AplicarEfecto(IPokemon objetivo)
     {
-    objetivo.Estado = "Envenenado";                     
+        objetivo.Estado = "Envenenado";                     
     }
     
     /// <summary>
