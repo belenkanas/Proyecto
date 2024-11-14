@@ -4,10 +4,10 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System;
-using ClassLibrary;
+//using System;
+//using ClassLibrary;
 
-namespace ConsoleApplication
+/*namespace ConsoleApplication
 {
     /// <summary>
     /// Programa de consola de demostración.
@@ -24,4 +24,4 @@ namespace ConsoleApplication
             Console.WriteLine("Hello World!");
         }
     }
-}
+}*/

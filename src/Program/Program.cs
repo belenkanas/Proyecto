@@ -4,7 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System;
+/*using System;
 using ClassLibrary;
 using Library;
 
@@ -12,7 +12,7 @@ namespace EntregaUno
 {
     /*Aca el Program llama a la fachada. Esto se usa para simplificar código, mediante la delegación. El programa es el siguiente:
     */
-    class Program
+    /*class Program
     {
         static void Main(string[] args)
         {
@@ -38,4 +38,4 @@ namespace EntregaUno
             batalla.RealizarAtaque("Ash", 0); // Pikachu ataca primero
         }
     }
-}
+}*/

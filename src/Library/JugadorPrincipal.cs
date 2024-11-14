@@ -120,6 +120,13 @@ namespace Library;
         public Pokemon ElegirDelCatalogo(int indice)
         {
             int indiceCatalogo = indice - 1;
+            
+            if (indiceCatalogo < 0 || indiceCatalogo > CatalogoPokemon.Catalogo.Count)
+            {
+                Console.WriteLine("Índice inválido");
+                return null;
+            }
+            
             if (EquipoPokemons.Count < 6)
             {
                 IPokemon pokemon = CatalogoPokemon.Catalogo[indiceCatalogo];
@@ -146,12 +153,20 @@ namespace Library;
         public string MostrarEquipo()
         {
             string cadenaEquipo = "";
-            foreach (IPokemon pokemon in EquipoPokemons)
-            {
-                cadenaEquipo += $"{pokemon.Nombre}, {pokemon.TipoPokemon.NombreTipo}, ";
-            }
 
-            return cadenaEquipo;
+            if (EquipoPokemons.Count > 0)
+            {
+                foreach (IPokemon pokemon in EquipoPokemons)
+                {
+                    cadenaEquipo += $"{pokemon.Nombre}, {pokemon.TipoPokemon.NombreTipo}\n";
+                }
+                
+                return cadenaEquipo;
+            }
+            else
+            {
+                return cadenaEquipo = null;
+            }
         }
 
         /// <summary>
@@ -174,19 +189,25 @@ namespace Library;
         /// Cambia el pokemon actual por otro del equipo
         /// </summary>
         /// <param name="indice">Indice del Pokemon en el equipo</param>
-        public void CambiarPokemonBatalla(int indice)
+        public string CambiarPokemonBatalla(int indice)
         {
             if (indice < 0 || indice >= EquipoPokemons.Count)
             {
-                Console.WriteLine("Indice del Pokemon inválido");
-                return;
+                return "Indice del Pokemon inválido";
             }
-            
-            PokemonActual = EquipoPokemons[indice];
-            Console.WriteLine($"{NombreJugador} ha cambiado de pokémon a {PokemonActual.Nombre}");
-                
-            
-            TurnoActual = false;
+            else
+            {
+                if (PokemonActual != EquipoPokemons[indice])
+                {
+                    PokemonActual = EquipoPokemons[indice];
+                    TurnoActual = false;
+                    return $"{NombreJugador} ha cambiado de pokémon a {PokemonActual.Nombre}";
+                }
+                else
+                {
+                    return "Ingrese otro índice";
+                }
+            }
         }
         
         public void UsarItem(int indiceItem, IPokemon pokemon)

@@ -4,7 +4,7 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-using ClassLibrary;
+/*using ClassLibrary;
 using NUnit.Framework;
 
 namespace Tests
@@ -52,4 +52,4 @@ namespace Tests
             Assert.That(this.train.IsEngineStarted, Is.False);
         }
     }
-}
+}*/
