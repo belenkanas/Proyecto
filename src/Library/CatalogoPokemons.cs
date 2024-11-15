@@ -38,13 +38,16 @@ public class CatalogoPokemons
     /// <summary>
     /// Muestra todos los pokémons que hay en el catálogo 
     /// </summary>
-    public void MostrarCatalogo()
+    public string MostrarCatalogo()
     {
-        Console.WriteLine("Seleccione 6 pokémons para su equipo con su número correspondiente: ");
+        string resultado = "";
+        resultado += "Seleccione 6 pokémons para su equipo con su número correspondiente: \n";
 
         for (int i = 0; i < Catalogo.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {Catalogo[i].Nombre}");
+            resultado += $"{i + 1}. {Catalogo[i].Nombre}\n";
         }
+
+        return resultado;
     }
 }
