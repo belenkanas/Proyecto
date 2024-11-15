@@ -1,5 +1,6 @@
 using Library;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Tests;
 
@@ -208,17 +209,18 @@ public class PokemonTest
         jugador = new JugadorPrincipal("Juan");
         jugador2 = new JugadorPrincipal("Bob");
         catalogoAtaques = new CatalogoAtaques();
+        
+        jugador.ElegirDelCatalogo(3);
+        jugador2.ElegirDelCatalogo(1);
+        
     }
 
     [Test]
     public void UsarAtaque_IndiceInvalido()
     {
-        jugador.ElegirDelCatalogo(1);
-        jugador2.ElegirDelCatalogo(1);
-
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
-
+        
         string resultado = pokemon.UsarAtaque(-1, pokemonenemigo);
 
         Assert.That("El ataque no es válido", Is.EqualTo(resultado));
@@ -227,9 +229,6 @@ public class PokemonTest
     [Test]
     public void UsarAtaque_CalculoDeDañoConPonderador()
     {
-        jugador.ElegirDelCatalogo(1);
-        jugador2.ElegirDelCatalogo(1);
-
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
 
@@ -245,18 +244,15 @@ public class PokemonTest
     [Test]
     public void UsarAtaque_AtaqueEspecialNoDisponible()
     {
-        jugador.ElegirDelCatalogo(1);
-        jugador2.ElegirDelCatalogo(1);
-
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
 
         pokemon.turnoContadorEspecial = 1;
 
         pokemon.AtaquesPorTipo();
-        jugador.ElegirAtaque(pokemon, pokemonenemigo, 0);
+        jugador.ElegirAtaque(pokemon, pokemonenemigo, 3);
 
-        string resultadoEsperado = pokemon.UsarAtaque(0, pokemonenemigo);
+        string resultadoEsperado = pokemon.UsarAtaque(3, pokemonenemigo);
 
         string resultado = "El ataque especial no está disponible este turno.";
 
@@ -266,9 +262,6 @@ public class PokemonTest
     [Test]
     public void UsarAtaque_AtaqueEspecialCalulcaDaño()
     {
-        jugador.ElegirDelCatalogo(1);
-        jugador2.ElegirDelCatalogo(1);
-
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
         
@@ -277,9 +270,108 @@ public class PokemonTest
         pokemon.turnoContadorEspecial = 2;
         
         string resultado2 = pokemon.UsarAtaque(0, pokemonenemigo);
-        string resultadoEsperado2 = "Squirtle usó Acua Jet y causó 100 puntos de daño.";
+        string resultadoEsperado2 = "Pikachu usó Chispa y causó 7 puntos de daño.";
         
         Assert.That(resultado2, Is.EqualTo(resultadoEsperado2));
+    }
+
+    [Test]
+    public void RecibirDaño()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
+        
+        pokemonenemigo.RecibirDaño(30);
+        
+        Assert.That(pokemonenemigo.Estado, Is.Not.EqualTo("Derrotado"));
+
+        pokemon.AtaquesPorTipo();
+        pokemon.turnoContadorEspecial = 2;
+        pokemon.UsarAtaque(3, pokemonenemigo);
+        
+        Assert.That(pokemonenemigo.VidaActual, Is.EqualTo(0));
+        Assert.That(pokemonenemigo.Estado, Is.EqualTo("Derrotado"));
+    }
+
+    [Test]
+    public void MostrarVida_Formato()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        
+        pokemon.RecibirDaño(20);
+        
+        string esperado = $"{pokemon.VidaActual}/{pokemon.VidaTotal}";
+        
+        Assert.That("80/100", Is.EqualTo(esperado));
+    }
+    
+    [Test]
+    public void AgregaAtaquesDelMismoTipoDePokemon_AgregandoOtrosTipos()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+
+        pokemon.AtaquesPorTipo();
+
+        List<Ataque> ataques = new List<Ataque>()
+        {
+            new Ataque("Chispa", new Electrico(), 7, false),
+            new Ataque("Impactrueno", new Electrico(), 8, false),
+            new Ataque("Rayo", new Electrico(), 55, true),
+            new Ataque("Trueno", new Electrico(), 100, true),
+            new Ataque("Ascuas", new Fuego(), 10, false)
+        };
+        
+        Assert.That(ataques, Is.Not.EqualTo(pokemon.Ataques));
+    }
+    
+    [Test]
+    public void AgregaAtaquesDelMismoTipoDePokemon()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+
+        pokemon.AtaquesPorTipo();
+
+        List<Ataque> ataques = new List<Ataque>()
+        {
+            new Ataque("Chispa", new Electrico(), 7, false),
+            new Ataque("Impactrueno", new Electrico(), 8, false),
+            new Ataque("Rayo", new Electrico(), 55, true),
+            new Ataque("Trueno", new Electrico(), 100, true)
+        };
+        
+        Assert.That(ataques.Count, Is.EqualTo(pokemon.Ataques.Count));
+    }
+
+    [Test]
+    public void ObtenerAtaquesDisponibles_SinEspeciales()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        pokemon.AtaquesPorTipo();
+        
+        pokemon.turnoContadorEspecial = 1;
+
+        List<Ataque> ataques = pokemon.ObtenerAtaquesDisponibles();
+        
+        Assert.That("Chispa", Is.EqualTo(ataques[0].Nombre));  
+        Assert.That("Impactrueno", Is.EqualTo(ataques[1].Nombre));
+        
+    }
+    
+    [Test]
+    public void ObtenerAtaquesDisponibles_ConEspeciales()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        
+        pokemon.AtaquesPorTipo();
+        
+        pokemon.turnoContadorEspecial = 2;
+        
+        List<Ataque> ataques = pokemon.ObtenerAtaquesDisponibles();
+        
+        Assert.That("Chispa", Is.EqualTo(ataques[0].Nombre));  
+        Assert.That("Impactrueno", Is.EqualTo(ataques[1].Nombre));
+        Assert.That("Rayo", Is.EqualTo(ataques[2].Nombre));  
+        Assert.That("Trueno", Is.EqualTo(ataques[3].Nombre));
     }
 
 }
