@@ -1,5 +1,6 @@
 using Library;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Tests;
 
@@ -311,7 +312,7 @@ public class PokemonTest
 
         pokemon.AtaquesPorTipo();
 
-        var ataques = new List<Ataque>()
+        List<Ataque> ataques = new List<Ataque>()
         {
             new Ataque("Chispa", new Electrico(), 7, false),
             new Ataque("Impactrueno", new Electrico(), 8, false),
@@ -330,7 +331,7 @@ public class PokemonTest
 
         pokemon.AtaquesPorTipo();
 
-        var ataques = new List<Ataque>()
+        List<Ataque> ataques = new List<Ataque>()
         {
             new Ataque("Chispa", new Electrico(), 7, false),
             new Ataque("Impactrueno", new Electrico(), 8, false),
@@ -339,6 +340,38 @@ public class PokemonTest
         };
         
         Assert.That(ataques.Count, Is.EqualTo(pokemon.Ataques.Count));
+    }
+
+    [Test]
+    public void ObtenerAtaquesDisponibles_SinEspeciales()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        pokemon.AtaquesPorTipo();
+        
+        pokemon.turnoContadorEspecial = 1;
+
+        List<Ataque> ataques = pokemon.ObtenerAtaquesDisponibles();
+        
+        Assert.That("Chispa", Is.EqualTo(ataques[0].Nombre));  
+        Assert.That("Impactrueno", Is.EqualTo(ataques[1].Nombre));
+        
+    }
+    
+    [Test]
+    public void ObtenerAtaquesDisponibles_ConEspeciales()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        
+        pokemon.AtaquesPorTipo();
+        
+        pokemon.turnoContadorEspecial = 2;
+        
+        List<Ataque> ataques = pokemon.ObtenerAtaquesDisponibles();
+        
+        Assert.That("Chispa", Is.EqualTo(ataques[0].Nombre));  
+        Assert.That("Impactrueno", Is.EqualTo(ataques[1].Nombre));
+        Assert.That("Rayo", Is.EqualTo(ataques[2].Nombre));  
+        Assert.That("Trueno", Is.EqualTo(ataques[3].Nombre));
     }
 
 }
