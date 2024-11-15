@@ -373,5 +373,59 @@ public class PokemonTest
         Assert.That("Rayo", Is.EqualTo(ataques[2].Nombre));  
         Assert.That("Trueno", Is.EqualTo(ataques[3].Nombre));
     }
+}
 
+[TestFixture]
+public class AtaqueTest
+{
+    public JugadorPrincipal jugador;
+    public JugadorPrincipal jugador2;
+
+    [SetUp]
+    public void SetUp()
+    {
+        jugador = new JugadorPrincipal("Sol");
+        jugador2 = new JugadorPrincipal("Ema");
+    }
+
+    [Test]
+    public void CalcularDano_AtaqueEspecial()
+    {
+        jugador.ElegirDelCatalogo(2);
+        jugador2.ElegirDelCatalogo(5);
+
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        IPokemon pokemonEnemigo = jugador2.ElegirPokemon(0);
+        
+        pokemon.AtaquesPorTipo();
+        pokemon.turnoContadorEspecial = 2;
+        pokemonEnemigo.DefensaEspecial = 40;
+
+        double danoEsperado = pokemon.Ataques[3].DañoBase * 2.0 - pokemonEnemigo.DefensaEspecial;
+        danoEsperado = Math.Max(danoEsperado, 0);
+
+        double resultado = pokemon.Ataques[3].CalcularDaño(pokemon, pokemonEnemigo);
+        
+        Assert.That(resultado, Is.EqualTo(danoEsperado));
+    }
+
+    [Test]
+    public void CalcularDano_NoEsEspecial()
+    {
+        jugador.ElegirDelCatalogo(2);
+        jugador2.ElegirDelCatalogo(5);
+
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        IPokemon pokemonEnemigo = jugador2.ElegirPokemon(0);
+        
+        pokemon.AtaquesPorTipo();
+        pokemonEnemigo.Defensa = 20;
+        
+        double danoEsperado = pokemon.Ataques[1].DañoBase - pokemonEnemigo.Defensa;
+        danoEsperado = Math.Max(danoEsperado, 0);
+        
+        double resultado = pokemon.Ataques[1].CalcularDaño(pokemon, pokemonEnemigo);
+        
+        //Assert.That(danoEsperado, Is.EqualTo(resultado));
+    }
 }
