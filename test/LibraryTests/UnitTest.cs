@@ -481,6 +481,11 @@ public class AtaqueTest
         jugador2 = new JugadorPrincipal("Ema");
     }
 
+    /// <summary>
+    /// Este test, verifica que el método CalcularDano() en la clase Ataque, calcula el daño esperado considerando el
+    /// daño base, el ponderador y la defensa del pokémon enemigo. Al utilizar el método verificamos si dan el mismo
+    /// resultado.
+    /// </summary>
     [Test]
     public void CalcularDano_AtaqueEspecial()
     {
@@ -502,6 +507,9 @@ public class AtaqueTest
         Assert.That(resultado, Is.EqualTo(danoEsperado));
     }
 
+    /// <summary>
+    /// En el caso de que el ataque no sea especial, calculamos sin utilizar el ponderador.
+    /// </summary>
     [Test]
     public void CalcularDano_NoEsEspecial()
     {
@@ -536,6 +544,9 @@ public class CatalogosTest
         jugador2 = new JugadorPrincipal("Matias");
     }
 
+    /// <summary>
+    /// Esta prueba, verifica que agregue todos los ataques al catálogo de ataques.
+    /// </summary>
     [Test]
     public void AgregarAtaques_VerificarSiAgregaTodos()
     {
@@ -590,6 +601,9 @@ public class CatalogosTest
         }
     }
 
+    /// <summary>
+    /// Este test, verifica que agregue todos los pokémones al catálogo de pokémones.
+    /// </summary>
     [Test]
     public void AgregarPokemones()
     {
@@ -622,6 +636,10 @@ public class CatalogosTest
         }
     }
 
+    /// <summary>
+    /// Este test, comprueba que el método MostrarCatalogo() de la clase CatalogoPokemons() muestre todos los pokémones
+    /// que hay en el catálogo, los que se han agregado en el método anterior.
+    /// </summary>
     [Test]
     public void MostrarCatalogoPokemons_VerificarMuestreTodos()
     {
