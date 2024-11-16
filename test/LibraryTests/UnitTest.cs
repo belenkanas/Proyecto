@@ -15,6 +15,10 @@ public class JugadorPrincipalTest
         jugador1 = new JugadorPrincipal("Ana");
     }
     
+    /// <summary>
+    /// Este test del método ElegirPokemonDelCatalogo() verifica que cuando se elige un pokémon del catálogo a través
+    /// de su índice, devuelva el pokémon esperado ya que su índice es válido.
+    /// </summary>
     [Test]
     public void ElegirPokemonDelCatalogo_IndiceValido()
     {
@@ -23,6 +27,9 @@ public class JugadorPrincipalTest
         Assert.That(("Pikachu"), Is.EqualTo(pokemon.Nombre));
     }
 
+    /// <summary>
+    /// Este test verifica que al ingresar un índice fuera del rango esperado para elegir tu pokémon, devuelva null.
+    /// </summary>
     [Test]
     public void ElegirPokemonDelCatalogo_IndiceNegativo()
     {
@@ -31,6 +38,10 @@ public class JugadorPrincipalTest
         Assert.That(null, Is.EqualTo(pokemon));
     }
 
+    /// <summary>
+    /// Verifica que el jugador pueda elegir el pokémon que quiera de su equipo por el índice
+    /// en este caso, el índice es válido y devuelve el pokémon elegido.
+    /// </summary>
     [Test]
     public void ElegirPokemonDelEquipo_IndiceValido()
     {
@@ -42,6 +53,9 @@ public class JugadorPrincipalTest
         Assert.That(pokemon.Nombre, Is.EqualTo("Squirtle"));
     }
 
+    /// <summary>
+    /// En este caso, el índice está fuera del rango permitido entonces devolverá null.
+    /// </summary>
     [Test]
     public void ElegirPokemonDelEquipo_IndiceInvalido()
     {
@@ -53,6 +67,9 @@ public class JugadorPrincipalTest
         Assert.That(pokemon, Is.EqualTo(null));
     }
 
+    /// <summary>
+    /// Muestra el turno actual del jugador.
+    /// </summary>
     [Test]
     public void MostrarTurnoJugador()
     {
@@ -61,6 +78,10 @@ public class JugadorPrincipalTest
         Assert.That(false, Is.EqualTo(jugador1.MostrarTurno()));
     }
 
+    /// <summary>
+    /// Verifica que muestre correctamente los ataques disponibles del pokémon elegido por su índice para la batalla
+    /// En este caso, el índice es válido, entonces devuelve una lista de ataques disponibles para ese pokémon.
+    /// </summary>
     [Test]
     public void MostrarAtaquesDisponibles_IndiceValido()
     {
@@ -75,6 +96,9 @@ public class JugadorPrincipalTest
         Assert.That(ataques, Is.EqualTo(resultado));
     }
 
+    /// <summary>
+    /// Para este caso, el índice del pokémon elegido es inválido y devuelve el mensaje de error.
+    /// </summary>
     [Test]
     public void MostrarAtaquesDisponibles_IndiceInvalido()
     {
@@ -86,6 +110,9 @@ public class JugadorPrincipalTest
         Assert.That(resultado, Is.EqualTo(ataques));
     }
 
+    /// <summary>
+    /// Verifica que muestre todos los pokémones seleccionados para formar el equipo de 6 a través de su índice.
+    /// </summary>
     [Test]
     public void MostrarEquipoConPokemonsValido()
     {
@@ -101,12 +128,19 @@ public class JugadorPrincipalTest
         Assert.That(jugador1.MostrarEquipo(), Is.EqualTo(equipo));
     }
     
+    /// <summary>
+    /// Para este caso, no hay pokémones en el equipo entonces devuelve null.
+    /// </summary>
     [Test]
     public void MostrarEquipoConPokemonsInvalido()
     {
         Assert.That(jugador1.MostrarEquipo(), Is.EqualTo(null));
     }
 
+    /// <summary>
+    /// En este test, se prueba que todos los pokémones del equipo tienen su vida en 0/100 entonces el método
+    /// PokemonesDerrotados() devuelve true y se termina la batalla asumiendo de ganador el jugador oponente.
+    /// </summary>
     [Test]
     public void PokemonesDerrotados_TodosSinVida()
     {
@@ -127,6 +161,9 @@ public class JugadorPrincipalTest
         Assert.That(jugador1.PokemonesDerrotados, Is.EqualTo(true));
     }
     
+    /// <summary>
+    /// Si al menos uno de los pokémones del equipo tiene su vida > 0, devuelve false que significa que la batalla sigue. 
+    /// </summary>
     [Test]
     public void PokemonesDerrotados_AlMenosUnoConVida()
     {
@@ -147,6 +184,11 @@ public class JugadorPrincipalTest
         Assert.That(jugador1.PokemonesDerrotados, Is.EqualTo(false));
     }
 
+    /// <summary>
+    /// Esta prueba, verifica que, al querer cambiar de pokémon en una batalla, el índice ingresado sea válido
+    /// (que no sea el del pokémon que está en batalla y que esté dentro del rango). También verifica que el jugador
+    /// utilizó su turno haciendo el cambio.
+    /// </summary>
     [Test]
     public void CambiarPokemonBatalla_IndiceValidoYPokemonNoActual()
     {
@@ -161,8 +203,13 @@ public class JugadorPrincipalTest
         string resultado = $"Ana ha cambiado de pokémon a Squirtle";
         
         Assert.That(resultado,Is.EqualTo(jugador1.CambiarPokemonBatalla(0)));
+        Assert.That(jugador1.TurnoActual, Is.EqualTo(false));
     }
     
+    /// <summary>
+    /// En este caso, el jugador ingresa el índice del pokémon que está actualmente en la batalla entonces devolverá un
+    /// mensaje de que deberá ingresar otro índice.
+    /// </summary>
     [Test]
     public void CambiarPokemonBatalla_IndiceValidoYPokemonActual()
     {
@@ -179,6 +226,10 @@ public class JugadorPrincipalTest
         Assert.That(resultado,Is.EqualTo(jugador1.CambiarPokemonBatalla(1)));
     }
     
+    /// <summary>
+    /// Y para este caso, el índice ingresado está fuera de rango entonces devolverá un mensaje comentando que el
+    /// índice del pokémon es inválido.
+    /// </summary>
     [Test]
     public void CambiarPokemonBatalla_IndiceInvalido()
     {

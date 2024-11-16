@@ -4,5 +4,69 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="M:Tests.JugadorPrincipalTest.ElegirPokemonDelCatalogo_IndiceValido">
+            <summary>
+            Este test del método ElegirPokemonDelCatalogo() verifica que cuando se elige un pokémon del catálogo a través
+            de su índice, devuelva el pokémon esperado ya que su índice es válido.
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.ElegirPokemonDelCatalogo_IndiceNegativo">
+            <summary>
+            Este test verifica que al ingresar un índice fuera del rango esperado para elegir tu pokémon, devuelva null
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.ElegirPokemonDelEquipo_IndiceValido">
+            <summary>
+            Verifica que el jugador pueda elegir el pokémon que quiera de su equipo por el índice
+            en este caso, el índice es válido y devuelve el pokémon elegido
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.ElegirPokemonDelEquipo_IndiceInvalido">
+            <summary>
+            En este caso, el índice está fuera del rango permitido entonces devolverá null
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.MostrarTurnoJugador">
+            <summary>
+            Muestra el turno actual del jugador
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.MostrarAtaquesDisponibles_IndiceValido">
+            <summary>
+            Verifica que muestre correctamente los ataques disponibles del pokémon elegido por su índice para la batalla
+            En este caso, el índice es válido, entonces devuelve una lista de ataques disponibles para ese pokémon
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.MostrarAtaquesDisponibles_IndiceInvalido">
+            <summary>
+            Para este caso, el índice del pokémon elegido es inválido y devuelve el mensaje de error
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.MostrarEquipoConPokemonsValido">
+            <summary>
+            Verifica que muestre todos los pokémones seleccionados para formar el equipo de 6 a través de su índice
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.MostrarEquipoConPokemonsInvalido">
+            <summary>
+            Para este caso, no hay pokémones en el equipo entonces devuelve null
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.PokemonesDerrotados_TodosSinVida">
+            <summary>
+            En este test, se prueba que todos los pokémones del equipo tienen su vida en 0/100 entonces el método
+            PokemonesDerrotados() devuelve true y se termina la batalla asumiendo de ganador el jugador oponente
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.PokemonesDerrotados_AlMenosUnoConVida">
+            <summary>
+            Si al menos uno de los pokémones del equipo tiene su vida > 0, devuelve false que significa que la batalla sigue 
+            </summary>
+        </member>
+        <member name="M:Tests.JugadorPrincipalTest.CambiarPokemonBatalla_IndiceValidoYPokemonNoActual">
+            <summary>
+            
+            </summary>
+        </member>
     </members>
 </doc>
