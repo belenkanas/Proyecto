@@ -15,6 +15,10 @@ public class JugadorPrincipalTest
         jugador1 = new JugadorPrincipal("Ana");
     }
     
+    /// <summary>
+    /// Este test del método ElegirPokemonDelCatalogo() verifica que cuando se elige un pokémon del catálogo a través
+    /// de su índice, devuelva el pokémon esperado ya que su índice es válido.
+    /// </summary>
     [Test]
     public void ElegirPokemonDelCatalogo_IndiceValido()
     {
@@ -23,6 +27,9 @@ public class JugadorPrincipalTest
         Assert.That(("Pikachu"), Is.EqualTo(pokemon.Nombre));
     }
 
+    /// <summary>
+    /// Este test verifica que al ingresar un índice fuera del rango esperado para elegir tu pokémon, devuelva null.
+    /// </summary>
     [Test]
     public void ElegirPokemonDelCatalogo_IndiceNegativo()
     {
@@ -31,6 +38,10 @@ public class JugadorPrincipalTest
         Assert.That(null, Is.EqualTo(pokemon));
     }
 
+    /// <summary>
+    /// Verifica que el jugador pueda elegir el pokémon que quiera de su equipo por el índice
+    /// en este caso, el índice es válido y devuelve el pokémon elegido.
+    /// </summary>
     [Test]
     public void ElegirPokemonDelEquipo_IndiceValido()
     {
@@ -42,6 +53,9 @@ public class JugadorPrincipalTest
         Assert.That(pokemon.Nombre, Is.EqualTo("Squirtle"));
     }
 
+    /// <summary>
+    /// En este caso, el índice está fuera del rango permitido entonces devolverá null.
+    /// </summary>
     [Test]
     public void ElegirPokemonDelEquipo_IndiceInvalido()
     {
@@ -53,6 +67,9 @@ public class JugadorPrincipalTest
         Assert.That(pokemon, Is.EqualTo(null));
     }
 
+    /// <summary>
+    /// Muestra el turno actual del jugador.
+    /// </summary>
     [Test]
     public void MostrarTurnoJugador()
     {
@@ -61,6 +78,10 @@ public class JugadorPrincipalTest
         Assert.That(false, Is.EqualTo(jugador1.MostrarTurno()));
     }
 
+    /// <summary>
+    /// Verifica que muestre correctamente los ataques disponibles del pokémon elegido por su índice para la batalla
+    /// En este caso, el índice es válido, entonces devuelve una lista de ataques disponibles para ese pokémon.
+    /// </summary>
     [Test]
     public void MostrarAtaquesDisponibles_IndiceValido()
     {
@@ -75,6 +96,9 @@ public class JugadorPrincipalTest
         Assert.That(ataques, Is.EqualTo(resultado));
     }
 
+    /// <summary>
+    /// Para este caso, el índice del pokémon elegido es inválido y devuelve el mensaje de error.
+    /// </summary>
     [Test]
     public void MostrarAtaquesDisponibles_IndiceInvalido()
     {
@@ -86,6 +110,9 @@ public class JugadorPrincipalTest
         Assert.That(resultado, Is.EqualTo(ataques));
     }
 
+    /// <summary>
+    /// Verifica que muestre todos los pokémones seleccionados para formar el equipo de 6 a través de su índice.
+    /// </summary>
     [Test]
     public void MostrarEquipoConPokemonsValido()
     {
@@ -101,12 +128,19 @@ public class JugadorPrincipalTest
         Assert.That(jugador1.MostrarEquipo(), Is.EqualTo(equipo));
     }
     
+    /// <summary>
+    /// Para este caso, no hay pokémones en el equipo entonces devuelve null.
+    /// </summary>
     [Test]
     public void MostrarEquipoConPokemonsInvalido()
     {
         Assert.That(jugador1.MostrarEquipo(), Is.EqualTo(null));
     }
 
+    /// <summary>
+    /// En este test, se prueba que todos los pokémones del equipo tienen su vida en 0/100 entonces el método
+    /// PokemonesDerrotados() devuelve true y se termina la batalla asumiendo de ganador el jugador oponente.
+    /// </summary>
     [Test]
     public void PokemonesDerrotados_TodosSinVida()
     {
@@ -127,6 +161,9 @@ public class JugadorPrincipalTest
         Assert.That(jugador1.PokemonesDerrotados, Is.EqualTo(true));
     }
     
+    /// <summary>
+    /// Si al menos uno de los pokémones del equipo tiene su vida > 0, devuelve false que significa que la batalla sigue. 
+    /// </summary>
     [Test]
     public void PokemonesDerrotados_AlMenosUnoConVida()
     {
@@ -147,6 +184,11 @@ public class JugadorPrincipalTest
         Assert.That(jugador1.PokemonesDerrotados, Is.EqualTo(false));
     }
 
+    /// <summary>
+    /// Esta prueba, verifica que, al querer cambiar de pokémon en una batalla, el índice ingresado sea válido
+    /// (que no sea el del pokémon que está en batalla y que esté dentro del rango). También verifica que el jugador
+    /// utilizó su turno haciendo el cambio.
+    /// </summary>
     [Test]
     public void CambiarPokemonBatalla_IndiceValidoYPokemonNoActual()
     {
@@ -161,8 +203,13 @@ public class JugadorPrincipalTest
         string resultado = $"Ana ha cambiado de pokémon a Squirtle";
         
         Assert.That(resultado,Is.EqualTo(jugador1.CambiarPokemonBatalla(0)));
+        Assert.That(jugador1.TurnoActual, Is.EqualTo(false));
     }
     
+    /// <summary>
+    /// En este caso, el jugador ingresa el índice del pokémon que está actualmente en la batalla entonces devolverá un
+    /// mensaje de que deberá ingresar otro índice.
+    /// </summary>
     [Test]
     public void CambiarPokemonBatalla_IndiceValidoYPokemonActual()
     {
@@ -179,6 +226,10 @@ public class JugadorPrincipalTest
         Assert.That(resultado,Is.EqualTo(jugador1.CambiarPokemonBatalla(1)));
     }
     
+    /// <summary>
+    /// Y para este caso, el índice ingresado está fuera de rango entonces devolverá un mensaje comentando que el
+    /// índice del pokémon es inválido.
+    /// </summary>
     [Test]
     public void CambiarPokemonBatalla_IndiceInvalido()
     {
@@ -215,6 +266,11 @@ public class PokemonTest
         
     }
 
+    /// <summary>
+    /// Este test, verifica que al utilizar el método UsarAtaque(), el índice ingresado del ataque que se quiere
+    /// utilizar sea válido. En este caso, es negtivo entonces está fuera de rango, y devuelve un mensaje diciendo que
+    /// ese ataque no es válido.
+    /// </summary>
     [Test]
     public void UsarAtaque_IndiceInvalido()
     {
@@ -226,6 +282,10 @@ public class PokemonTest
         Assert.That("El ataque no es válido", Is.EqualTo(resultado));
     }
 
+    /// <summary>
+    /// Para este caso, el índice es válido y el ataque es especial entonces verificamos que se calcule el daño esperado
+    /// utilizando el ponderador.
+    /// </summary>
     [Test]
     public void UsarAtaque_CalculoDeDañoConPonderador()
     {
@@ -241,6 +301,10 @@ public class PokemonTest
         Assert.That(vida, Is.EqualTo(pokemonenemigo.VidaActual));
     }
 
+    /// <summary>
+    /// Este caso, verifica que para este turno los ataques especiales no están disponibles.
+    /// Devuelve un mensaje mencionándolo.
+    /// </summary>
     [Test]
     public void UsarAtaque_AtaqueEspecialNoDisponible()
     {
@@ -258,7 +322,11 @@ public class PokemonTest
 
         Assert.That(resultado, Is.EqualTo(resultadoEsperado));
     }
-
+    
+    /// <summary>
+    /// Y en este caso, el índice es válido pero el ataque no es especial entonces no utiliza el ponderador pero
+    /// calcula el daño igualmente.
+    /// </summary>
     [Test]
     public void UsarAtaque_AtaqueEspecialCalulcaDaño()
     {
@@ -275,6 +343,11 @@ public class PokemonTest
         Assert.That(resultado2, Is.EqualTo(resultadoEsperado2));
     }
 
+    /// <summary>
+    /// Este test, verifica el método RecibirDaño()
+    /// Primero, comprueba que el pokémon no sea derrotado si su vida actual es mayor a 0 después de recibir el daño.
+    /// También, comprueba que al aplicar un ataque su vida disminuye a 0 y el estado del pokémon pasa a ser Derrotado.
+    /// </summary>
     [Test]
     public void RecibirDaño()
     {
@@ -293,6 +366,9 @@ public class PokemonTest
         Assert.That(pokemonenemigo.Estado, Is.EqualTo("Derrotado"));
     }
 
+    /// <summary>
+    /// Este test verifica que muestre la vida en el formato pedido.
+    /// </summary>
     [Test]
     public void MostrarVida_Formato()
     {
@@ -305,6 +381,11 @@ public class PokemonTest
         Assert.That("80/100", Is.EqualTo(esperado));
     }
     
+    /// <summary>
+    /// Este test, verifica que al utilizar el método AtaquesPorTipo() de un pokémon, muestre una lista con todos los
+    /// ataques disponibles que tiene para ese tipo de pokémon, ya sean especiales o no, dependiendo del turno.
+    /// Este caso, devolverá que la lista es incorrecta porque se agregó otro tipo que no es el del pokémon seleccionado.
+    /// </summary>
     [Test]
     public void AgregaAtaquesDelMismoTipoDePokemon_AgregandoOtrosTipos()
     {
@@ -324,6 +405,9 @@ public class PokemonTest
         Assert.That(ataques, Is.Not.EqualTo(pokemon.Ataques));
     }
     
+    /// <summary>
+    /// Y este caso, la lista es correcta, ya que están todos los ataques disponibles para ese pokémon.
+    /// </summary>
     [Test]
     public void AgregaAtaquesDelMismoTipoDePokemon()
     {
@@ -342,6 +426,11 @@ public class PokemonTest
         Assert.That(ataques.Count, Is.EqualTo(pokemon.Ataques.Count));
     }
 
+    /// <summary>
+    /// Esta prueba, comprueba que el método ObtenerAtaquesDisponibles() muestra los ataques disponibles dependiendo
+    /// del turno, si ya utilizó un ataque especial debe esperar dos turnos patra volver a utilizarlo. Entonces, si el
+    /// turno es impar los ataques disponibles serán todos menos los especiales.
+    /// </summary>
     [Test]
     public void ObtenerAtaquesDisponibles_SinEspeciales()
     {
@@ -357,6 +446,10 @@ public class PokemonTest
         
     }
     
+    /// <summary>
+    /// Y para esta prueba, verificamos que si el turno es par, muestre todos los ataques disponibles incluyendo los
+    /// ataques especiales.
+    /// </summary>
     [Test]
     public void ObtenerAtaquesDisponibles_ConEspeciales()
     {
@@ -388,6 +481,11 @@ public class AtaqueTest
         jugador2 = new JugadorPrincipal("Ema");
     }
 
+    /// <summary>
+    /// Este test, verifica que el método CalcularDano() en la clase Ataque, calcula el daño esperado considerando el
+    /// daño base, el ponderador y la defensa del pokémon enemigo. Al utilizar el método verificamos si dan el mismo
+    /// resultado.
+    /// </summary>
     [Test]
     public void CalcularDano_AtaqueEspecial()
     {
@@ -409,6 +507,9 @@ public class AtaqueTest
         Assert.That(resultado, Is.EqualTo(danoEsperado));
     }
 
+    /// <summary>
+    /// En el caso de que el ataque no sea especial, calculamos sin utilizar el ponderador.
+    /// </summary>
     [Test]
     public void CalcularDano_NoEsEspecial()
     {
@@ -443,6 +544,9 @@ public class CatalogosTest
         jugador2 = new JugadorPrincipal("Matias");
     }
 
+    /// <summary>
+    /// Esta prueba, verifica que agregue todos los ataques al catálogo de ataques.
+    /// </summary>
     [Test]
     public void AgregarAtaques_VerificarSiAgregaTodos()
     {
@@ -497,6 +601,9 @@ public class CatalogosTest
         }
     }
 
+    /// <summary>
+    /// Este test, verifica que agregue todos los pokémones al catálogo de pokémones.
+    /// </summary>
     [Test]
     public void AgregarPokemones()
     {
@@ -529,6 +636,10 @@ public class CatalogosTest
         }
     }
 
+    /// <summary>
+    /// Este test, comprueba que el método MostrarCatalogo() de la clase CatalogoPokemons() muestre todos los pokémones
+    /// que hay en el catálogo, los que se han agregado en el método anterior.
+    /// </summary>
     [Test]
     public void MostrarCatalogoPokemons_VerificarMuestreTodos()
     {
