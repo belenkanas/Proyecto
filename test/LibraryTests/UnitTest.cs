@@ -266,6 +266,11 @@ public class PokemonTest
         
     }
 
+    /// <summary>
+    /// Este test, verifica que al utilizar el método UsarAtaque(), el índice ingresado del ataque que se quiere
+    /// utilizar sea válido. En este caso, es negtivo entonces está fuera de rango, y devuelve un mensaje diciendo que
+    /// ese ataque no es válido.
+    /// </summary>
     [Test]
     public void UsarAtaque_IndiceInvalido()
     {
@@ -277,6 +282,10 @@ public class PokemonTest
         Assert.That("El ataque no es válido", Is.EqualTo(resultado));
     }
 
+    /// <summary>
+    /// Para este caso, el índice es válido y el ataque es especial entonces verificamos que se calcule el daño esperado
+    /// utilizando el ponderador.
+    /// </summary>
     [Test]
     public void UsarAtaque_CalculoDeDañoConPonderador()
     {
@@ -292,6 +301,10 @@ public class PokemonTest
         Assert.That(vida, Is.EqualTo(pokemonenemigo.VidaActual));
     }
 
+    /// <summary>
+    /// Este caso, verifica que para este turno los ataques especiales no están disponibles.
+    /// Devuelve un mensaje mencionándolo.
+    /// </summary>
     [Test]
     public void UsarAtaque_AtaqueEspecialNoDisponible()
     {
@@ -309,7 +322,11 @@ public class PokemonTest
 
         Assert.That(resultado, Is.EqualTo(resultadoEsperado));
     }
-
+    
+    /// <summary>
+    /// Y en este caso, el índice es válido pero el ataque no es especial entonces no utiliza el ponderador pero
+    /// calcula el daño igualmente.
+    /// </summary>
     [Test]
     public void UsarAtaque_AtaqueEspecialCalulcaDaño()
     {
@@ -326,6 +343,11 @@ public class PokemonTest
         Assert.That(resultado2, Is.EqualTo(resultadoEsperado2));
     }
 
+    /// <summary>
+    /// Este test, verifica el método RecibirDaño()
+    /// Primero, comprueba que el pokémon no sea derrotado si su vida actual es mayor a 0 después de recibir el daño.
+    /// También, comprueba que al aplicar un ataque su vida disminuye a 0 y el estado del pokémon pasa a ser Derrotado.
+    /// </summary>
     [Test]
     public void RecibirDaño()
     {
@@ -344,6 +366,9 @@ public class PokemonTest
         Assert.That(pokemonenemigo.Estado, Is.EqualTo("Derrotado"));
     }
 
+    /// <summary>
+    /// Este test verifica que muestre la vida en el formato pedido.
+    /// </summary>
     [Test]
     public void MostrarVida_Formato()
     {
@@ -356,6 +381,11 @@ public class PokemonTest
         Assert.That("80/100", Is.EqualTo(esperado));
     }
     
+    /// <summary>
+    /// Este test, verifica que al utilizar el método AtaquesPorTipo() de un pokémon, muestre una lista con todos los
+    /// ataques disponibles que tiene para ese tipo de pokémon, ya sean especiales o no, dependiendo del turno.
+    /// Este caso, devolverá que la lista es incorrecta porque se agregó otro tipo que no es el del pokémon seleccionado.
+    /// </summary>
     [Test]
     public void AgregaAtaquesDelMismoTipoDePokemon_AgregandoOtrosTipos()
     {
@@ -375,6 +405,9 @@ public class PokemonTest
         Assert.That(ataques, Is.Not.EqualTo(pokemon.Ataques));
     }
     
+    /// <summary>
+    /// Y este caso, la lista es correcta, ya que están todos los ataques disponibles para ese pokémon.
+    /// </summary>
     [Test]
     public void AgregaAtaquesDelMismoTipoDePokemon()
     {
@@ -393,6 +426,11 @@ public class PokemonTest
         Assert.That(ataques.Count, Is.EqualTo(pokemon.Ataques.Count));
     }
 
+    /// <summary>
+    /// Esta prueba, comprueba que el método ObtenerAtaquesDisponibles() muestra los ataques disponibles dependiendo
+    /// del turno, si ya utilizó un ataque especial debe esperar dos turnos patra volver a utilizarlo. Entonces, si el
+    /// turno es impar los ataques disponibles serán todos menos los especiales.
+    /// </summary>
     [Test]
     public void ObtenerAtaquesDisponibles_SinEspeciales()
     {
@@ -408,6 +446,10 @@ public class PokemonTest
         
     }
     
+    /// <summary>
+    /// Y para esta prueba, verificamos que si el turno es par, muestre todos los ataques disponibles incluyendo los
+    /// ataques especiales.
+    /// </summary>
     [Test]
     public void ObtenerAtaquesDisponibles_ConEspeciales()
     {
