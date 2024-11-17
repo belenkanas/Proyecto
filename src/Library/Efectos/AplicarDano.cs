@@ -3,7 +3,7 @@ using Library;
 public abstract class AplicarDaño
 {
     /// <summary>
-    /// // Numero de turnos que durara el efecto
+    /// Numero de turnos que durará el efecto
     /// </summary>
     private int turnosRestante = 3;
     

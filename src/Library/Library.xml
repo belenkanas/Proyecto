@@ -340,7 +340,7 @@
         </member>
         <member name="F:AplicarDaño.turnosRestante">
             <summary>
-            // Numero de turnos que durara el efecto
+            Numero de turnos que durará el efecto
             </summary>
         </member>
         <member name="M:AplicarDaño.AplicarDañoPorTurno(Library.IPokemon)">
