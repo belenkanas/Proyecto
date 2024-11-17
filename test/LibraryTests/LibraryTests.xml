@@ -172,26 +172,50 @@
             que hay en el catálogo, los que se han agregado en el método anterior.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.DormirAplicarEfecto_VerificarEstadoYVidaActual">
+        <member name="M:Tests.EfectosItemsTest.DormirAplicarEfecto_VerificarEstadoYVidaActual">
             <summary>
             Este test verifica que al aplicar el efecto Dormir el estado del pokémon cambie a "Dormido" y que su vida
             disminuya un 5% en cada turno.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.EnvenenarAplicarEfecto_VerificarEstadoYVidaActual">
+        <member name="M:Tests.EfectosItemsTest.EnvenenarAplicarEfecto_VerificarEstadoYVidaActual">
             <summary>
             Este test verifica que el estado del pokémon cambie a Envenenado cuando le apliquen el efecto y que su vida
             disminuya un 5% en cada turno.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.ParalizarAplicarEfecto_VerificarEstado">
+        <member name="M:Tests.EfectosItemsTest.ParalizarAplicarEfecto_VerificarEstado">
             <summary>
             En esta prueba verificamos el estado del pokémon luego de aplicar el efecto.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.QuemarAplicarEfecto_VerificarEstado">
+        <member name="M:Tests.EfectosItemsTest.QuemarAplicarEfecto_VerificarEstado">
             <summary>
-            En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto.
+            En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto ys u vida disminuya
+            un 10% luego de cada turno.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.CuraTotal_EfectoActivoNoNullYNoEsDormido">
+            <summary>
+            El método Usar() de la clase CuraTotal, restaura el estado del pokémon a Normal y elimina el efecto activo que tenía.
+            Si el pokémon tiene cualquier efecto aplicado (menos Dormido), el efecto será eliminado y su estado cambia a Normal.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.CuraTotal_EfectoActivoNull">
+            <summary>
+            Para este caso, el pokémon no tiene un estado activo, entonces verificamos que su estado activo sea null y
+            su estado sea Normal.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.CuraTotal_EstadoDormido">
+            <summary>
+            Este caso, verifica que cuando el estado del pokémon sea Dormido no se puede aplicar la CuraTotal.
+            Su estado y efecto activo no cambia.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.CuraTotal_UtilizoTodosLosUsosDeCura">
+            <summary>
+            En esta prueba, comprobamos que al usar CuraTotal más veces del que está disponible, usosRestantes estará en 0.
             </summary>
         </member>
     </members>

@@ -666,25 +666,25 @@ public class CatalogosTest
 }
 
 [TestFixture]
-public class EfectosTest
+public class EfectosItemsTest
 {
     public JugadorPrincipal jugador;
-    public JugadorPrincipal jugador2;
     public Dormir dormir;
     public Envenenar envenenar;
     public Paralizar paralizar;
     public Quemar quemar;
+    public CuraTotal cura;
 
     [SetUp]
     public void SetUp()
     {
         jugador = new JugadorPrincipal("José");
-        jugador2 = new JugadorPrincipal("Gabriel");
         dormir = new Dormir();
         envenenar = new Envenenar();
         paralizar = new Paralizar();
         quemar = new Quemar();
-        IPokemon pokemon = jugador.ElegirDelCatalogo(4);
+        cura = new CuraTotal();
+        jugador.ElegirDelCatalogo(4);
     }
     
     /// <summary>
@@ -755,5 +755,70 @@ public class EfectosTest
         
         Assert.That(pokemon.Estado, Is.EqualTo("Quemado"));
         Assert.That(pokemon.VidaActual, Is.EqualTo(vidaEsperada));
+    }
+
+    /// <summary>
+    /// El método Usar() de la clase CuraTotal, restaura el estado del pokémon a Normal y elimina el efecto activo que tenía.
+    /// Si el pokémon tiene cualquier efecto aplicado (menos Dormido), el efecto será eliminado y su estado cambia a Normal.
+    /// </summary>
+    [Test]
+    public void CuraTotal_EfectoActivoNoNullYNoEsDormido()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        envenenar.AplicarEfecto(pokemon);
+        
+        cura.Usar(pokemon);
+        
+        Assert.That(pokemon.EfectoActivo, Is.Null);
+        Assert.That(pokemon.Estado, Is.EqualTo("Normal"));
+    }
+    
+    /// <summary>
+    /// Para este caso, el pokémon no tiene un estado activo, entonces verificamos que su estado activo sea null y
+    /// su estado sea Normal.
+    /// </summary>
+    [Test]
+    public void CuraTotal_EfectoActivoNull()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        
+        cura.Usar(pokemon);
+        
+        Assert.That(pokemon.EfectoActivo, Is.Null);
+        Assert.That(pokemon.Estado, Is.EqualTo("Normal"));
+    }
+    
+    /// <summary>
+    /// Este caso, verifica que cuando el estado del pokémon sea Dormido no se puede aplicar la CuraTotal.
+    /// Su estado y efecto activo no cambia.
+    /// </summary>
+    [Test]
+    public void CuraTotal_EstadoDormido()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        dormir.AplicarEfecto(pokemon);
+        
+        cura.Usar(pokemon);
+        
+        Assert.That(pokemon.EfectoActivo.nombreEfecto, Is.EqualTo("Dormir"));
+        Assert.That(pokemon.Estado, Is.EqualTo("Dormido"));
+    }
+    
+    /// <summary>
+    /// En esta prueba, comprobamos que al usar CuraTotal más veces del que está disponible, usosRestantes estará en 0
+    /// y lanzará un mensaje diciendo que ya no se podrá usar más.
+    /// </summary>
+    [Test]
+    public void CuraTotal_UtilizoTodosLosUsosDeCura()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        envenenar.AplicarEfecto(pokemon);
+        cura.Usar(pokemon);
+        quemar.AplicarEfecto(pokemon);
+        cura.Usar(pokemon);
+        paralizar.AplicarEfecto(pokemon);
+        cura.Usar(pokemon);
+        
+        Assert.That(cura.usosRestantes, Is.EqualTo(0));
     }
 }
