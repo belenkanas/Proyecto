@@ -24,32 +24,14 @@ namespace Library
             jugador2Ataco = false; // Inicializamos en falso, porque aún no ha atacado
             BatallaEnCurso = true;
         }
-
-        //Este método es utilizado para agregar Pokemones a la lista de opciones del jugador. Para poder 
-        //hacer eso verifica que quien lo agrega es el jugador mismo y no es contrario.
-        public void AgregarPokemonAJugador(string nombreJugador, Pokemon pokemon)
+        
+        public string IniciarBatalla() //Muestra el inicio del juego, especificando el nombre del jugador y el pokemon elegido.
         {
-            if (jugador1.NombreJugador == nombreJugador) 
-            {
-                jugador1.EquipoPokemons.Add(pokemon);
-            }
-            else if (jugador2.NombreJugador == nombreJugador)
-            {
-                jugador2.EquipoPokemons.Add(pokemon);
-            }
-        }
-
-        //Toma como parámetro el pokemon elegido y le agrega un ataque del programa.
-        public void AgregarAtaqueAPokemon(Pokemon pokemon, Ataque ataque)
-        {
-            pokemon.Ataques.Add(ataque);
-        }
-
-        public void IniciarBatalla() //Muestra el inicio del juego, especificando el nombre del jugador y el pokemon elegido.
-        {
-            Console.WriteLine($"{jugador1.NombreJugador} comienza la batalla con {jugador1.ElegirPokemon(0).Nombre}");
-            Console.WriteLine($"{jugador2.NombreJugador} comienza la batalla con {jugador2.ElegirPokemon(0).Nombre}");
-            Console.WriteLine($"¡La batalla ha comenzado! Turno {contadorTurnos}.");
+            string resultado = "";
+            resultado += $"{jugador1.NombreJugador} comienza la batalla con {jugador1.ElegirPokemon(0).Nombre}\n";
+            resultado += $"{jugador2.NombreJugador} comienza la batalla con {jugador2.ElegirPokemon(0).Nombre}\n";
+            resultado += $"¡La batalla ha comenzado! Turno {contadorTurnos}.";
+            return resultado;
         }
 
         // Mediante este método, toma como parámetro al jugador (ya que es quien elige el ataque y quien lo usa), y el ataque elegido de la lista.
@@ -59,13 +41,13 @@ namespace Library
             if (jugador1.NombreJugador == nombreJugador)
             {
                 jugador1.ElegirAtaque(jugador1.PokemonActual, jugador2.PokemonActual, indiceAtaque);
-                Console.WriteLine($"La vida de {jugador2.ElegirPokemon(0).Nombre} es {jugador2.ElegirPokemon(0).MostrarVida()}");
+                Console.WriteLine($"La vida de {jugador2.PokemonActual.Nombre} es {jugador2.PokemonActual.MostrarVida()}");
                 jugador1Ataco = true; // Indicamos que el jugador 1 atacó
             }
             else if (jugador2.NombreJugador == nombreJugador)
             {
-                jugador2.ElegirAtaque(jugador2.ElegirPokemon(0), jugador1.ElegirPokemon(0), indiceAtaque);
-                Console.WriteLine($"La vida de {jugador1.ElegirPokemon(0).Nombre} es {jugador1.ElegirPokemon(0).MostrarVida()}");
+                jugador2.ElegirAtaque(jugador2.PokemonActual, jugador1.PokemonActual, indiceAtaque);
+                Console.WriteLine($"La vida de {jugador1.PokemonActual.Nombre} es {jugador1.PokemonActual.MostrarVida()}");
                 jugador2Ataco = true; // Indicamos que el jugador 2 atacó
             }
 
@@ -86,22 +68,21 @@ namespace Library
         {
             if (jugador1.PokemonesDerrotados())
             {
+                BatallaEnCurso = false;
                 return $"{jugador1.NombreJugador} ha sido derrotado " +
                                   $"{jugador2.NombreJugador} GANÓ";
-                BatallaEnCurso = false;
             }
-            else if (jugador2.PokemonesDerrotados())
+            if (jugador2.PokemonesDerrotados())
             {
+                BatallaEnCurso = false;
                 return $"{jugador2.NombreJugador} ha sido derrotado" +
-                                  $"{jugador1.NombreJugador} GANÓ";
-                BatallaEnCurso = false;
+                                              $"{jugador1.NombreJugador} GANÓ";
             }
-            else
-            {
-                return "La batalla continúa";
-                
-            }
+            
+            BatallaEnCurso = true;
+            return "La batalla continúa";
         }
+        
         //Muestra el turno del jugador.
         public bool VerificarTurno(string nombreJugador)
         {
