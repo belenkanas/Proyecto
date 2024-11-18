@@ -1,0 +1,292 @@
+<mxfile host="Electron" modified="2024-11-08T23:33:29.240Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="RWmB78JIR2saFMVuR8SU" version="24.0.4" type="device">
+  <diagram name="Page-1" id="c4acf3e9-155e-7222-9cf6-157b1a14988f">
+    <mxGraphModel dx="7676" dy="3584" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="17acba5748e5396b-20" value="DiccionarioDebil" style="swimlane;html=1;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=10;align=center;" parent="1" vertex="1">
+          <mxGeometry x="390" y="30" width="160" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="17acba5748e5396b-21" value="+ Debilidades: dictionary" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="17acba5748e5396b-20" vertex="1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="17acba5748e5396b-30" value="DiccionarioFuerte" style="swimlane;html=1;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=10;align=center;" parent="1" vertex="1">
+          <mxGeometry x="390" y="140" width="160" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="17acba5748e5396b-31" value="+ Fortalezas: dictionary" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="17acba5748e5396b-30" vertex="1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="5d2195bd80daf111-15" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IJugador&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreJugador: string&lt;br&gt;- EquipoPokemon: List&amp;lt;Pokemon&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- TurnoActual: bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- PokemonActual: IPokemon&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ ElegirPokemon(int indice): IPokemon&lt;br&gt;+ ElegirAtaque(&lt;span style=&quot;text-wrap: wrap; background-color: initial;&quot;&gt;IPokemon pokemon, IPokemon enemigo, int indiceAtaque&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): void&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MostrarTurno(): bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MostrarCatalogo(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MostrarAtaquesDisponibles(int indice): string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ ElegirDelCatalogo(int indice): Pokemon&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MostrarEquipo(): string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ PokemonesDerrotados(): bool&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ UsarItem(int indiceItem, IPokemon pokemon): void&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ MostrarInventario(): string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="700" y="88" width="440" height="272" as="geometry" />
+        </mxCell>
+        <mxCell id="5d2195bd80daf111-18" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IPokemon&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- Nombre: string&lt;br&gt;- TipoPokemon: ITipo&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- VidaActual: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- VidaTotal: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- Ataque: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- Defensa: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- AtaqueEspecial: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- DefensaEspecial: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- Ataques: List&amp;lt;Ataque&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- Catalogo: CatalogoAtaques&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- Estado: string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- EfectoActivo: IEfectos?&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- turnoContadorEspecial: int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- PuedeAtacar: bool&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ UsarAtaque(int indiceAtaque, IPokemon enemigo): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ RecibirDaño(double dano): void&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MostrarVida(): string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ AtaquesPorTipo(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ ObtenerAtaquesDisponibles(): List&amp;lt;Ataque&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="-70" y="-50" width="330" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="5d2195bd80daf111-19" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;ITipo&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreTipo: string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Ponderador(ITipo tipoOponente): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="330" y="370" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="6jRsxhfo2E8okTP8d-1J-1" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5d2195bd80daf111-18" target="5d2195bd80daf111-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="340" y="320" as="sourcePoint" />
+            <mxPoint x="500" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6jRsxhfo2E8okTP8d-1J-2" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.006;entryY=-0.046;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.016;exitY=0.535;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="5d2195bd80daf111-18" target="17acba5748e5396b-31" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="280" y="200" as="sourcePoint" />
+            <mxPoint x="440" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6jRsxhfo2E8okTP8d-1J-3" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.004;entryY=0.185;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5d2195bd80daf111-18" target="17acba5748e5396b-21" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="310" y="170" as="sourcePoint" />
+            <mxPoint x="470" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6jRsxhfo2E8okTP8d-1J-4" value="" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="1" source="5d2195bd80daf111-18" target="5d2195bd80daf111-15" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="380" y="320" as="sourcePoint" />
+            <mxPoint x="460" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U8JofGHo5hJc3w_ruEM--3" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="1tXbWfineNW5vBf513L6-7" target="5d2195bd80daf111-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="112.5" y="520" as="sourcePoint" />
+            <mxPoint x="500" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U8JofGHo5hJc3w_ruEM--10" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" source="1tXbWfineNW5vBf513L6-8" target="5d2195bd80daf111-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="267.5" y="520" as="sourcePoint" />
+            <mxPoint x="120" y="460.0001694915255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U8JofGHo5hJc3w_ruEM--11" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="1tXbWfineNW5vBf513L6-11" target="5d2195bd80daf111-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="582.5" y="520" as="sourcePoint" />
+            <mxPoint x="445" y="469" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U8JofGHo5hJc3w_ruEM--12" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="1tXbWfineNW5vBf513L6-13" target="5d2195bd80daf111-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="742.5" y="520" as="sourcePoint" />
+            <mxPoint x="455" y="479" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U8JofGHo5hJc3w_ruEM--14" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.4;entryY=0.987;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="1tXbWfineNW5vBf513L6-9" target="5d2195bd80daf111-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="345.19499999999994" y="626.4000000000001" as="sourcePoint" />
+            <mxPoint x="340" y="459" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U8JofGHo5hJc3w_ruEM--15" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.623;entryY=1.018;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="1tXbWfineNW5vBf513L6-10" target="5d2195bd80daf111-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="504.375" y="629.5999999999999" as="sourcePoint" />
+            <mxPoint x="350" y="469" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U8JofGHo5hJc3w_ruEM--16" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="1tXbWfineNW5vBf513L6-12" target="5d2195bd80daf111-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="430" y="660" as="sourcePoint" />
+            <mxPoint x="416" y="458" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;JugadorPrincipal&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreJugador: string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- EquipoPokemon: List&amp;lt;IPokemon&amp;gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- InventarioItems: List&amp;lt;IItem&amp;gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- TurnoActual: bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- PokemonActual: IPokemon&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- CatalogoPokemon: CatalogoPokemos&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ ElegirPokemon(): IPokemon&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ ElegirAtaque(IPokemon pokemon, IPokemon enemigo, int indiceAtaque): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MostrarTurno(): bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MostrarCatalogo(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MostrarAtaquesDisponibles(int indice): string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+&amp;nbsp;&lt;span style=&quot;text-wrap: nowrap; background-color: initial;&quot;&gt;ElegirDelCatalogo(int indice): Pokemon&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ MostrarEquipo(): string&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ PokemonesDerrotados(): bool&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ UsarItem(int indiceItem, IPokemon pokemon): void&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ MostrarInventario(): string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1210" y="230" width="450" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Pokemon&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- Nombre: string&lt;br&gt;- TipoPokemon: ITipo&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- VidaActual: double&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- VidaTotal: double&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- Ataque: double&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- Defensa: double&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- AtaqueEspecial: double&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- DefensaEspecial: double&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- Ataques: List&amp;lt;Ataque&amp;gt;&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- Catalogo: CatalogoAtaques&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- Estado: string&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- EfectoActivo: IEfectos?&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- turnoContadorEspecial: int&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- PuedeAtacar: bool&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ UsarAtaque(int indiceAtaque, IPokemon enemigo): void&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ RecibirDaño(double dano): void&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ MostrarVida(): string&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ AtaquesPorTipo(): void&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ ObtenerAtaquesDisponibles(): List&amp;lt;Ataque&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-720" y="30" width="330" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Ataque&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- Nombre: string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- TipoAtaque: ITipo&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- DañoBase: double&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- EsEspecial: bool&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CalcularDaño(IPokemon atacante, IPokemon defensor): double&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-550" y="430" width="370" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Acero&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreTipo: string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Ponderador(ITipo tipoOponente): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="-60" y="343" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Agua&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreTipo: string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Ponderador(ITipo tipoOponente): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="-60" y="480" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Hielo&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreTipo: string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Ponderador(ITipo tipoOponente): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="-60" y="620" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Planta&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreTipo: string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Ponderador(ITipo tipoOponente): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="530" y="700" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Tierra&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreTipo: string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Ponderador(ITipo tipoOponente): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="610" y="540" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Electrico&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreTipo: string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Ponderador(ITipo tipoOponente): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="220" y="700" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="1tXbWfineNW5vBf513L6-13" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Fuego&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreTipo: string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Ponderador(ITipo tipoOponente): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="680" y="400" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="PPQzXyUTgCfnqOVg81kr-1" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="1tXbWfineNW5vBf513L6-5" target="5d2195bd80daf111-18" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="123" y="270" as="sourcePoint" />
+            <mxPoint x="460" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPQzXyUTgCfnqOVg81kr-2" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="1tXbWfineNW5vBf513L6-3" target="5d2195bd80daf111-15" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="133" y="280" as="sourcePoint" />
+            <mxPoint x="470" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPQzXyUTgCfnqOVg81kr-3" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="1tXbWfineNW5vBf513L6-6" target="5d2195bd80daf111-19" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="30" y="430" as="sourcePoint" />
+            <mxPoint x="190" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FREW7KF1WqzNgDYchPj3-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;BatallaFacade&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- jugador1: JugadorPrincipal&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- jugador2: JugadorPrincipal&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- contadorTurnos: int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- jugador1Ataco: bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- jugador2Ataco: bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- BatallaEnCurso: bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- listaDeEspera: List&amp;lt;JugadorPrincipal&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ AgregarPokemonAJugador(string nombreJugador, Pokemon pokemon): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ AgregarAtaqueAPokemon(Pokemon pokemon, Ataque ataque): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ IniciarBatalla(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ RealizarAtaque(string nombreJugador, int indiceAtaque): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ VerificarGanador(): string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ VerificarTurno(string nombreJugador): bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ ObtenerTurnoActual(): int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CambiarPokemon(string nombreJugador, int indicePokemonACambiar): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ VerificarFinTurno(JugadorPrincipal jugador): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ BatallaSigue(): bool&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ ListaDeEspera(JugadorPrincipal jugador): string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ MostrarListaDeEspera(): string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ IniciarBatallaListaDeEspera(Random random = null):void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ NotificarInicio(JugadorPrincipal jugador): string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="970" y="600" width="440" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="FREW7KF1WqzNgDYchPj3-2" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="FREW7KF1WqzNgDYchPj3-1" target="1tXbWfineNW5vBf513L6-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1200" y="540" as="sourcePoint" />
+            <mxPoint x="1360" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FREW7KF1WqzNgDYchPj3-5" value="2" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1390" y="510" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FREW7KF1WqzNgDYchPj3-6" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1180" y="570" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FREW7KF1WqzNgDYchPj3-8" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="1tXbWfineNW5vBf513L6-6" target="1tXbWfineNW5vBf513L6-5" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1210" y="620" as="sourcePoint" />
+            <mxPoint x="1275" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FREW7KF1WqzNgDYchPj3-9" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-550" y="360" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="FREW7KF1WqzNgDYchPj3-12" value="*" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-370" y="410" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;IEfectos&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- nombreEfecto: string&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ AplicarEfecto(IPokemon objetivo): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-400" y="-240" width="330" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;IItem&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- NombreItem: string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="118.75" y="-150" width="330" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CuraTotal&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreItem: string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- usosRestantes: int&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- usosMaximos: int = 2&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Usar(): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="530" y="-380" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-4" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-3" target="kjep7G4XY2kMqYyNzEno-2" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="548.75" y="690" as="sourcePoint" />
+            <mxPoint x="658.75" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Revivir&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreItem: string&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- usosRestantes: int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- usosMaximos: int = 1&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Usar(double VidaActual, double VidaTotal): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="100" y="-380" width="347.5" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SuperPocion&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- NombreItem: string&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- usosRestantes: int&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- usosMaximos: int = 4&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Usar(double VidaActual, double VidaTotal): double&lt;br&gt;&lt;/p&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="568.75" y="-160" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-7" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-6" target="kjep7G4XY2kMqYyNzEno-2" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="606.75" y="-220" as="sourcePoint" />
+            <mxPoint x="458.75" y="-122" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-8" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-5" target="kjep7G4XY2kMqYyNzEno-2" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="616.75" y="-210" as="sourcePoint" />
+            <mxPoint x="468.75" y="-112" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Dormir&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- nombreEfecto: string&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- turnosRestante: int&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ AplicarEfecto(IPokemon objetivo): void&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ VerificarEstado(IPokemon objetivo): void&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ PuedeAtacar(): bool&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-940" y="-490" width="280" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-10" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-9" target="kjep7G4XY2kMqYyNzEno-1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-100" y="-310" as="sourcePoint" />
+            <mxPoint x="-100" y="-230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Envenenar&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- nombreEfecto: string&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- turnosRestante: int&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ AplicarEfecto(IPokemon objetivo): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-660" y="-640" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Quemar&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- nombreEfecto: string&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- turnosRestante: int&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ AplicarEfecto(IPokemon objetivo): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-420" y="-510" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-13" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Paralizar&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;- nombreEfecto: string&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ AplicarEfecto(IPokemon objetivo): void&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ PuedeAtacar(): bool&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-200" y="-630" width="280" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-14" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-13" target="kjep7G4XY2kMqYyNzEno-1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-730" y="-430" as="sourcePoint" />
+            <mxPoint x="-510" y="-470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-15" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-12" target="kjep7G4XY2kMqYyNzEno-1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-720" y="-420" as="sourcePoint" />
+            <mxPoint x="-500" y="-460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-16" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.322;exitY=1.032;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-11" target="kjep7G4XY2kMqYyNzEno-1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-477" y="-290" as="sourcePoint" />
+            <mxPoint x="-470" y="-200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-17" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-1" target="5d2195bd80daf111-18" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-130" y="226" as="sourcePoint" />
+            <mxPoint x="-42" y="154" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-18" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AplicarDaño&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ AplicarDañoPorTurno(IPokemon objetivo): virtual void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-970" y="-150" width="330" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-19" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-9" target="kjep7G4XY2kMqYyNzEno-18" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-720" y="-420" as="sourcePoint" />
+            <mxPoint x="-552" y="-129" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-20" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.894;entryY=-0.05;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-12" target="kjep7G4XY2kMqYyNzEno-18" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-250" y="-460" as="sourcePoint" />
+            <mxPoint x="-350" y="-620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-21" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.71;entryY=-0.036;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="kjep7G4XY2kMqYyNzEno-18" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-570" y="-550" as="sourcePoint" />
+            <mxPoint x="-740" y="-220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kjep7G4XY2kMqYyNzEno-22" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=-0.009;entryY=0.38;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="kjep7G4XY2kMqYyNzEno-18" target="5d2195bd80daf111-18" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-385" y="-90" as="sourcePoint" />
+            <mxPoint x="-42" y="91" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dTSbRNkBRufT9sRRFQfj-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CatalogoAtaques&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- ataques: List&amp;lt;Ataque&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ AgregarAtaques(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-530" y="640" width="330" height="76.75" as="geometry" />
+        </mxCell>
+        <mxCell id="dTSbRNkBRufT9sRRFQfj-3" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="1tXbWfineNW5vBf513L6-6" target="dTSbRNkBRufT9sRRFQfj-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-360" y="560" as="sourcePoint" />
+            <mxPoint x="-355" y="364" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dTSbRNkBRufT9sRRFQfj-5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CatalogoPokemons&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Catalogo: List&amp;lt;IPokemon&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ AgregarPokemons(): void&lt;/p&gt;&lt;p style=&quot;text-wrap: nowrap; margin: 0px 0px 0px 4px;&quot;&gt;+ MostrarCatalogo(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-360" y="790" width="330" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="dTSbRNkBRufT9sRRFQfj-6" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="dTSbRNkBRufT9sRRFQfj-5" target="5d2195bd80daf111-18">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="-100" y="640" as="sourcePoint" />
+            <mxPoint x="-60" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
