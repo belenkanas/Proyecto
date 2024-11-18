@@ -4,6 +4,63 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="T:Library.Tests.HistoriaUsuarioUnoTest">
+            <summary>
+            Test1: Como jugador quiero elegir 6 Pokemoon del catalogo disponible.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioDosTest">
+            <summary>
+            Historia de usuario 2.
+            Como jugador, quiero ver los ataques disponibles de mis Pokemones para poder elegir en cada turno
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioTresTest">
+            <summary>
+            Como jugador, quiero ver la cantidad de vida (HP) de mis Pokémons y de los Pokémons oponentes para saber cuánta salud tienen.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioCuatroTest">
+            <summary>
+            Como jugador, quiero atacar en mi turno y hacer daño basado en la efectividad de los tipos de Pokémon.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioCincoTest">
+            <summary>
+            Como jugador, quiero saber de quién es el turno para estar seguro de cuándo atacar o esperar.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioSeisTest">
+            <summary>
+            Como jugador, quiero ganar la batalla cuando la vida de todos los Pokémons oponente llegue a cero.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioSieteTest">
+            <summary>
+            Como jugador, quiero poder cambiar de Pokémon durante una batalla.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioOcho">
+            <summary>
+            Como entrenador, quiero poder usar un ítem durante una batalla.
+            Al usar el ítem se pierde el turno
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioNueveTest">
+            <summary>
+            Como entrenador, quiero unirme a la lista de jugadores esperando por un oponente.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioDiezTest">
+            <summary>
+            Se quiere probar que al entrnador le deje ver la lista de jugadores que se unieron a la lista.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioOnceTest">
+            <summary>
+             Como entrenador, quiero iniciar una ballata con un jugador que está esperando por un oponente.
+            </summary>
+        </member>
         <member name="M:Tests.JugadorPrincipalTest.ElegirPokemonDelCatalogo_IndiceValido">
             <summary>
             Este test del método ElegirPokemonDelCatalogo() verifica que cuando se elige un pokémon del catálogo a través
@@ -172,26 +229,196 @@
             que hay en el catálogo, los que se han agregado en el método anterior.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.DormirAplicarEfecto_VerificarEstadoYVidaActual">
+        <member name="M:Tests.EfectosItemsTest.DormirAplicarEfecto_VerificarEstadoYVidaActual">
             <summary>
             Este test verifica que al aplicar el efecto Dormir el estado del pokémon cambie a "Dormido" y que su vida
             disminuya un 5% en cada turno.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.EnvenenarAplicarEfecto_VerificarEstadoYVidaActual">
+        <member name="M:Tests.EfectosItemsTest.EnvenenarAplicarEfecto_VerificarEstadoYVidaActual">
             <summary>
             Este test verifica que el estado del pokémon cambie a Envenenado cuando le apliquen el efecto y que su vida
             disminuya un 5% en cada turno.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.ParalizarAplicarEfecto_VerificarEstado">
+        <member name="M:Tests.EfectosItemsTest.ParalizarAplicarEfecto_VerificarEstado">
             <summary>
             En esta prueba verificamos el estado del pokémon luego de aplicar el efecto.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.QuemarAplicarEfecto_VerificarEstado">
+        <member name="M:Tests.EfectosItemsTest.QuemarAplicarEfecto_VerificarEstado">
             <summary>
-            En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto.
+            En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto ys u vida disminuya
+            un 10% luego de cada turno.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.CuraTotal_EfectoActivoNoNullYNoEsDormido">
+            <summary>
+            El método Usar() de la clase CuraTotal, restaura el estado del pokémon a Normal y elimina el efecto activo que tenía.
+            Si el pokémon tiene cualquier efecto aplicado (menos Dormido), el efecto será eliminado y su estado cambia a Normal.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.CuraTotal_EfectoActivoNull">
+            <summary>
+            Para este caso, el pokémon no tiene un estado activo, entonces verificamos que su estado activo sea null y
+            su estado sea Normal.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.CuraTotal_EstadoDormido">
+            <summary>
+            Este caso, verifica que cuando el estado del pokémon sea Dormido no se puede aplicar la CuraTotal.
+            Su estado y efecto activo no cambia.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.CuraTotal_UtilizoTodosLosUsosDeCura">
+            <summary>
+            En esta prueba, comprobamos que al usar CuraTotal más veces del que está disponible, usosRestantes estará en 0
+            y lanzará un mensaje diciendo que ya no se podrá usar más.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.Revivir_VidaPokemonSubeA50">
+            <summary>
+            En este test verificamos que cuando el pokémon tiene su vida en 0 y utilizamos el item Revivir, su vida sube
+            un 50% de la vida total del pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.Revivir_SinUsosRestantes">
+            <summary>
+            En esta prueba, comprobamos que si ya se utilizó el item Revivir una vez, no podrá volver a utilizarlo,
+            entonces la vida del pokémon no aumenta.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.Revivir_VidaMayorA0">
+            <summary>
+            Cuando el pokémon tiene su vida actual mayor a 0, no se puede Revivir. Su vida actual no cambia.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.SuperPocion_VidaMenorA30">
+            <summary>
+            En este test, verificamos que cuando la vida actual del pokémon es menor a 30 y utiliza la super pocion, su
+            vida aumenta 70 puntos más de la actual. Y para los usos restantes del item, disminuirá un uso.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.SuperPocion_VidaMayorA30">
+            <summary>
+            En este caso, la vida del pokémon es mayor a 30, entonces verificamos que su vida actual aumente al 100%.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.SuperPocion_SinUsosRestantesDePocion">
+            <summary>
+            En este caso, comprobamos que si no le quedan usos de la super pocion, su vida actual no cambia. 
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Agua_PonderadorOponenteTipoFuego">
+            <summary>
+            Este test verifica que el pokémon de tipo Agua al atacar a otro pokémon de tipo Fuego utiliza el ponderador.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Agua_PonderadorOponenteTipoPlanta">
+            <summary>
+            Este test verifica que el pokémon de tipo Agua al atacar a otro pokémon de tipo Planta utiliza el ponderador.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Agua_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Agua al atacar a otro pokémon que no sea de tipo Fuego, Hielo, Agua,
+            Planta o Electrico, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Electrico_PonderadorOponenteElectrico">
+            <summary>
+            Este test verifica que un pokémon de tipo Electrico es inmune a otro de tipo Electrico, su ponderador será 0.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Electrico_PonderadorOponenteTierra">
+            <summary>
+            Este test verifica que un pokémon de tipo Electrico es débil frente a otro de tipo Tierra, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Electrico_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Electrico al atacar a otro pokémon que no sea de tipo Electrico o
+            Tierra, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Fuego_PonderadorOponenteFuego">
+            <summary>
+            Este test verifica que un pokémon de tipo Fuego es fuerte frente a otro de tipo Fuego, su ponderador será 2.0.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Fuego_PonderadorOponenteRoca">
+            <summary>
+            Este test verifica que un pokémon de tipo Fuego es débil frente a otro de tipo Roca, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Fuego_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Fuego al atacar a otro pokémon que no sea de tipo Fuego, Planta,
+            Tierra, Agua o Roca, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Hielo_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Hielo al atacar a otro pokémon que no sea de tipo Fuego, Hielo o
+            Roca, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Hielo_PonderadorOponenteHielo">
+            <summary>
+            Este test verifica que un pokémon de tipo Hielo es fuerte frente a otro de tipo Hielo, su ponderador será 2.0.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Hielo_PonderadorOponenteFuego">
+            <summary>
+            Este test verifica que un pokémon de tipo Hielo es débil frente a otro de tipo Fuego, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Planta_PonderadorOponenteAgua">
+            <summary>
+            Este test verifica que un pokémon de tipo Planta es fuerte frente a otro de tipo Agua, su ponderador será 2.0.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Planta_PonderadorOponenteFuego">
+            <summary>
+            Este test verifica que un pokémon de tipo Planta es débil frente a otro de tipo Fuego, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Planta_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Planta al atacar a otro pokémon que no sea de tipo Fuego, Hielo,
+            Tierra, Agua o Electrico, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Roca_PonderadorOponenteFuego">
+            <summary>
+            Este test verifica que un pokémon de tipo Roca es fuerte frente a otro de tipo Fuego, su ponderador será 2.0.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Roca_PonderadorOponenteAgua">
+            <summary>
+            Este test verifica que un pokémon de tipo Roca es débil frente a otro de tipo Agua, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Roca_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Roca al atacar a otro pokémon que no sea de tipo Fuego, Planta,
+            Tierra o Agua, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Tierra_PonderadorOponenteElectrico">
+            <summary>
+            Este test verifica que un pokémon de tipo Tierra es fuerte frente a otro de tipo Electrico, su ponderador será 2.0.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Tierra_PonderadorOponenteAgua">
+            <summary>
+            Este test verifica que un pokémon de tipo Tierra es débil frente a otro de tipo Agua, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:Tests.TiposPokemonTest.Tierra_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Tierra al atacar a otro pokémon que no sea de tipo Electrico, Planta,
+            Hielo o Agua, el ponderador es neutro (1.0).
             </summary>
         </member>
     </members>

@@ -22,6 +22,6 @@ public class Agua: ITipo
             return 0.5; 
 
         }
-        return 1.0; //Si el fuego es enfrentado frente a otro tipo, el ponderador será neutro.
+        return 1.0; //Si el agua es enfrentado frente a otro tipo, el ponderador será neutro.
     }
 }
