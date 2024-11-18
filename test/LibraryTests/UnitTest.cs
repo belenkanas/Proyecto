@@ -1,6 +1,5 @@
 using Library;
 using NUnit.Framework;
-using NUnit.Framework.Legacy;
 
 namespace Tests;
 
