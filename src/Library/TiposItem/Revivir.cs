@@ -6,13 +6,12 @@ namespace Library
     public class Revivir : IItem
     {
         public string NombreItem { get; }
-        private int usosRestantes;
-        private const int usosMaximos = 1;
+        public int usosRestantes;
 
         public Revivir()
         {
             NombreItem = "Revivir";
-            usosRestantes = usosMaximos; 
+            usosRestantes = 1; 
         }
 
         /// <summary>

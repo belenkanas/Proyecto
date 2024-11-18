@@ -215,7 +215,41 @@
         </member>
         <member name="M:Tests.EfectosItemsTest.CuraTotal_UtilizoTodosLosUsosDeCura">
             <summary>
-            En esta prueba, comprobamos que al usar CuraTotal más veces del que está disponible, usosRestantes estará en 0.
+            En esta prueba, comprobamos que al usar CuraTotal más veces del que está disponible, usosRestantes estará en 0
+            y lanzará un mensaje diciendo que ya no se podrá usar más.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.Revivir_VidaPokemonSubeA50">
+            <summary>
+            En este test verificamos que cuando el pokémon tiene su vida en 0 y utilizamos el item Revivir, su vida sube
+            un 50% de la vida total del pokémon.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.Revivir_SinUsosRestantes">
+            <summary>
+            En esta prueba, comprobamos que si ya se utilizó el item Revivir una vez, no podrá volver a utilizarlo,
+            entonces la vida del pokémon no aumenta.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.Revivir_VidaMayorA0">
+            <summary>
+            Cuando el pokémon tiene su vida actual mayor a 0, no se puede Revivir. Su vida actual no cambia.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.SuperPocion_VidaMenorA30">
+            <summary>
+            En este test, verificamos que cuando la vida actual del pokémon es menor a 30 y utiliza la super pocion, su
+            vida aumenta 70 puntos más de la actual. Y para los usos restantes del item, disminuirá un uso.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.SuperPocion_VidaMayorA30">
+            <summary>
+            En este caso, la vida del pokémon es mayor a 30, entonces verificamos que su vida actual aumente al 100%.
+            </summary>
+        </member>
+        <member name="M:Tests.EfectosItemsTest.SuperPocion_SinUsosRestantesDePocion">
+            <summary>
+            En este caso, comprobamos que si no le quedan usos de la super pocion, su vida actual no cambia. 
             </summary>
         </member>
     </members>
