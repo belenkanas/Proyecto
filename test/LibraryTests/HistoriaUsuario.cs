@@ -85,7 +85,6 @@ public class HistoriaUsuarioDosTest
     }
     
     [Test]
-    
     public void AtaquesDisponiblesPrimerTurno()
     {
         //Estamos en el primer turno.
