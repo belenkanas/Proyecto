@@ -1,0 +1,73 @@
+<mxfile host="Electron" modified="2024-10-11T16:04:17.168Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="SF6pF__YvsFWPSbuT6rz" version="24.1.0" type="device">
+  <diagram name="Página-1" id="uBa-ZxfVo51t8cMcVtil">
+    <mxGraphModel dx="521" dy="613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-10" value="IPokemon" style="swimlane;whiteSpace=wrap;html=1;startSize=20;" parent="1" vertex="1">
+          <mxGeometry x="70" y="40" width="370" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-12" value="- Nombre del pókemon&lt;div&gt;&lt;div&gt;&lt;div&gt;- Tipo del pókemon&lt;/div&gt;&lt;div&gt;- Nivel de vida&lt;/div&gt;&lt;div&gt;- Valor de ataque y ataque especial&lt;/div&gt;&lt;/div&gt;&lt;div&gt;- Valor de defensa y defensa especial&lt;/div&gt;&lt;div&gt;- Atacar a otros&lt;/div&gt;&lt;div&gt;- Atacar a otros con más poder&lt;/div&gt;&lt;div&gt;- Recibir el daño del pókemon enemigo&lt;/div&gt;&lt;div&gt;- Mostrar la vida durante la batalla&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Z7elSVlQBLvewlpl_m4E-10" vertex="1">
+          <mxGeometry x="10" y="20" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-11" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" parent="Z7elSVlQBLvewlpl_m4E-10" source="Z7elSVlQBLvewlpl_m4E-12" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="284" y="240" as="sourcePoint" />
+            <mxPoint x="250" y="20" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="250" y="20" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-13" value="ITipo&lt;div&gt;&lt;br&gt;&lt;div&gt;Ataque&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Z7elSVlQBLvewlpl_m4E-10" vertex="1">
+          <mxGeometry x="250" y="75" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-14" value="ITipo" style="swimlane;whiteSpace=wrap;html=1;startSize=20;" parent="1" vertex="1">
+          <mxGeometry x="510" y="80" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-15" value="- Tipo de pókemon&lt;div&gt;- Efectividad al atacar&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Z7elSVlQBLvewlpl_m4E-14" vertex="1">
+          <mxGeometry x="10" y="20" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-17" value="IPokemon&lt;div&gt;&lt;br&gt;&lt;div&gt;IJugador&lt;/div&gt;&lt;/div&gt;&lt;div&gt;Ataque&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Z7elSVlQBLvewlpl_m4E-14" vertex="1">
+          <mxGeometry x="180" y="35" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-16" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="Z7elSVlQBLvewlpl_m4E-14" source="Z7elSVlQBLvewlpl_m4E-15" target="Z7elSVlQBLvewlpl_m4E-15" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="160" as="sourcePoint" />
+            <mxPoint x="155" y="20" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-18" value="IJugador" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="280" width="420" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-19" value="- Nombre del jugador&lt;div&gt;- Pokemones disponibles para elegir&lt;/div&gt;&lt;div&gt;- Turno del jugador&lt;/div&gt;&lt;div&gt;- Elegir pókemon para atacar&lt;/div&gt;&lt;div&gt;- Elegir ataque del pókemon&amp;nbsp;&lt;/div&gt;&lt;div&gt;- Mostrar el turno de cada jugador&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Z7elSVlQBLvewlpl_m4E-18" vertex="1">
+          <mxGeometry x="10" y="20" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-20" value="" style="endArrow=none;html=1;rounded=0;entryX=0.597;entryY=-0.004;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryPerimeter=0;" parent="Z7elSVlQBLvewlpl_m4E-18" source="Z7elSVlQBLvewlpl_m4E-19" target="Z7elSVlQBLvewlpl_m4E-18" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="-140" as="sourcePoint" />
+            <mxPoint x="320.71067811865476" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Z7elSVlQBLvewlpl_m4E-21" value="IPokemon&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Jugadores&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Z7elSVlQBLvewlpl_m4E-18" vertex="1">
+          <mxGeometry x="300" y="65" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="x8lT5OQI2FOKMgvp1QR1-1" value="Ataque" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="490" width="420" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="x8lT5OQI2FOKMgvp1QR1-2" value="- Tiene un nombre de ataque&lt;div&gt;- Tiene nivel de daño&lt;/div&gt;&lt;div&gt;- Tiene un tipo de ataque, según del tipo de pokemon&lt;/div&gt;&lt;div&gt;- Puede ser especial o no&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Calcula el daño basado en tipo y defensa del enemigo&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="x8lT5OQI2FOKMgvp1QR1-1">
+          <mxGeometry x="10" y="20" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="x8lT5OQI2FOKMgvp1QR1-3" value="" style="endArrow=none;html=1;rounded=0;entryX=0.597;entryY=-0.004;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryPerimeter=0;" edge="1" parent="x8lT5OQI2FOKMgvp1QR1-1" source="x8lT5OQI2FOKMgvp1QR1-2" target="x8lT5OQI2FOKMgvp1QR1-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="-140" as="sourcePoint" />
+            <mxPoint x="320.71067811865476" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="x8lT5OQI2FOKMgvp1QR1-4" value="IPokemon&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ITipo&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="x8lT5OQI2FOKMgvp1QR1-1">
+          <mxGeometry x="300" y="65" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

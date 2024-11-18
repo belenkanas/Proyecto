@@ -172,84 +172,26 @@
             que hay en el catálogo, los que se han agregado en el método anterior.
             </summary>
         </member>
-        <member name="M:Tests.EfectosItemsTest.DormirAplicarEfecto_VerificarEstadoYVidaActual">
+        <member name="M:Tests.EfectosTest.DormirAplicarEfecto_VerificarEstadoYVidaActual">
             <summary>
             Este test verifica que al aplicar el efecto Dormir el estado del pokémon cambie a "Dormido" y que su vida
             disminuya un 5% en cada turno.
             </summary>
         </member>
-        <member name="M:Tests.EfectosItemsTest.EnvenenarAplicarEfecto_VerificarEstadoYVidaActual">
+        <member name="M:Tests.EfectosTest.EnvenenarAplicarEfecto_VerificarEstadoYVidaActual">
             <summary>
             Este test verifica que el estado del pokémon cambie a Envenenado cuando le apliquen el efecto y que su vida
             disminuya un 5% en cada turno.
             </summary>
         </member>
-        <member name="M:Tests.EfectosItemsTest.ParalizarAplicarEfecto_VerificarEstado">
+        <member name="M:Tests.EfectosTest.ParalizarAplicarEfecto_VerificarEstado">
             <summary>
             En esta prueba verificamos el estado del pokémon luego de aplicar el efecto.
             </summary>
         </member>
-        <member name="M:Tests.EfectosItemsTest.QuemarAplicarEfecto_VerificarEstado">
+        <member name="M:Tests.EfectosTest.QuemarAplicarEfecto_VerificarEstado">
             <summary>
-            En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto ys u vida disminuya
-            un 10% luego de cada turno.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.CuraTotal_EfectoActivoNoNullYNoEsDormido">
-            <summary>
-            El método Usar() de la clase CuraTotal, restaura el estado del pokémon a Normal y elimina el efecto activo que tenía.
-            Si el pokémon tiene cualquier efecto aplicado (menos Dormido), el efecto será eliminado y su estado cambia a Normal.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.CuraTotal_EfectoActivoNull">
-            <summary>
-            Para este caso, el pokémon no tiene un estado activo, entonces verificamos que su estado activo sea null y
-            su estado sea Normal.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.CuraTotal_EstadoDormido">
-            <summary>
-            Este caso, verifica que cuando el estado del pokémon sea Dormido no se puede aplicar la CuraTotal.
-            Su estado y efecto activo no cambia.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.CuraTotal_UtilizoTodosLosUsosDeCura">
-            <summary>
-            En esta prueba, comprobamos que al usar CuraTotal más veces del que está disponible, usosRestantes estará en 0
-            y lanzará un mensaje diciendo que ya no se podrá usar más.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.Revivir_VidaPokemonSubeA50">
-            <summary>
-            En este test verificamos que cuando el pokémon tiene su vida en 0 y utilizamos el item Revivir, su vida sube
-            un 50% de la vida total del pokémon.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.Revivir_SinUsosRestantes">
-            <summary>
-            En esta prueba, comprobamos que si ya se utilizó el item Revivir una vez, no podrá volver a utilizarlo,
-            entonces la vida del pokémon no aumenta.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.Revivir_VidaMayorA0">
-            <summary>
-            Cuando el pokémon tiene su vida actual mayor a 0, no se puede Revivir. Su vida actual no cambia.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.SuperPocion_VidaMenorA30">
-            <summary>
-            En este test, verificamos que cuando la vida actual del pokémon es menor a 30 y utiliza la super pocion, su
-            vida aumenta 70 puntos más de la actual. Y para los usos restantes del item, disminuirá un uso.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.SuperPocion_VidaMayorA30">
-            <summary>
-            En este caso, la vida del pokémon es mayor a 30, entonces verificamos que su vida actual aumente al 100%.
-            </summary>
-        </member>
-        <member name="M:Tests.EfectosItemsTest.SuperPocion_SinUsosRestantesDePocion">
-            <summary>
-            En este caso, comprobamos que si no le quedan usos de la super pocion, su vida actual no cambia. 
+            En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto.
             </summary>
         </member>
     </members>
