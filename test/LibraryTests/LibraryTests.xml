@@ -191,7 +191,8 @@
         </member>
         <member name="M:Tests.EfectosTest.QuemarAplicarEfecto_VerificarEstado">
             <summary>
-            En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto.
+            En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto ys u vida disminuya
+            un 10% luego de cada turno.
             </summary>
         </member>
     </members>
