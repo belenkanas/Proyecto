@@ -11,7 +11,7 @@ namespace Library;
         public bool TurnoActual { get; set; }
         public IPokemon PokemonActual { get; set; }
 
-        public CatalogoPokemons CatalogoPokemon { get; set; }
+        public static CatalogoPokemons CatalogoPokemon { get; set; }
 
         public JugadorPrincipal(string nombre)
         {
@@ -83,9 +83,9 @@ namespace Library;
         /// Muestra el catálogo con todos los pokémones disponibles para formar un equipo
         /// </summary>
         /// <param name="catalogo"></param>
-        public void MostrarCatalogo()
+        public string MostrarCatalogo()
         {
-            CatalogoPokemon.MostrarCatalogo();
+            return CatalogoPokemon.MostrarCatalogo();
         }
 
         /// <summary>
@@ -117,14 +117,13 @@ namespace Library;
         /// Del catálogo elegir 6 pokémons para agregar a su equipo
         /// </summary>
         /// <param name="indice">número de pokémon en la lista del catálogo</param>
-        public Pokemon ElegirDelCatalogo(int indice)
+        public string ElegirDelCatalogo(int indice)
         {
             int indiceCatalogo = indice - 1;
             
             if (indiceCatalogo < 0 || indiceCatalogo > CatalogoPokemon.Catalogo.Count)
             {
-                Console.WriteLine("Índice inválido");
-                return null;
+                return "Índice inválido";
             }
             
             if (EquipoPokemons.Count < 6)
@@ -137,12 +136,12 @@ namespace Library;
                 }
                
                 EquipoPokemons.Add(pokemon);
-                return (Pokemon)pokemon;
+                return $"{pokemon.Nombre} agregado al equipo.";
             }
             else
             {
-                Console.WriteLine("Ya tienes 6 pokémones en tu equipo");
-                return null;
+                return "Ya tienes 6 pokémones en tu equipo";
+                
             }
         }
         

@@ -9,21 +9,22 @@ namespace Ucu.Poo.DiscordBot.Commands;
 /// le permite al entrenador agregar Pokemones a su equipo.
 /// </summary>
 // ReSharper disable once UnusedType.Global
-public class AddPokemonCommand : ModuleBase<SocketCommandContext>
+public class ChoosePokemonCommand : ModuleBase<SocketCommandContext>
 {
     /// <summary>
-    /// Implementa el comando 'addpokemon'. Este comando le permite al
+    /// Implementa el comando 'choosepokemon'. Este comando le permite al
     /// entrenador agregar Pokemones a su equipo
     /// </summary>
-    [Command("addpokemon")]
-    [Summary("Permite que el entrenador agregue pokemons a su equipo")]
+    [Command("choosepokemon")]
+    [Summary("Permite que el entrenador elija un pokemon de su equipo para atacar con él")]
     // ReSharper disable once UnusedMember.Global
     public async Task ExecuteAsync()
     {
         string displayName = CommandHelper.GetDisplayName(Context);
         
-        //Falta ver cómo cambiar lo de Pokemon (porque toma el api de pokemones).
-        string result = BatallaFacade.AgregarPokemonAJugador(displayName, new Pokemon("Squirtle", new Agua(), 100));
+        //Tiene solamente disponibles los pokemons que eligió del catálogo mediante AddPokemon2Team
+        //Falta ver cómo cambiar lo de Pokemon (static).
+        string result = "";
 
         await ReplyAsync(result);
     }
