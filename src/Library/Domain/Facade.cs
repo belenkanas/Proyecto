@@ -2,16 +2,19 @@ namespace Ucu.Poo.DiscordBot.Domain;
 
 /// <summary>
 /// Esta clase recibe las acciones y devuelve los resultados que permiten
-/// implementar las historias de usuario. Otras clases que implementan el bot
-/// usan esta <see cref="Facade"/> pero no conocen el resto de las clases del
+/// implementar las historias de usuario.
+/// Acá se crean los jugadores, se les agregan los pokemones y los ataques respectivamente.
+/// Además, llama a las funciones necesarias para poder realizar ataques entre jugadores.
+/// Otras clases que implementan el bot usan esta <see cref="Facade"/> pero no conocen el resto de las clases del
 /// dominio. Esta clase es un singleton.
 /// </summary>
 public class Facade
 {
     private static Facade? _instance;
-
-    // Este constructor privado impide que otras clases puedan crear instancias
-    // de esta.
+    
+    /// <summary>
+    /// Este constructor privado impide que otras clases puedan crear instancias de esta.
+    /// </summary>
     private Facade()
     {
         this.WaitingList = new WaitingList();

@@ -4,12 +4,11 @@ namespace Library
     En la fachada vemos los métodos de las clases implementados.
     Acá se crean los jugadores, se les agregan los pokemones y los ataques respectivamente.
     Además, llama a las funciones necesarias para poder realizar ataques entre jugadores.
-    Todo esto después será utilizado en el Program.
     */
     public class BatallaFacade
     {
-        private JugadorPrincipal jugador1;
-        private JugadorPrincipal jugador2;
+        private static JugadorPrincipal jugador1;
+        private static JugadorPrincipal jugador2;
         private int contadorTurnos; // Contador de turnos
         private bool jugador1Ataco; // Indicador de que el jugador 1 atacó en este turno
         private bool jugador2Ataco; // Indicador de que el jugador 2 atacó en este turno
@@ -27,9 +26,9 @@ namespace Library
 
         //Este método es utilizado para agregar Pokemones a la lista de opciones del jugador. Para poder 
         //hacer eso verifica que quien lo agrega es el jugador mismo y no es contrario.
-        public void AgregarPokemonAJugador(string nombreJugador, Pokemon pokemon)
+        public static string AgregarPokemonAJugador(string nombreJugador, Pokemon pokemon)
         {
-            if (jugador1.NombreJugador == nombreJugador) 
+            if (jugador1.NombreJugador == nombreJugador)
             {
                 jugador1.EquipoPokemons.Add(pokemon);
             }
@@ -37,6 +36,7 @@ namespace Library
             {
                 jugador2.EquipoPokemons.Add(pokemon);
             }
+            return $"{pokemon.Nombre} agregado al equipo";
         }
 
         //Toma como parámetro el pokemon elegido y le agrega un ataque del programa.
@@ -192,6 +192,7 @@ namespace Library
             return BatallaEnCurso = true;
         }
 
+        /*
         /// <summary>
         /// Método para unirse a la lista de espera
         /// </summary>
@@ -278,6 +279,6 @@ namespace Library
         public string NotificarInicio(JugadorPrincipal jugador)
         {
             return $"{jugador.NombreJugador} la batalla ha comenzado";
-        }
+        }*/
     }
 }
