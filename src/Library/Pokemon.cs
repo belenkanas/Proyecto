@@ -27,6 +27,7 @@ namespace Library;
                 TipoPokemon = tipo;
                 VidaActual = vidaTotal;
                 VidaTotal = vidaTotal;
+                Estado = "Normal";
                 Ataques = new List<Ataque>();
                 Catalogo = new CatalogoAtaques();
                 turnoContadorEspecial = 0;

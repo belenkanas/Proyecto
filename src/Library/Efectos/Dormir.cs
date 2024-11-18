@@ -26,11 +26,12 @@ public class Dormir : AplicarDaño, IEfectos
         if (turnosRestante > 0)
         {
             objetivo.Estado = "Dormido";
+            objetivo.EfectoActivo = this;
             turnosRestante--;
         }
         else
         {
-            objetivo.Estado = "Despierto";
+            objetivo.Estado = "Normal";
         }
     }
 
