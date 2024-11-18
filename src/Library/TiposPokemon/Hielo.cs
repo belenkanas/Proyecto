@@ -19,7 +19,7 @@ public class Hielo: ITipo
         }
         else if (tipoOponente.NombreTipo == "Roca" || tipoOponente.NombreTipo=="Fuego")
         {
-            return 0.5; //Debil ante Acero y Fuego
+            return 0.5; //Debil ante Roca y Fuego
 
         }
         return 1.0; //Si es enfrentado frente a otro tipo, el ponderador será neutro.

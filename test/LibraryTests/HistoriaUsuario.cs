@@ -32,12 +32,12 @@ public class HistoriaUsuarioUnoTest
     [Test]
     public void PokemonsSeleccionadosSeMuestranEnPantalla()
     {
-        string resultado = $"Squirtle, Agua, " +
-                           $"Charmander, Fuego, " +
-                           $"Articuno, Hielo, " +
-                           $"Bulbasaur, Planta, " +
-                           $"Pupitar, Roca, " +
-                           $"Rhyhorn, Tierra, ";
+        string resultado = $"Squirtle, Agua\n" +
+                           $"Charmander, Fuego\n" +
+                           $"Articuno, Hielo\n" +
+                           $"Bulbasaur, Planta\n" +
+                           $"Pupitar, Roca\n" +
+                           $"Rhyhorn, Tierra\n";
 
         // Se asegura si el mensaje es el mismo (el de la lista del equipo que se forma)
         Assert.That(jugador1.MostrarEquipo(), Is.EqualTo(resultado));
