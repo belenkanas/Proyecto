@@ -72,6 +72,7 @@ public class EfectosTest
         paralizar.AplicarEfecto(pokemon);
         
         Assert.That(pokemon.Estado, Is.EqualTo("Paralizado"));
+        Assert.That(paralizar.nombreEfecto, Is.EqualTo("Paralizar"));
     }
 
     /// <summary>

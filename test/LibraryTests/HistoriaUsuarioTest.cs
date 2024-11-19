@@ -318,7 +318,7 @@ public class HistoriaUsuarioSeisTest
         jugador2.ElegirDelCatalogo(4); //Elige a Charmander.
         jugador2.ElegirDelCatalogo(6); //Elige a Pidgey.
 
-        batalla = new BatallaFacade(jugador.NombreJugador, jugador2.NombreJugador);
+        batalla = new BatallaFacade(jugador, jugador2);
     }
 
     [Test]
@@ -340,6 +340,9 @@ public class HistoriaUsuarioSeisTest
     //Se muestra un mensaje indicando el ganador de la batalla.
     public void MensajeGanador()
     {
+        jugador.ElegirPokemon(0).VidaActual = 0;
+        jugador.ElegirPokemon(1).VidaActual = 0;
+        
         string ganador = batalla.VerificarGanador();
 
         string resultadoJ2 = $"{jugador.NombreJugador} ha sido derrotado " +
@@ -354,7 +357,6 @@ public class HistoriaUsuarioSeisTest
 /// </summary>
 public class HistoriaUsuarioSieteTest
 {
-    public CatalogoPokemons CatalogoPokemons; 
     public JugadorPrincipal jugador;
     public JugadorPrincipal jugador2;
     public BatallaFacade batalla;
@@ -362,10 +364,9 @@ public class HistoriaUsuarioSieteTest
     [SetUp]
     public void SetUp()
     {
-        CatalogoPokemons = new CatalogoPokemons(); 
         jugador = new JugadorPrincipal("Asia");
         jugador2 = new JugadorPrincipal("Robert");
-        batalla = new BatallaFacade(jugador.NombreJugador, jugador2.NombreJugador);
+        batalla = new BatallaFacade(jugador, jugador2);
         
         jugador.MostrarCatalogo();
         jugador.ElegirDelCatalogo(5);
@@ -388,7 +389,7 @@ public class HistoriaUsuarioSieteTest
     public void CambiarPokemon()
     {
         jugador.PokemonActual = jugador.EquipoPokemons[0];
-        batalla.CambiaPokemon(jugador, 1);       //Cambia a Charizard
+        batalla.CambiarPokemon(jugador.NombreJugador, 1);       //Cambia a Charizard
         
         Assert.That("Charizard", Is.EqualTo(jugador.PokemonActual.Nombre));
     }
@@ -398,7 +399,7 @@ public class HistoriaUsuarioSieteTest
     {
         jugador.PokemonActual = jugador.EquipoPokemons[0];
 
-        batalla.CambiaPokemon(jugador, 1);
+        batalla.CambiarPokemon(jugador.NombreJugador, 1);
 
         Assert.That(jugador.TurnoActual, Is.EqualTo(false));
     }
@@ -454,7 +455,7 @@ public class HistoriaUsuarioNueveTest
     {
         entrenador = new JugadorPrincipal("Martin");
         entrenador2 = new JugadorPrincipal("Clara");
-        batalla = new BatallaFacade(entrenador.NombreJugador, entrenador2.NombreJugador);
+        batalla = new BatallaFacade(entrenador, entrenador2);
         
     }
 
@@ -464,7 +465,7 @@ public class HistoriaUsuarioNueveTest
     {
         string esperado = batalla.ListaDeEspera(entrenador);
 
-        string mensaje = $"{entrenador.NombreJugador} fue agregado a la lista de espera";
+        string mensaje = $"{entrenador.NombreJugador} ya está agregado a la lista de espera";
         
         Assert.That(mensaje, Is.EqualTo(esperado));
     }
@@ -485,19 +486,19 @@ public class HistoriaUsuarioDiezTest
     {
         entrenador = new JugadorPrincipal("Mateo");
         entrenador2 = new JugadorPrincipal("Belén");
-        batalla = new BatallaFacade(entrenador.NombreJugador, entrenador2.NombreJugador);
+        batalla = new BatallaFacade(entrenador, entrenador2);
         
     }
 
     [Test]
     public void MostrarListaDeEsperaPorOponente()
     {
-        batalla.ListaDeEspera(entrenador);
-        batalla.ListaDeEspera(entrenador2);
+        JugadorPrincipal jugador = new JugadorPrincipal("Sofia");
+        batalla.ListaDeEspera(jugador);
 
         string esperado = batalla.MostrarListaDeEspera();
 
-        string mensaje = "Mateo\nBelén\n";
+        string mensaje = "Mateo\nBelén\nSofia\n";
         
         Assert.That(mensaje, Is.EqualTo(esperado));
     }
@@ -517,7 +518,7 @@ public class HistoriaUsuarioOnceTest
     {
         entrenador = new JugadorPrincipal("Lola");
         entrenador2 = new JugadorPrincipal("Pedro");
-        batalla = new BatallaFacade(entrenador.NombreJugador, entrenador2.NombreJugador);
+        batalla = new BatallaFacade(entrenador, entrenador2);
         
     }
 
@@ -539,9 +540,6 @@ public class HistoriaUsuarioOnceTest
     [Test]
     public void PrimerTurnoAleatorio()
     {
-        batalla.ListaDeEspera(entrenador);
-        batalla.ListaDeEspera(entrenador2);
-        
         Random random = new Random();
         batalla.IniciarBatallaListaDeEspera(random);
         
