@@ -12,18 +12,35 @@ namespace Ucu.Poo.DiscordBot.Commands;
 // ReSharper disable once UnusedType.Global
 public class AttacksCatalogueCommand : ModuleBase<SocketCommandContext>
 {
-    string displayName = CommandHelper.GetDisplayName(Context);
-    private JugadorPrincipal jugadorPrincipal = new JugadorPrincipal(displayName);
+    private static Dictionary<string, JugadorPrincipal> jugadores = new Dictionary<string, JugadorPrincipal>();
 
     /// <summary>
     /// Implementa el comando 'catalogo'. Este comando muestra la lista de
     /// pókemons disponibles para usar en la batalla.
     /// </summary>
-    [Command("catalogopokemon")]
+    [Command("catalogoataques")]
     [Summary("Muestra los pókemons disponibles para utilizar")]
-    public async Task MostrarAtaques(int indice)
+    public async Task MostrarAtaques([Summary("Índice del pokemón en el equipo (1-6)")] int indice)
     {
-        string ataques = jugadorPrincipal.MostrarAtaquesDisponibles(indice);
+        string displayName = Context.User.Username;
+        // Verifica si el jugador ya existe
+        if (!jugadores.ContainsKey(displayName))
+        {
+            await ReplyAsync("No tienes un equipo registrado. Usa el comando 'addpokemon2team' para agregar Pokémon.");
+            return;
+        }
+
+        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
+
+        // Valida el índice del Pokémon en el equipo
+        if (indice < 1 || indice > jugadorPrincipal.EquipoPokemons.Count)
+        {
+            await ReplyAsync("Por favor, ingrese un índice válido de Pokémon en su equipo (1-6).");
+            return;
+        }
+
+        // Muestra los ataques del Pokémon seleccionado
+        string ataques = jugadorPrincipal.MostrarAtaquesDisponibles(indice - 1); // Ajusta índice para base 0
         await ReplyAsync(ataques);
     }
 }
