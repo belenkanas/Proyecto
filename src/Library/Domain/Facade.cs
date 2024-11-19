@@ -1,3 +1,5 @@
+using Library;
+
 namespace Ucu.Poo.DiscordBot.Domain;
 
 /// <summary>
@@ -11,6 +13,8 @@ namespace Ucu.Poo.DiscordBot.Domain;
 public class Facade
 {
     private static Facade? _instance;
+    //Este diccionario permite gestionar múltiples batallas simultáneamente.
+    private Dictionary<string, BatallaFacade> batallasActivas;
     
     /// <summary>
     /// Este constructor privado impide que otras clases puedan crear instancias de esta.
@@ -19,6 +23,7 @@ public class Facade
     {
         this.WaitingList = new WaitingList();
         this.BattlesList = new BattlesList();
+        this.batallasActivas = new Dictionary<string, BatallaFacade>();
     }
 
     /// <summary>
@@ -125,6 +130,10 @@ public class Facade
         // están para luego removerlos.
         this.WaitingList.RemoveTrainer(playerDisplayName);
         this.WaitingList.RemoveTrainer(opponentDisplayName);
+
+        BatallaFacade batalla = new BatallaFacade(playerDisplayName, opponentDisplayName);
+        batallasActivas[playerDisplayName] = batalla;
+        batallasActivas[opponentDisplayName] = batalla;
         
         BattlesList.AddBattle(playerDisplayName, opponentDisplayName);
         return $"Comienza {playerDisplayName} vs {opponentDisplayName}";
@@ -187,4 +196,39 @@ public class Facade
             return opponent != null;
         }
     }
+
+    public string RealizarAtaque(string jugador, int indiceAtaque)
+    {
+        if (batallasActivas.ContainsKey(jugador))
+        {
+            BatallaFacade batalla = batallasActivas[jugador];
+            batalla.RealizarAtaque(jugador, indiceAtaque);
+            return $"Ataque realizado";
+        }
+
+        return "No hay batalla activa";
+    }
+
+    public string CambiarPokemon(string jugador, int indicePokemon)
+    {
+        if (batallasActivas.ContainsKey(jugador))
+        {
+            BatallaFacade batalla = batallasActivas[jugador];
+            batalla.CambiarPokemon(jugador, indicePokemon);
+            return "Pokémon cambiado.";
+        }
+        return "No estás en una batalla activa.";   
+        
+    }
+    
+    public string VerificarEstadoBatalla(string jugador)
+    {
+        if (batallasActivas.ContainsKey(jugador))
+        {
+            BatallaFacade batalla = batallasActivas[jugador];
+            return batalla.VerificarGanador();
+        }
+        return "No estás en una batalla activa.";
+    }
+    
 }

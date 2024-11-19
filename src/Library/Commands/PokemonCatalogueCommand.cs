@@ -11,18 +11,34 @@ namespace Ucu.Poo.DiscordBot.Commands;
 // ReSharper disable once UnusedType.Global
 public class PokemonCatalogueCommand : ModuleBase<SocketCommandContext>
 {
+    private readonly CatalogoPokemons catalogoPokemons;
+
+    public PokemonCatalogueCommand()
+    {
+        catalogoPokemons = new CatalogoPokemons();
+    }
+
     /// <summary>
-    /// Implementa el comando 'showpokemons'. Este comando muestra la lista de
+    /// Implementa el comando 'catalogo'. Este comando muestra la lista de
     /// pókemons disponibles para usar en la batalla.
     /// </summary>
-    [Command("showpokemons")]
+    [Command("catalogopokemon")]
     [Summary("Muestra los pókemons disponibles para utilizar")]
-    // ReSharper disable once UnusedMember.Global
-    public async Task ExecuteAsync()
+    public async Task MostrarCatalogo()
     {
-        //Resolver static 
-        string result = CatalogoPokemons.MostrarCatalogo();
+        string catalogo = catalogoPokemons.MostrarCatalogo();
+        
+        // Si el catálogo está vacío, mostramos un mensaje de error
+        if (string.IsNullOrEmpty(catalogo))
+        {
+            await ReplyAsync("No hay Pokémon disponibles en el catálogo.");
+            return;
+        }
 
-        await ReplyAsync(result);
+        // Enviamos el catálogo al canal de Discord
+        await ReplyAsync($"**Catálogo de Pokémon disponibles:**\n{catalogo}");
     }
+    
+    
+    
 }

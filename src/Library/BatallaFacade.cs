@@ -7,13 +7,13 @@ namespace Library
     */
     public class BatallaFacade
     {
-        private static JugadorPrincipal jugador1;
-        private static JugadorPrincipal jugador2;
+        private JugadorPrincipal jugador1;
+        private JugadorPrincipal jugador2;
         private int contadorTurnos; // Contador de turnos
         private bool jugador1Ataco; // Indicador de que el jugador 1 atacó en este turno
         private bool jugador2Ataco; // Indicador de que el jugador 2 atacó en este turno
         public bool BatallaEnCurso { get; private set; }
-        public List<JugadorPrincipal> listaDeEspera = new List<JugadorPrincipal>();
+        
         public BatallaFacade(string nombreJugador1, string nombreJugador2)
         {
             jugador1 = new JugadorPrincipal(nombreJugador1); //El constructor toma como parámetro a los rivales de la partida
@@ -26,7 +26,7 @@ namespace Library
 
         //Este método es utilizado para agregar Pokemones a la lista de opciones del jugador. Para poder 
         //hacer eso verifica que quien lo agrega es el jugador mismo y no es contrario.
-        public static string AgregarPokemonAJugador(string nombreJugador, Pokemon pokemon)
+        public string AgregarPokemonAJugador(string nombreJugador, Pokemon pokemon)
         {
             if (jugador1.NombreJugador == nombreJugador)
             {
@@ -54,53 +54,40 @@ namespace Library
 
         // Mediante este método, toma como parámetro al jugador (ya que es quien elige el ataque y quien lo usa), y el ataque elegido de la lista.
         // Luego devuelve la vida del pokemon atacado.
-        public void RealizarAtaque(string nombreJugador, int indiceAtaque)
+        public string RealizarAtaque(string nombreJugador, int indiceAtaque)
         {
             if (jugador1.NombreJugador == nombreJugador)
             {
                 jugador1.ElegirAtaque(jugador1.PokemonActual, jugador2.PokemonActual, indiceAtaque);
-                Console.WriteLine($"La vida de {jugador2.ElegirPokemon(0).Nombre} es {jugador2.ElegirPokemon(0).MostrarVida()}");
                 jugador1Ataco = true; // Indicamos que el jugador 1 atacó
+                return $"La vida de {jugador2.ElegirPokemon(0).Nombre} es {jugador2.ElegirPokemon(0).MostrarVida()}";
             }
             else if (jugador2.NombreJugador == nombreJugador)
             {
                 jugador2.ElegirAtaque(jugador2.ElegirPokemon(0), jugador1.ElegirPokemon(0), indiceAtaque);
-                Console.WriteLine($"La vida de {jugador1.ElegirPokemon(0).Nombre} es {jugador1.ElegirPokemon(0).MostrarVida()}");
                 jugador2Ataco = true; // Indicamos que el jugador 2 atacó
+                return $"La vida de {jugador1.ElegirPokemon(0).Nombre} es {jugador1.ElegirPokemon(0).MostrarVida()}";
             }
-
-            // Verificamos si ambos jugadores ya han atacado para completar el turno
-            if (jugador1Ataco && jugador2Ataco)
-            {
-                contadorTurnos++; // Incrementamos el turno después de que ambos han atacado
-                Console.WriteLine($"¡El turno {contadorTurnos - 1} ha finalizado!");
-                Console.WriteLine($"Comienza el turno {contadorTurnos}.");
-                jugador1Ataco = false; // Reseteamos el estado para el próximo turno
-                jugador2Ataco = false; // Reseteamos el estado para el próximo turno
-
-                VerificarGanador();
-            }
+            return "Error en el ataque";
         }
 
         public string VerificarGanador()
         {
             if (jugador1.PokemonesDerrotados())
             {
+                BatallaEnCurso = false;
                 return $"{jugador1.NombreJugador} ha sido derrotado " +
                                   $"{jugador2.NombreJugador} GANÓ";
-                BatallaEnCurso = false;
+                
             }
             else if (jugador2.PokemonesDerrotados())
             {
+                BatallaEnCurso = false;
                 return $"{jugador2.NombreJugador} ha sido derrotado" +
                                   $"{jugador1.NombreJugador} GANÓ";
-                BatallaEnCurso = false;
-            }
-            else
-            {
-                return "La batalla continúa";
                 
             }
+            return "La batalla continúa";
         }
         //Muestra el turno del jugador.
         public bool VerificarTurno(string nombreJugador)

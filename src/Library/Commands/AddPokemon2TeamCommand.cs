@@ -21,7 +21,7 @@ public class AddPokemon2TeamCommand : ModuleBase<SocketCommandContext>
     public async Task ExecuteAsync([Remainder][Summary("IDPokemon")] int id = 0)
     {
         string displayName = CommandHelper.GetDisplayName(Context);
-        string catalogo = PokemonNameCommand.Task();
+        string catalogo = ();
         //Resolver static 
         string result = JugadorPrincipal.ElegirDelCatalogo(id);
 
