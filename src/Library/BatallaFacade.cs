@@ -8,28 +8,29 @@ namespace Library
     */
     public class BatallaFacade
     {
-        private JugadorPrincipal jugador1;
-        private JugadorPrincipal jugador2;
-        private int contadorTurnos; // Contador de turnos
-        private bool jugador1Ataco; // Indicador de que el jugador 1 atacó en este turno
-        private bool jugador2Ataco; // Indicador de que el jugador 2 atacó en este turno
+        public JugadorPrincipal jugador1 { get; private set; }
+        public JugadorPrincipal jugador2 { get; private set; }
+        public int contadorTurnos; // Contador de turnos
+        public bool jugador1Ataco; // Indicador de que el jugador 1 atacó en este turno
+        public bool jugador2Ataco; // Indicador de que el jugador 2 atacó en este turno
         public bool BatallaEnCurso { get; private set; }
-        public List<JugadorPrincipal> listaDeEspera = new List<JugadorPrincipal>();
-        public BatallaFacade(string nombreJugador1, string nombreJugador2)
+        public List<JugadorPrincipal> listaDeEspera {get; private set;}
+        public BatallaFacade(JugadorPrincipal jugador1, JugadorPrincipal jugador2)
         {
-            jugador1 = new JugadorPrincipal(nombreJugador1); //El constructor toma como parámetro a los rivales de la partida
-            jugador2 = new JugadorPrincipal(nombreJugador2);
+            this.jugador1 = jugador1; //El constructor toma como parámetro a los rivales de la partida
+            this.jugador2 = jugador2;
             contadorTurnos = 1; // Inicializamos el contador de turnos en 1
             jugador1Ataco = false; // Inicializamos en falso, porque aún no ha atacado
             jugador2Ataco = false; // Inicializamos en falso, porque aún no ha atacado
             BatallaEnCurso = true;
+            listaDeEspera = new List<JugadorPrincipal>() { jugador1, jugador2 };
         }
         
         public string IniciarBatalla() //Muestra el inicio del juego, especificando el nombre del jugador y el pokemon elegido.
         {
             string resultado = "";
-            resultado += $"{jugador1.NombreJugador} comienza la batalla con {jugador1.ElegirPokemon(0).Nombre}\n";
-            resultado += $"{jugador2.NombreJugador} comienza la batalla con {jugador2.ElegirPokemon(0).Nombre}\n";
+            resultado += $"{jugador1.NombreJugador} comienza la batalla con {jugador1.PokemonActual.Nombre}\n";
+            resultado += $"{jugador2.NombreJugador} comienza la batalla con {jugador2.PokemonActual.Nombre}\n";
             resultado += $"¡La batalla ha comenzado! Turno {contadorTurnos}.";
             return resultado;
         }
@@ -138,25 +139,18 @@ namespace Library
                 }
             }
         }
-        
-        /// <summary>
-        /// Ejecutar el cambio de Pokémon y gestionar el turno
-        /// </summary>
-        public void CambiaPokemon(JugadorPrincipal jugador, int indice)
-        {
-            jugador.CambiarPokemonBatalla(indice);
-            VerificarFinTurno(jugador);
-        }
 
         /// <summary>
         /// Verificar si se pierde el turno después de una acción
         /// </summary>
-        private void VerificarFinTurno(JugadorPrincipal jugador)
+        public string VerificarFinTurno(JugadorPrincipal jugador)
         {
             if (!jugador.TurnoActual)
             {
-                Console.WriteLine($"{jugador.NombreJugador} ha perdido su turno al cambiar de Pokémon.");
+                return $"{jugador.NombreJugador} ha perdido su turno al cambiar de Pokémon.";
             }
+
+            return $"{jugador.NombreJugador} es tu turno";
         }
         
 
@@ -218,7 +212,7 @@ namespace Library
         /// y los elimina de la lista de espera. Sino mostrará que no hay jugadores suficientes para iniciar
         /// una batalla
         /// </summary>
-        public void IniciarBatallaListaDeEspera(Random random = null)
+        public string IniciarBatallaListaDeEspera(Random random = null)
         {
             if (listaDeEspera.Count >= 2)
             {
@@ -241,18 +235,18 @@ namespace Library
                 {
                     jugadorLista.TurnoActual = true;
                     jugadorLista2.TurnoActual = false;
-                    Console.WriteLine($"{jugadorLista.NombreJugador} es el primero en jugar");
+                    return $"{jugadorLista.NombreJugador} es el primero en jugar";
                 }
                 else
                 {
                     jugadorLista.TurnoActual = false;
                     jugadorLista2.TurnoActual = true;
-                    Console.WriteLine($"{jugadorLista2.NombreJugador} es el primero en jugar");
+                    return $"{jugadorLista2.NombreJugador} es el primero en jugar";
                 }
             }
             else
             {
-                Console.WriteLine($"No hay jugadores suficientes para comenzar una batalla");
+                return "No hay jugadores suficientes para comenzar una batalla";
             }
         }
 

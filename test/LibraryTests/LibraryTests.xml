@@ -16,10 +16,55 @@
             En el caso de que el ataque no sea especial, calculamos sin utilizar el ponderador.
             </summary>
         </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.IniciarBatalla">
+            <summary>
+            Este test verifica que la batalla haya iniciado correctamente, con sus pokémones actuales
+            correspondientes.
+            </summary>
+        </member>
         <member name="M:LibraryTests.BatallaFacadeTest.VerificarGanador_PokemonesDerrotados">
             <summary>
             Este test verifica que si todos los pokémon de el equipo de Belén están derrotados (tienen su vida actual en 0)
             La ganadora será Valentina y la batalla se termina.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.VerificarGanador_Pokemones">
+            <summary>
+            Este test verifica que si al menos un pokémon de cada equipo tiene su vida actual mayor a 0, la batalla continúa.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.VerificarTurno">
+            <summary>
+            Este test verifica el turno de cada jugador.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.ObtenerTurnoActual_NumeroDeRonda">
+            <summary>
+            Este test verifica que si los dos jugadores atacan en una ronda, jugarán la segunda ronda de la batalla. Así
+            sucesivamente hasta que alguno de los dos equipos quede con la vida de todos los pokemones en 0. 
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.CambiarPokemon_IndiceNoValidoYNoCambiaElTurno">
+            <summary>
+            En este test verificamos que al ingresar un índice no válido para cambiar de pokémon en la batalla,
+            el pokemon actual será el que ya estaba batallando y el turno no cambia (sigue siendo turno del jugador
+            que quiso ejecutar el cambio).
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.CambiarPokemon_IndiceValidoYCambiaTurno">
+            <summary>
+            Este test verifica que al ingresar un índice válido para cambiar de pokémon, se actualiza el pokémon actual
+            y el turno se pierde.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.ListaDeEspera_YaIngresados">
+            <summary>
+            En esta prueba verificamos que el jugador ya está en la lista de espera y muestra la lista de espera.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.ListaDeEspera_IngresaALaListaYMuestra">
+            <summary>
+            En esta prueba verificamos que el jugador logra unirse a la lista de espera y muestra la lista completa.
             </summary>
         </member>
         <member name="M:LibraryTests.CatalogosTest.AgregarAtaques_VerificarSiAgregaTodos">
