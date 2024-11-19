@@ -33,5 +33,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/Library/Library.csproj" />
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118"/>
   </ItemGroup>
 </Project>
