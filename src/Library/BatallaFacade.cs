@@ -37,32 +37,34 @@ namespace Library
 
         // Mediante este método, toma como parámetro al jugador (ya que es quien elige el ataque y quien lo usa), y el ataque elegido de la lista.
         // Luego devuelve la vida del pokemon atacado.
-        public void RealizarAtaque(string nombreJugador, int indiceAtaque)
+        public string RealizarAtaque(string nombreJugador, int indiceAtaque)
         {
             if (jugador1.NombreJugador == nombreJugador)
             {
                 jugador1.ElegirAtaque(jugador1.PokemonActual, jugador2.PokemonActual, indiceAtaque);
-                Console.WriteLine($"La vida de {jugador2.PokemonActual.Nombre} es {jugador2.PokemonActual.MostrarVida()}");
                 jugador1Ataco = true; // Indicamos que el jugador 1 atacó
+                return $"La vida de {jugador2.PokemonActual.Nombre} es {jugador2.PokemonActual.MostrarVida()}";
             }
             else if (jugador2.NombreJugador == nombreJugador)
             {
                 jugador2.ElegirAtaque(jugador2.PokemonActual, jugador1.PokemonActual, indiceAtaque);
-                Console.WriteLine($"La vida de {jugador1.PokemonActual.Nombre} es {jugador1.PokemonActual.MostrarVida()}");
                 jugador2Ataco = true; // Indicamos que el jugador 2 atacó
+                return $"La vida de {jugador1.PokemonActual.Nombre} es {jugador1.PokemonActual.MostrarVida()}";
             }
 
             // Verificamos si ambos jugadores ya han atacado para completar el turno
             if (jugador1Ataco && jugador2Ataco)
             {
                 contadorTurnos++; // Incrementamos el turno después de que ambos han atacado
-                Console.WriteLine($"¡El turno {contadorTurnos - 1} ha finalizado!");
-                Console.WriteLine($"Comienza el turno {contadorTurnos}.");
+                
                 jugador1Ataco = false; // Reseteamos el estado para el próximo turno
                 jugador2Ataco = false; // Reseteamos el estado para el próximo turno
-
                 VerificarGanador();
+                return $"¡El turno {contadorTurnos - 1} ha finalizado! \n" +
+                       $"Comienza el turno {contadorTurnos}.";
             }
+
+            return "";
         }
 
         public string VerificarGanador()
