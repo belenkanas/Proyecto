@@ -131,7 +131,10 @@ public class Facade
         this.WaitingList.RemoveTrainer(playerDisplayName);
         this.WaitingList.RemoveTrainer(opponentDisplayName);
 
-        BatallaFacade batalla = new BatallaFacade(playerDisplayName, opponentDisplayName);
+        JugadorPrincipal jugador = new JugadorPrincipal(playerDisplayName);
+        JugadorPrincipal oponente = new JugadorPrincipal(opponentDisplayName);
+
+        BatallaFacade batalla = new BatallaFacade(jugador, oponente);
         batallasActivas[playerDisplayName] = batalla;
         batallasActivas[opponentDisplayName] = batalla;
         

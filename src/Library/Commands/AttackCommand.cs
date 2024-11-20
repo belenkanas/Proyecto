@@ -24,7 +24,7 @@ public class AttackCommand : ModuleBase<SocketCommandContext>
 
         if (batallasEnCurso.TryGetValue(displayName, out BatallaFacade batalla))
         {
-            string resultado = batalla.RealizarAtaque(displayName, indiceAtaque);
+            string resultado = batalla.RealizarAtaque(displayName, indiceAtaque).ToString();
             await ReplyAsync(resultado);
             
             string ganador = batalla.VerificarGanador();
