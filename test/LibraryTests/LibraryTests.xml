@@ -4,19 +4,9 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
-        <member name="T:Library.Tests.HistoriaUsuarioCincoTest">
+        <member name="T:Library.Tests.HistoriaUsuarioUnoTest">
             <summary>
-            Como jugador, quiero saber de quién es el turno para estar seguro de cuándo atacar o esperar.
-            </summary>
-        </member>
-        <member name="T:Library.Tests.HistoriaUsuarioCuatroTest">
-            <summary>
-            Como jugador, quiero atacar en mi turno y hacer daño basado en la efectividad de los tipos de Pokémon.
-            </summary>
-        </member>
-        <member name="T:Library.Tests.HistoriaUsuarioDiezTest">
-            <summary>
-            Se quiere probar que al entrnador le deje ver la lista de jugadores que se unieron a la lista.
+            Test1: Como jugador quiero elegir 6 Pokemoon del catalogo disponible.
             </summary>
         </member>
         <member name="T:Library.Tests.HistoriaUsuarioDosTest">
@@ -25,20 +15,19 @@
             Como jugador, quiero ver los ataques disponibles de mis Pokemones para poder elegir en cada turno
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioNueveTest">
+        <member name="T:Library.Tests.HistoriaUsuarioTresTest">
             <summary>
-            Como entrenador, quiero unirme a la lista de jugadores esperando por un oponente.
+            Como jugador, quiero ver la cantidad de vida (HP) de mis Pokémons y de los Pokémons oponentes para saber cuánta salud tienen.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioOcho">
+        <member name="T:Library.Tests.HistoriaUsuarioCuatroTest">
             <summary>
-            Como entrenador, quiero poder usar un ítem durante una batalla.
-            Al usar el ítem se pierde el turno
+            Como jugador, quiero atacar en mi turno y hacer daño basado en la efectividad de los tipos de Pokémon.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioOnceTest">
+        <member name="T:Library.Tests.HistoriaUsuarioCincoTest">
             <summary>
-             Como entrenador, quiero iniciar una ballata con un jugador que está esperando por un oponente.
+            Como jugador, quiero saber de quién es el turno para estar seguro de cuándo atacar o esperar.
             </summary>
         </member>
         <member name="T:Library.Tests.HistoriaUsuarioSeisTest">
@@ -51,14 +40,25 @@
             Como jugador, quiero poder cambiar de Pokémon durante una batalla.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioTresTest">
+        <member name="T:Library.Tests.HistoriaUsuarioOcho">
             <summary>
-            Como jugador, quiero ver la cantidad de vida (HP) de mis Pokémons y de los Pokémons oponentes para saber cuánta salud tienen.
+            Como entrenador, quiero poder usar un ítem durante una batalla.
+            Al usar el ítem se pierde el turno
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioUnoTest">
+        <member name="T:Library.Tests.HistoriaUsuarioNueveTest">
             <summary>
-            Test1: Como jugador quiero elegir 6 Pokemoon del catalogo disponible.
+            Como entrenador, quiero unirme a la lista de jugadores esperando por un oponente.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioDiezTest">
+            <summary>
+            Se quiere probar que al entrnador le deje ver la lista de jugadores que se unieron a la lista.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioOnceTest">
+            <summary>
+             Como entrenador, quiero iniciar una ballata con un jugador que está esperando por un oponente.
             </summary>
         </member>
         <member name="M:Tests.JugadorPrincipalTest.ElegirPokemonDelCatalogo_IndiceValido">

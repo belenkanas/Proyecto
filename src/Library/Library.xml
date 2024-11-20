@@ -33,11 +33,6 @@
             <param name="nombreJugador"></param>
             <param name="indicePokemonACambiar"></param>
         </member>
-        <member name="M:Library.BatallaFacade.CambiaPokemon(Library.JugadorPrincipal,System.Int32)">
-            <summary>
-            Ejecutar el cambio de Pokémon y gestionar el turno
-            </summary>
-        </member>
         <member name="M:Library.BatallaFacade.VerificarFinTurno(Library.JugadorPrincipal)">
             <summary>
             Verificar si se pierde el turno después de una acción
