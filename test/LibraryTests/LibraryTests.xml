@@ -350,7 +350,129 @@
         </member>
         <member name="M:Tests.EfectosTest.QuemarAplicarEfecto_VerificarEstado">
             <summary>
-            En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto.
+            Este test verifica que el pokémon de tipo Fuego al atacar a otro pokémon que no sea de tipo Fuego, Planta,
+            Tierra, Agua o Roca, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Hielo_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Hielo al atacar a otro pokémon que no sea de tipo Fuego, Hielo o
+            Roca, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Hielo_PonderadorOponenteHielo">
+            <summary>
+            Este test verifica que un pokémon de tipo Hielo es fuerte frente a otro de tipo Hielo, su ponderador será 2.0.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Hielo_PonderadorOponenteFuego">
+            <summary>
+            Este test verifica que un pokémon de tipo Hielo es débil frente a otro de tipo Fuego, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Planta_PonderadorOponenteAgua">
+            <summary>
+            Este test verifica que un pokémon de tipo Planta es fuerte frente a otro de tipo Agua, su ponderador será 2.0.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Planta_PonderadorOponenteFuego">
+            <summary>
+            Este test verifica que un pokémon de tipo Planta es débil frente a otro de tipo Fuego, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Planta_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Planta al atacar a otro pokémon que no sea de tipo Fuego, Hielo,
+            Tierra, Agua o Electrico, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Roca_PonderadorOponenteFuego">
+            <summary>
+            Este test verifica que un pokémon de tipo Roca es fuerte frente a otro de tipo Fuego, su ponderador será 2.0.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Roca_PonderadorOponenteAgua">
+            <summary>
+            Este test verifica que un pokémon de tipo Roca es débil frente a otro de tipo Agua, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Roca_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Roca al atacar a otro pokémon que no sea de tipo Fuego, Planta,
+            Tierra o Agua, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Tierra_PonderadorOponenteElectrico">
+            <summary>
+            Este test verifica que un pokémon de tipo Tierra es fuerte frente a otro de tipo Electrico, su ponderador será 2.0.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Tierra_PonderadorOponenteAgua">
+            <summary>
+            Este test verifica que un pokémon de tipo Tierra es débil frente a otro de tipo Agua, su ponderador será 0.5.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.TipoPokemonTest.Tierra_PonderadorOponenteNeutro">
+            <summary>
+            Este test verifica que el pokémon de tipo Tierra al atacar a otro pokémon que no sea de tipo Electrico, Planta,
+            Hielo o Agua, el ponderador es neutro (1.0).
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioUnoTest">
+            <summary>
+            Test1: Como jugador quiero elegir 6 Pokemoon del catalogo disponible.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioDosTest">
+            <summary>
+            Historia de usuario 2.
+            Como jugador, quiero ver los ataques disponibles de mis Pokemones para poder elegir en cada turno
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioTresTest">
+            <summary>
+            Como jugador, quiero ver la cantidad de vida (HP) de mis Pokémons y de los Pokémons oponentes para saber cuánta salud tienen.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioCuatroTest">
+            <summary>
+            Como jugador, quiero atacar en mi turno y hacer daño basado en la efectividad de los tipos de Pokémon.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioCincoTest">
+            <summary>
+            Como jugador, quiero saber de quién es el turno para estar seguro de cuándo atacar o esperar.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioSeisTest">
+            <summary>
+            Como jugador, quiero ganar la batalla cuando la vida de todos los Pokémons oponente llegue a cero.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioSieteTest">
+            <summary>
+            Como jugador, quiero poder cambiar de Pokémon durante una batalla.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioOcho">
+            <summary>
+            Como entrenador, quiero poder usar un ítem durante una batalla.
+            Al usar el ítem se pierde el turno
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioNueveTest">
+            <summary>
+            Como entrenador, quiero unirme a la lista de jugadores esperando por un oponente.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioDiezTest">
+            <summary>
+            Se quiere probar que al entrnador le deje ver la lista de jugadores que se unieron a la lista.
+            </summary>
+        </member>
+        <member name="T:Library.Tests.HistoriaUsuarioOnceTest">
+            <summary>
+             Como entrenador, quiero iniciar una ballata con un jugador que está esperando por un oponente.
             </summary>
         </member>
     </members>
