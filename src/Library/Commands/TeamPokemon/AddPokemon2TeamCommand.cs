@@ -38,7 +38,7 @@ public class AddPokemon2TeamCommand : ModuleBase<SocketCommandContext>
             return;
         }
 
-        string result = jugador.ElegirDelCatalogo(id);
+        string result = jugador.ElegirDelCatalogo(id).ToString();
         //Envía respuesta al jugador
         await ReplyAsync(result);
     }

@@ -8,7 +8,7 @@ public class ChangePokemonCommand : ModuleBase<SocketCommandContext>
     private static Dictionary<string, JugadorPrincipal> jugadores = new();
 
     /// <summary>
-    /// Implementa el comando 'choosepokemon'. Este comando permite que el entrenador
+    /// Implementa el comando 'cambiarpokemon'. Este comando permite que el entrenador
     /// cambie el Pokémon actual en batalla por otro de su equipo.
     /// </summary>
     [Command("changepokemon")]

@@ -8,7 +8,6 @@ namespace Ucu.Poo.DiscordBot.Commands;
 /// Esta clase implementa el comando 'showitems' del bot. Este comando muestra
 /// un catálogo de items disponibles para utilizar en la batalla.
 /// </summary>
-// ReSharper disable once UnusedType.Global
 public class InventaryItemsCommand : ModuleBase<SocketCommandContext>
 {
     private static Dictionary<string, JugadorPrincipal> jugadores = new Dictionary<string, JugadorPrincipal>();

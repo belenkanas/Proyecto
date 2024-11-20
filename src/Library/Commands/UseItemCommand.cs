@@ -8,11 +8,11 @@ public class UseItemCommand : ModuleBase<SocketCommandContext>
     private static Dictionary<string, JugadorPrincipal> jugadores = new();
 
     /// <summary>
-    /// Implementa el comando 'choosepokemon'. Este comando permite que el entrenador
-    /// cambie el Pokémon actual en batalla por otro de su equipo.
+    /// Implementa el comando 'useitem'. Este comando permite que el entrenador
+    /// use un item para atacar al oponente.
     /// </summary>
-    [Command("changepokemon")]
-    [Summary("Permite que el entrenador cambie de pokemon en la batalla.")]
+    [Command("useitem")]
+    [Summary("Permite que el entrenador use un item en batalla.")]
     public async Task ExecuteAsync(int indice)
     {
         string displayName = Context.User.Username;
@@ -25,7 +25,7 @@ public class UseItemCommand : ModuleBase<SocketCommandContext>
         }
         else
         {
-            await ReplyAsync("No tienes un Pokémon en batalla.");
+            await ReplyAsync("No tienes un Pokémon en batalla. Usa el comando elegir pokemon");
         }
     }
 }

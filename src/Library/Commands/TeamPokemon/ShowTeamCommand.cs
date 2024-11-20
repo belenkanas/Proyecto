@@ -4,6 +4,10 @@ using Ucu.Poo.DiscordBot.Domain;
 
 namespace Ucu.Poo.DiscordBot.Commands;
 
+/// <summary>
+/// Esta clase implementa el comando 'equipo' del bot. Este comando le
+/// permite al entrenador ver los pokemons de su equipo.
+/// </summary>
 public class ShowTeamCommand : ModuleBase<SocketCommandContext>
 {
     private static Dictionary<string, JugadorPrincipal> jugadores = new Dictionary<string, JugadorPrincipal>();

@@ -6,21 +6,20 @@ using Ucu.Poo.DiscordBot.Domain;
 namespace Ucu.Poo.DiscordBot.Commands;
 
 /// <summary>
-/// Esta clase implementa el comando 'catalogoatques' del bot. Este comando muestra
+/// Esta clase implementa el comando 'catalogoataques' del bot. Este comando muestra
 /// un catálogo de ataques disponibles para utilizar en la batalla.
 /// </summary>
-// ReSharper disable once UnusedType.Global
 public class AttacksCatalogueCommand : ModuleBase<SocketCommandContext>
 {
     private static Dictionary<string, JugadorPrincipal> jugadores = new Dictionary<string, JugadorPrincipal>();
 
     /// <summary>
     /// Implementa el comando 'catalogoataques'. Este comando muestra la lista de
-    /// ataques disponibles para usar en la batalla.
+    /// ataques disponibles del pokemon en batalla para usar en la misma.
     /// </summary>
     [Command("catalogoataques")]
-    [Summary("Muestra los pókemons disponibles para utilizar")]
-    public async Task MostrarAtaques([Summary("Índice del pokemón en el equipo (1-6)")] int indice)
+    [Summary("Muestra los ataques disponibles para utilizar")]
+    public async Task ExecuteAsync([Summary("Índice del pokemón en el equipo (1-6)")] int indice)
     {
         string displayName = Context.User.Username;
         // Verifica si el jugador ya existe
