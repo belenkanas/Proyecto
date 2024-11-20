@@ -5,8 +5,8 @@ using Ucu.Poo.DiscordBot.Domain;
 namespace Ucu.Poo.DiscordBot.Commands;
 
 /// <summary>
-/// Esta clase implementa el comando 'showattacks' del bot. Este comando muestra
-/// un catálogo de ataques disponibles para utilizar en la batalla.
+/// Esta clase implementa el comando 'showitems' del bot. Este comando muestra
+/// un catálogo de items disponibles para utilizar en la batalla.
 /// </summary>
 // ReSharper disable once UnusedType.Global
 public class InventaryItemsCommand : ModuleBase<SocketCommandContext>
@@ -25,7 +25,7 @@ public class InventaryItemsCommand : ModuleBase<SocketCommandContext>
         
         JugadorPrincipal jugadorPrincipal = jugadores[displayName];
         
-        string inventario = jugadorPrincipal.MostrarInventario(); // Ajusta índice para base 0
+        string inventario = jugadorPrincipal.MostrarInventario();
         await ReplyAsync(inventario);
     }
 }
