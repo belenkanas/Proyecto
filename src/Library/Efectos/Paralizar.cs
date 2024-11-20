@@ -11,6 +11,7 @@ public class Paralizar : IEfectos
     public void AplicarEfecto (IPokemon objetivo)
     {
         objetivo.Estado = "Paralizado";
+        objetivo.EfectoActivo = this;
     }
 
     /// <summary>

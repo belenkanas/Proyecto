@@ -7,6 +7,7 @@ public interface IJugador
 {
     public string NombreJugador { get; set; }           //Nombre del juagdor
     public List<IPokemon> EquipoPokemons { get; set; }
+    public List<IItem> InventarioItems { get; set; }
     public bool TurnoActual { get; set; }               //Mediante este bool se indica si el turno es del jugador o de su oponente.
     public IPokemon PokemonActual { get; set; }
     public IPokemon ElegirPokemon(int indice);                        //Método para que el jugador elija el pokemon con el que quiere atacar

@@ -4,71 +4,65 @@ namespace Library
     En la fachada vemos los métodos de las clases implementados.
     Acá se crean los jugadores, se les agregan los pokemones y los ataques respectivamente.
     Además, llama a las funciones necesarias para poder realizar ataques entre jugadores.
+    Todo esto después será utilizado en el Program.
     */
     public class BatallaFacade
     {
-        private JugadorPrincipal jugador1;
-        private JugadorPrincipal jugador2;
-        private int contadorTurnos; // Contador de turnos
-        private bool jugador1Ataco; // Indicador de que el jugador 1 atacó en este turno
-        private bool jugador2Ataco; // Indicador de que el jugador 2 atacó en este turno
+        public JugadorPrincipal jugador1 { get; private set; }
+        public JugadorPrincipal jugador2 { get; private set; }
+        public int contadorTurnos; // Contador de turnos
+        public bool jugador1Ataco; // Indicador de que el jugador 1 atacó en este turno
+        public bool jugador2Ataco; // Indicador de que el jugador 2 atacó en este turno
         public bool BatallaEnCurso { get; private set; }
-        
-        public BatallaFacade(string nombreJugador1, string nombreJugador2)
+        public List<JugadorPrincipal> listaDeEspera {get; private set;}
+        public BatallaFacade(JugadorPrincipal jugador1, JugadorPrincipal jugador2)
         {
-            jugador1 = new JugadorPrincipal(nombreJugador1); //El constructor toma como parámetro a los rivales de la partida
-            jugador2 = new JugadorPrincipal(nombreJugador2);
+            this.jugador1 = jugador1; //El constructor toma como parámetro a los rivales de la partida
+            this.jugador2 = jugador2;
             contadorTurnos = 1; // Inicializamos el contador de turnos en 1
             jugador1Ataco = false; // Inicializamos en falso, porque aún no ha atacado
             jugador2Ataco = false; // Inicializamos en falso, porque aún no ha atacado
             BatallaEnCurso = true;
+            listaDeEspera = new List<JugadorPrincipal>() { jugador1, jugador2 };
         }
-
-        //Este método es utilizado para agregar Pokemones a la lista de opciones del jugador. Para poder 
-        //hacer eso verifica que quien lo agrega es el jugador mismo y no es contrario.
-        public string AgregarPokemonAJugador(string nombreJugador, Pokemon pokemon)
+        
+        public string IniciarBatalla() //Muestra el inicio del juego, especificando el nombre del jugador y el pokemon elegido.
         {
-            if (jugador1.NombreJugador == nombreJugador)
-            {
-                jugador1.EquipoPokemons.Add(pokemon);
-            }
-            else if (jugador2.NombreJugador == nombreJugador)
-            {
-                jugador2.EquipoPokemons.Add(pokemon);
-            }
-            return $"{pokemon.Nombre} agregado al equipo";
-        }
-
-        //Toma como parámetro el pokemon elegido y le agrega un ataque del programa.
-        public void AgregarAtaqueAPokemon(Pokemon pokemon, Ataque ataque)
-        {
-            pokemon.Ataques.Add(ataque);
-        }
-
-        public void IniciarBatalla() //Muestra el inicio del juego, especificando el nombre del jugador y el pokemon elegido.
-        {
-            Console.WriteLine($"{jugador1.NombreJugador} comienza la batalla con {jugador1.ElegirPokemon(0).Nombre}");
-            Console.WriteLine($"{jugador2.NombreJugador} comienza la batalla con {jugador2.ElegirPokemon(0).Nombre}");
-            Console.WriteLine($"¡La batalla ha comenzado! Turno {contadorTurnos}.");
+            string resultado = "";
+            resultado += $"{jugador1.NombreJugador} comienza la batalla con {jugador1.PokemonActual.Nombre}\n";
+            resultado += $"{jugador2.NombreJugador} comienza la batalla con {jugador2.PokemonActual.Nombre}\n";
+            resultado += $"¡La batalla ha comenzado! Turno {contadorTurnos}.";
+            return resultado;
         }
 
         // Mediante este método, toma como parámetro al jugador (ya que es quien elige el ataque y quien lo usa), y el ataque elegido de la lista.
         // Luego devuelve la vida del pokemon atacado.
-        public string RealizarAtaque(string nombreJugador, int indiceAtaque)
+        public void RealizarAtaque(string nombreJugador, int indiceAtaque)
         {
             if (jugador1.NombreJugador == nombreJugador)
             {
                 jugador1.ElegirAtaque(jugador1.PokemonActual, jugador2.PokemonActual, indiceAtaque);
+                Console.WriteLine($"La vida de {jugador2.PokemonActual.Nombre} es {jugador2.PokemonActual.MostrarVida()}");
                 jugador1Ataco = true; // Indicamos que el jugador 1 atacó
-                return $"La vida de {jugador2.ElegirPokemon(0).Nombre} es {jugador2.ElegirPokemon(0).MostrarVida()}";
             }
             else if (jugador2.NombreJugador == nombreJugador)
             {
-                jugador2.ElegirAtaque(jugador2.ElegirPokemon(0), jugador1.ElegirPokemon(0), indiceAtaque);
+                jugador2.ElegirAtaque(jugador2.PokemonActual, jugador1.PokemonActual, indiceAtaque);
+                Console.WriteLine($"La vida de {jugador1.PokemonActual.Nombre} es {jugador1.PokemonActual.MostrarVida()}");
                 jugador2Ataco = true; // Indicamos que el jugador 2 atacó
-                return $"La vida de {jugador1.ElegirPokemon(0).Nombre} es {jugador1.ElegirPokemon(0).MostrarVida()}";
             }
-            return "Error en el ataque";
+
+            // Verificamos si ambos jugadores ya han atacado para completar el turno
+            if (jugador1Ataco && jugador2Ataco)
+            {
+                contadorTurnos++; // Incrementamos el turno después de que ambos han atacado
+                Console.WriteLine($"¡El turno {contadorTurnos - 1} ha finalizado!");
+                Console.WriteLine($"Comienza el turno {contadorTurnos}.");
+                jugador1Ataco = false; // Reseteamos el estado para el próximo turno
+                jugador2Ataco = false; // Reseteamos el estado para el próximo turno
+
+                VerificarGanador();
+            }
         }
 
         public string VerificarGanador()
@@ -78,17 +72,18 @@ namespace Library
                 BatallaEnCurso = false;
                 return $"{jugador1.NombreJugador} ha sido derrotado " +
                                   $"{jugador2.NombreJugador} GANÓ";
-                
             }
-            else if (jugador2.PokemonesDerrotados())
+            if (jugador2.PokemonesDerrotados())
             {
                 BatallaEnCurso = false;
                 return $"{jugador2.NombreJugador} ha sido derrotado" +
-                                  $"{jugador1.NombreJugador} GANÓ";
-                
+                                              $"{jugador1.NombreJugador} GANÓ";
             }
+            
+            BatallaEnCurso = true;
             return "La batalla continúa";
         }
+        
         //Muestra el turno del jugador.
         public bool VerificarTurno(string nombreJugador)
         {
@@ -144,25 +139,18 @@ namespace Library
                 }
             }
         }
-        
-        /// <summary>
-        /// Ejecutar el cambio de Pokémon y gestionar el turno
-        /// </summary>
-        public void CambiaPokemon(JugadorPrincipal jugador, int indice)
-        {
-            jugador.CambiarPokemonBatalla(indice);
-            VerificarFinTurno(jugador);
-        }
 
         /// <summary>
         /// Verificar si se pierde el turno después de una acción
         /// </summary>
-        private void VerificarFinTurno(JugadorPrincipal jugador)
+        public string VerificarFinTurno(JugadorPrincipal jugador)
         {
             if (!jugador.TurnoActual)
             {
-                Console.WriteLine($"{jugador.NombreJugador} ha perdido su turno al cambiar de Pokémon.");
+                return $"{jugador.NombreJugador} ha perdido su turno al cambiar de Pokémon.";
             }
+
+            return $"{jugador.NombreJugador} es tu turno";
         }
         
 
@@ -179,7 +167,6 @@ namespace Library
             return BatallaEnCurso = true;
         }
 
-        /*
         /// <summary>
         /// Método para unirse a la lista de espera
         /// </summary>
@@ -225,7 +212,7 @@ namespace Library
         /// y los elimina de la lista de espera. Sino mostrará que no hay jugadores suficientes para iniciar
         /// una batalla
         /// </summary>
-        public void IniciarBatallaListaDeEspera(Random random = null)
+        public string IniciarBatallaListaDeEspera(Random random = null)
         {
             if (listaDeEspera.Count >= 2)
             {
@@ -248,24 +235,24 @@ namespace Library
                 {
                     jugadorLista.TurnoActual = true;
                     jugadorLista2.TurnoActual = false;
-                    Console.WriteLine($"{jugadorLista.NombreJugador} es el primero en jugar");
+                    return $"{jugadorLista.NombreJugador} es el primero en jugar";
                 }
                 else
                 {
                     jugadorLista.TurnoActual = false;
                     jugadorLista2.TurnoActual = true;
-                    Console.WriteLine($"{jugadorLista2.NombreJugador} es el primero en jugar");
+                    return $"{jugadorLista2.NombreJugador} es el primero en jugar";
                 }
             }
             else
             {
-                Console.WriteLine($"No hay jugadores suficientes para comenzar una batalla");
+                return "No hay jugadores suficientes para comenzar una batalla";
             }
         }
 
         public string NotificarInicio(JugadorPrincipal jugador)
         {
             return $"{jugador.NombreJugador} la batalla ha comenzado";
-        }*/
+        }
     }
 }

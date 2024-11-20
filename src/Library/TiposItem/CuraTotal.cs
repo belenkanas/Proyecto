@@ -6,13 +6,12 @@ namespace Library
     public class CuraTotal : IItem
     {
         public string NombreItem { get; }
-        private int usosRestantes;
-        private const int usosMaximos = 2;
+        public int usosRestantes;
 
         public CuraTotal()
         {
             NombreItem = "Cura Total";
-            usosRestantes = usosMaximos; // Inicializa usosRestantes con el máximo de usos
+            usosRestantes = 2; // Inicializa usosRestantes con el máximo de usos
         }
 
         
@@ -25,14 +24,14 @@ namespace Library
             if (usosRestantes > 0)
             {
                 // Verifica si hay un efecto activo y que no sea "Dormido"
-                if (objetivo.EfectoActivo != null && objetivo.EfectoActivo.nombreEfecto != "Dormido")
+                if (objetivo.EfectoActivo != null && objetivo.EfectoActivo.nombreEfecto != "Dormir")
                 {
                     objetivo.EfectoActivo = null;
                     objetivo.Estado = "Normal";
                     Console.WriteLine($"{objetivo.Nombre} ya no está bajo ningún efecto");
                     usosRestantes--;
                 }
-                else if (objetivo.EfectoActivo?.nombreEfecto == "Dormido")
+                else if (objetivo.EfectoActivo?.nombreEfecto == "Dormir")
                 {
                     Console.WriteLine($"{objetivo.Nombre} está dormido y no puede recibir Cura Total.");
                 }

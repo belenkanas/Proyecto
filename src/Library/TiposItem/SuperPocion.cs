@@ -6,13 +6,12 @@ namespace Library;
 public class SuperPocion: IItem
 {
     public string NombreItem { get; }
-    private int usosRestantes;
-    private const int usosMaximos = 4;
+    public int usosRestantes;
 
     public SuperPocion()
     {
         NombreItem = "Super Pocion";
-        usosRestantes = usosMaximos; // Inicializa el contador de usos
+        usosRestantes = 4; // Inicializa el contador de usos
     }
 
     /// <summary>

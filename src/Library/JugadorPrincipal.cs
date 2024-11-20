@@ -6,7 +6,6 @@ namespace Library;
     {
         public string NombreJugador { get; set; }
         public List<IPokemon> EquipoPokemons { get; set; }
-        
         public List<IItem> InventarioItems { get; set; }
         public bool TurnoActual { get; set; }
         public IPokemon PokemonActual { get; set; }
