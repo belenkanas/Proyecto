@@ -116,13 +116,14 @@ namespace Library;
         /// Del catálogo elegir 6 pokémons para agregar a su equipo
         /// </summary>
         /// <param name="indice">número de pokémon en la lista del catálogo</param>
-        public string ElegirDelCatalogo(int indice)
+        public Pokemon ElegirDelCatalogo(int indice)
         {
             int indiceCatalogo = indice - 1;
             
             if (indiceCatalogo < 0 || indiceCatalogo > CatalogoPokemon.Catalogo.Count)
             {
-                return "Índice inválido";
+                Console.WriteLine("Indice inválido");
+                return null;
             }
             
             if (EquipoPokemons.Count < 6)
@@ -135,13 +136,14 @@ namespace Library;
                 }
                
                 EquipoPokemons.Add(pokemon);
-                return $"{pokemon.Nombre} agregado al equipo.";
+                return (Pokemon)pokemon;
             }
             else
             {
-                return "Ya tienes 6 pokémones en tu equipo";
-                
+                Console.WriteLine("Ya tienes 6 pokémones en tu equipo");
+                return null;
             }
+            
         }
         
         /// <summary>
