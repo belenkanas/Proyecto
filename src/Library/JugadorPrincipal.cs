@@ -11,14 +11,20 @@ namespace Library;
         public IPokemon PokemonActual { get; set; }
 
         public CatalogoPokemons CatalogoPokemon { get; set; }
+        public CuraTotal Cura { get; }
+        public Revivir Revivir { get; }
+        public SuperPocion Pocion { get; }
 
         public JugadorPrincipal(string nombre)
         {
             NombreJugador = nombre;
             EquipoPokemons = new List<IPokemon>();
-            InventarioItems = new List<IItem> { new SuperPocion(), new Revivir(), new CuraTotal() };
             TurnoActual = true;
             CatalogoPokemon = new CatalogoPokemons();
+            Cura = new CuraTotal();
+            Revivir = new Revivir();
+            Pocion = new SuperPocion();
+            InventarioItems = new List<IItem> { Pocion, Revivir, Cura };
         }
         
         /// <summary>
@@ -209,19 +215,33 @@ namespace Library;
             }
         }
         
-        public void UsarItem(int indiceItem, IPokemon pokemon)
+        public double UsarItem(int indiceItem, IPokemon pokemon)
         {
             if (indiceItem < 0 || indiceItem >= InventarioItems.Count)
             {
                 Console.WriteLine("Índice de ítem inválido.");
-                return;
+                return 0;
             }
-
-            IItem item = InventarioItems[indiceItem];
-            //item.Usar(pokemon);
-            InventarioItems.RemoveAt(indiceItem);
-            TurnoActual = false; // Al usar un ítem, se pierde el turno
-            
+            else
+            {
+                IItem item = InventarioItems[indiceItem];
+                if (item == Cura)
+                {
+                    Cura.Usar(pokemon);
+                    TurnoActual = false; // Al usar un ítem, se pierde el turno
+                    return pokemon.VidaActual;
+                }
+                else if (item == Revivir)
+                {
+                    TurnoActual = false; // Al usar un ítem, se pierde el turno
+                    return Revivir.Usar(pokemon.VidaActual, pokemon.VidaTotal);
+                }
+                else
+                {
+                    TurnoActual = false; // Al usar un ítem, se pierde el turno
+                    return Pocion.Usar(pokemon.VidaActual, pokemon.VidaTotal);
+                }
+            }
         }
 
         /// <summary>

@@ -19,6 +19,6 @@ public interface IJugador
     public string MostrarEquipo();
     public bool PokemonesDerrotados();
     public string CambiarPokemonBatalla(int indice);
-    public void UsarItem(int indiceItem, IPokemon pokemon);
+    public double UsarItem(int indiceItem, IPokemon pokemon);
     public string MostrarInventario();
 }

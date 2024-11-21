@@ -7,11 +7,13 @@ namespace LibraryTests;
 public class JugadorPrincipalTest
 {
     public JugadorPrincipal jugador1;
+    public Envenenar envenenar;
     
     [SetUp]
     public void SetUp()
     {
         jugador1 = new JugadorPrincipal("Ana");
+        envenenar = new Envenenar();
     }
     
     /// <summary>
@@ -243,5 +245,55 @@ public class JugadorPrincipalTest
         string resultado = $"Indice del Pokemon inválido";
         
         Assert.That(resultado,Is.EqualTo(jugador1.CambiarPokemonBatalla(-1)));
+    }
+
+    /// <summary>
+    /// Este test verifica que si un jugador desea usar un item, como Cura Total, devuelva que el turno del jugador
+    /// ya lo perdió utilizando el item y el pokémon ya no tiene el efecto activo.
+    /// </summary>
+    [Test]
+    public void UsarItem_IndiceValidoCuraTotal()
+    {
+        jugador1.ElegirDelCatalogo(2);
+        IPokemon pokemon = jugador1.ElegirPokemon(0);
+        envenenar.AplicarEfecto(pokemon);
+        jugador1.UsarItem(2, pokemon);
+        
+        Assert.That(pokemon.Estado, Is.EqualTo("Normal"));
+        Assert.That(jugador1.TurnoActual, Is.EqualTo(false));
+    }
+    
+    /// <summary>
+    /// Este test verifica que si un jugador desea usar un item, como Revivir, devuelva que el turno del jugador
+    /// ya lo perdió utilizando el item y la vida actual del pokémon aumento un 50%.
+    /// </summary>
+    [Test]
+    public void UsarItem_IndiceValidoRevivir()
+    {
+        jugador1.ElegirDelCatalogo(2);
+        IPokemon pokemon = jugador1.ElegirPokemon(0);
+        pokemon.VidaActual = 0;
+        double vida = jugador1.UsarItem(1, pokemon);
+        double vidaEsperada = pokemon.VidaTotal * 0.5;
+        
+        Assert.That(jugador1.TurnoActual, Is.EqualTo(false));
+        Assert.That(vida, Is.EqualTo(vidaEsperada));
+    }
+    
+    /// <summary>
+    /// Este test verifica que si un jugador desea usar un item, como Super Pocion, devuelva que el turno del jugador
+    /// ya lo perdió utilizando el item y la vida actual del pokémon aumente dependiendo de su vida actual anterior.
+    /// </summary>
+    [Test]
+    public void UsarItem_IndiceValidoPocion()
+    {
+        jugador1.ElegirDelCatalogo(3);
+        IPokemon pokemon = jugador1.ElegirPokemon(0);
+        pokemon.VidaActual = 10;
+        double vida = jugador1.UsarItem(0, pokemon);
+        double vidaEsperada = pokemon.VidaActual + 70;
+        
+        Assert.That(jugador1.TurnoActual, Is.EqualTo(false));
+        Assert.That(vida, Is.EqualTo(vidaEsperada));
     }
 }
