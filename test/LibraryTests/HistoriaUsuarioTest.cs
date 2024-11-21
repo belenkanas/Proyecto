@@ -6,7 +6,7 @@ namespace Library.Tests;
 /// Test1: Como jugador quiero elegir 6 Pokemoon del catalogo disponible.
 /// </summary>
 [TestFixture]
-public class HistoriaUsuarioUnoTest
+public class HistoriaUsuarioTest
 {
     public CatalogoPokemons catalogo;
     public JugadorPrincipal jugador1;
@@ -14,7 +14,7 @@ public class HistoriaUsuarioUnoTest
 
     [SetUp]
     //Debo asegurarme que se puede elegir hasta 6 pokemones y que se muestren en pantalla
-    public void SetUp()
+    public void SetUpUno()
     {
         catalogo = new CatalogoPokemons();
         jugador1 = new JugadorPrincipal("Ana");
@@ -49,22 +49,18 @@ public class HistoriaUsuarioUnoTest
         // Se asegura que al grupo se pudieron unir 6 pokemones y no más.
         Assert.That(6, Is.EqualTo(jugador1.EquipoPokemons.Count));
     }
-}
+
 
 
 /// <summary>
 /// Historia de usuario 2.
 /// Como jugador, quiero ver los ataques disponibles de mis Pokemones para poder elegir en cada turno
 /// </summary>
-[TestFixture]
-public class HistoriaUsuarioDosTest
-{
-    public CatalogoPokemons catalogo;
     public JugadorPrincipal jugador;
     public JugadorPrincipal jugador2;
         
     [SetUp]
-    public void SetUp()
+    public void SetUpDos()
     {
         catalogo = new CatalogoPokemons();
         jugador = new JugadorPrincipal("Dan");
@@ -143,22 +139,14 @@ public class HistoriaUsuarioDosTest
         Assert.Contains(ataqueNormal2, ataquesDisponiblesTurno3);
         Assert.Contains(ataqueEspecial1, ataquesDisponiblesTurno3);
         Assert.Contains(ataqueEspecial2, ataquesDisponiblesTurno3);
-
     }
-}
+
 
 /// <summary>
 /// Como jugador, quiero ver la cantidad de vida (HP) de mis Pokémons y de los Pokémons oponentes para saber cuánta salud tienen.
 /// </summary>
-public class HistoriaUsuarioTresTest
-{
-    public CatalogoPokemons catalogo;
-    public JugadorPrincipal jugador;
-    public JugadorPrincipal jugador2;
-    public CatalogoAtaques ataques;
-
     [SetUp]
-    public void SetUp()
+    public void SetUpTres()
     {
         catalogo = new CatalogoPokemons();
         jugador = new JugadorPrincipal("Pablo");
@@ -203,19 +191,18 @@ public class HistoriaUsuarioTresTest
         
         Assert.That(vida, Is.EqualTo(vidaEsperada));
     }
-}
+
 
 /// <summary>
 /// Como jugador, quiero atacar en mi turno y hacer daño basado en la efectividad de los tipos de Pokémon.
 /// </summary>
-public class HistoriaUsuarioCuatroTest
-{
+
     public CatalogoPokemons CatalogoPokemons;
     public JugadorPrincipal JugadorPrincipal;
     public JugadorPrincipal JugadorPrincipal2;
     
     [SetUp]
-    public void SetUp()
+    public void SetUpCuatro()
     {
         CatalogoPokemons = new CatalogoPokemons();
         JugadorPrincipal = new JugadorPrincipal("Ash");
@@ -247,19 +234,16 @@ public class HistoriaUsuarioCuatroTest
 
         Assert.That(resultado, Is.EqualTo(pokemon.UsarAtaque(1, pokemonEnemigo)));
     }
-}
+
 
 /// <summary>
 /// Como jugador, quiero saber de quién es el turno para estar seguro de cuándo atacar o esperar.
 /// </summary>
-public class HistoriaUsuarioCincoTest
-{
-    public CatalogoPokemons CatalogoPokemons;
-    public JugadorPrincipal jugador;
-    public JugadorPrincipal jugador2;
+
+
     
     [SetUp]
-    public void SetUp()
+    public void SetUpCinco()
     {
         CatalogoPokemons = new CatalogoPokemons();
         jugador = new JugadorPrincipal("Ash");
@@ -294,20 +278,15 @@ public class HistoriaUsuarioCincoTest
         
         Assert.That(true, Is.EqualTo(jugador2.MostrarTurno()));
     }
-}
+
 
 /// <summary>
 /// Como jugador, quiero ganar la batalla cuando la vida de todos los Pokémons oponente llegue a cero.
 /// </summary>
-public class HistoriaUsuarioSeisTest
-{
-    public CatalogoPokemons CatalogoPokemons;
-    public JugadorPrincipal jugador;
-    public JugadorPrincipal jugador2;
     private BatallaFacade batalla;
     
     [SetUp]
-    public void SetUp()
+    public void SetUpSeis()
     {
         jugador = new JugadorPrincipal("Juan");
         jugador2 = new JugadorPrincipal("Martina");
@@ -350,19 +329,14 @@ public class HistoriaUsuarioSeisTest
         
         Assert.That(ganador, Is.EqualTo(resultadoJ2));
     }
-}
+
 
 /// <summary>
 /// Como jugador, quiero poder cambiar de Pokémon durante una batalla.
 /// </summary>
-public class HistoriaUsuarioSieteTest
-{
-    public JugadorPrincipal jugador;
-    public JugadorPrincipal jugador2;
-    public BatallaFacade batalla;
     
     [SetUp]
-    public void SetUp()
+    public void SetUpSiete()
     {
         jugador = new JugadorPrincipal("Asia");
         jugador2 = new JugadorPrincipal("Robert");
@@ -403,19 +377,16 @@ public class HistoriaUsuarioSieteTest
 
         Assert.That(jugador.TurnoActual, Is.EqualTo(false));
     }
-}
+
 
 /// <summary>
 /// Como entrenador, quiero poder usar un ítem durante una batalla.
 /// Al usar el ítem se pierde el turno
 /// </summary>
-public class HistoriaUsuarioOcho
-{
-    public JugadorPrincipal jugador;
     public JugadorPrincipal oponente;
 
     [SetUp]
-    public void SetUp()
+    public void SetUpOcho()
     {
         jugador = new JugadorPrincipal("Belen");
         oponente = new JugadorPrincipal("Valentina");
@@ -439,19 +410,16 @@ public class HistoriaUsuarioOcho
         //Comprobar que se pierde el turno luego de usar el ítem.
         Assert.IsFalse(jugador.TurnoActual);
     } 
-}
+
 
 /// <summary>
 /// Como entrenador, quiero unirme a la lista de jugadores esperando por un oponente.
 /// </summary>
-public class HistoriaUsuarioNueveTest
-{
     public JugadorPrincipal entrenador;
     public JugadorPrincipal entrenador2;
-    public BatallaFacade batalla;
     
     [SetUp]
-    public void SetUp()
+    public void SetUpNueve()
     {
         entrenador = new JugadorPrincipal("Martin");
         entrenador2 = new JugadorPrincipal("Clara");
@@ -469,20 +437,15 @@ public class HistoriaUsuarioNueveTest
         
         Assert.That(mensaje, Is.EqualTo(esperado));
     }
-}
+
 
 
 /// <summary>
 /// Se quiere probar que al entrnador le deje ver la lista de jugadores que se unieron a la lista.
 /// </summary>
-public class HistoriaUsuarioDiezTest
-{
-    public JugadorPrincipal entrenador;
-    public JugadorPrincipal entrenador2;
-    public BatallaFacade batalla;
     
     [SetUp]
-    public void SetUp()
+    public void SetUpDiez()
     {
         entrenador = new JugadorPrincipal("Mateo");
         entrenador2 = new JugadorPrincipal("Belén");
@@ -502,19 +465,14 @@ public class HistoriaUsuarioDiezTest
         
         Assert.That(mensaje, Is.EqualTo(esperado));
     }
-}
+
 
 /// <summary>
 ///  Como entrenador, quiero iniciar una ballata con un jugador que está esperando por un oponente.
 /// </summary>
-public class HistoriaUsuarioOnceTest
-{
-    public JugadorPrincipal entrenador;
-    public JugadorPrincipal entrenador2;
-    public BatallaFacade batalla;
     
     [SetUp]
-    public void SetUp()
+    public void SetUpOnce()
     {
         entrenador = new JugadorPrincipal("Lola");
         entrenador2 = new JugadorPrincipal("Pedro");

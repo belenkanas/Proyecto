@@ -13,7 +13,7 @@ public interface IJugador
     public IPokemon ElegirPokemon(int indice);                        //Método para que el jugador elija el pokemon con el que quiere atacar
     public void ElegirAtaque(IPokemon pokemon, IPokemon enemigo, int indiceAtaque);                         //Método para elegir el ataque del pokémon seleccionado
     public bool MostrarTurno();                         //Método que devuelve un valor booleano con el turno correspondiente al jugador
-    public void MostrarCatalogo();
+    public string MostrarCatalogo();
     public string MostrarAtaquesDisponibles(int indice);
     public Pokemon ElegirDelCatalogo(int indice);
     public string MostrarEquipo();
