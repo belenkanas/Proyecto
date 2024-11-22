@@ -31,7 +31,7 @@ public class PokemonTest
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
         
-        string resultado = pokemon.UsarAtaque(-1, pokemonenemigo);
+        string resultado = pokemon.UsarAtaque(-1, pokemonenemigo, jugador);
 
         Assert.That("El ataque no es válido", Is.EqualTo(resultado));
     }
@@ -46,7 +46,7 @@ public class PokemonTest
         IPokemon pokemon = jugador.ElegirPokemon(0);
         IPokemon pokemonenemigo = jugador2.ElegirPokemon(0);
 
-        pokemon.UsarAtaque(0, pokemonenemigo);
+        pokemon.UsarAtaque(0, pokemonenemigo, jugador);
 
         double ponderador = pokemon.TipoPokemon.Ponderador(pokemonenemigo.TipoPokemon);
         double dañoEsperado = pokemon.Ataque - pokemonenemigo.Defensa * ponderador;
@@ -70,7 +70,7 @@ public class PokemonTest
         pokemon.AtaquesPorTipo();
         jugador.ElegirAtaque(pokemon, pokemonenemigo, 3);
 
-        string resultadoEsperado = pokemon.UsarAtaque(3, pokemonenemigo);
+        string resultadoEsperado = pokemon.UsarAtaque(3, pokemonenemigo, jugador);
 
         string resultado = "El ataque especial no está disponible este turno.";
 
@@ -91,7 +91,7 @@ public class PokemonTest
         
         pokemon.turnoContadorEspecial = 2;
         
-        string resultado2 = pokemon.UsarAtaque(0, pokemonenemigo);
+        string resultado2 = pokemon.UsarAtaque(0, pokemonenemigo, jugador);
         string resultadoEsperado2 = "Pikachu usó Chispa y causó 7 puntos de daño.";
         
         Assert.That(resultado2, Is.EqualTo(resultadoEsperado2));
@@ -114,7 +114,7 @@ public class PokemonTest
 
         pokemon.AtaquesPorTipo();
         pokemon.turnoContadorEspecial = 2;
-        pokemon.UsarAtaque(3, pokemonenemigo);
+        pokemon.UsarAtaque(3, pokemonenemigo, jugador);
         
         Assert.That(pokemonenemigo.VidaActual, Is.EqualTo(0));
         Assert.That(pokemonenemigo.Estado, Is.EqualTo("Derrotado"));

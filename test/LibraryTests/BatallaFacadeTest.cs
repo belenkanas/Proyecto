@@ -128,7 +128,6 @@ public class BatallaFacadeTest
         pokemonEnemigo.AtaquesPorTipo();
 
         batalla.RealizarAtaque(jugador2.NombreJugador, 0);
-
         Assert.That(batalla.ObtenerTurnoActual(), Is.EqualTo(2));
     }
 

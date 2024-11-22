@@ -5,7 +5,7 @@ namespace Library;
 /// </summary>
 public class Envenenar : AplicarDaño, IEfectos
 {
-    public string nombreEfecto {get; set;} = "Envenenar";                    
+    public string nombreEfecto {get;} = "Envenenar";                    
     
     /// <summary>
     /// El Pokémon puede seguir atacando, pero indica que está "envenenado"

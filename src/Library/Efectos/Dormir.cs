@@ -7,7 +7,7 @@ using Library;
 /// </summary>
 public class Dormir : AplicarDaño, IEfectos
 {
-    public string nombreEfecto {get; set;} = "Dormir";
+    public string nombreEfecto {get;} = "Dormir";
     private int turnosRestante { get; set; }
 
     /// <summary>

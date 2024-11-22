@@ -5,6 +5,6 @@ namespace Library;
 /// </summary>
 public interface IEfectos
 {
-    public string nombreEfecto {get; set;}  
+    public string nombreEfecto {get;}  
     void AplicarEfecto(IPokemon objetivo); 
 }   

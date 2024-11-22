@@ -43,16 +43,23 @@ namespace Library
             {
                 jugador1.ElegirAtaque(jugador1.PokemonActual, jugador2.PokemonActual, indiceAtaque);
                 jugador1Ataco = true; // Indicamos que el jugador 1 atacó
+                VerificarAtaques();
                 return $"La vida de {jugador2.PokemonActual.Nombre} es {jugador2.PokemonActual.MostrarVida()}";
             }
             else if (jugador2.NombreJugador == nombreJugador)
             {
                 jugador2.ElegirAtaque(jugador2.PokemonActual, jugador1.PokemonActual, indiceAtaque);
                 jugador2Ataco = true; // Indicamos que el jugador 2 atacó
+                VerificarAtaques();
                 return $"La vida de {jugador1.PokemonActual.Nombre} es {jugador1.PokemonActual.MostrarVida()}";
             }
+            
+            return "";
+        }
 
-            // Verificamos si ambos jugadores ya han atacado para completar el turno
+        // Verificamos si ambos jugadores ya han atacado para completar el turno
+        public int VerificarAtaques()
+        {
             if (jugador1Ataco && jugador2Ataco)
             {
                 contadorTurnos++; // Incrementamos el turno después de que ambos han atacado
@@ -60,13 +67,14 @@ namespace Library
                 jugador1Ataco = false; // Reseteamos el estado para el próximo turno
                 jugador2Ataco = false; // Reseteamos el estado para el próximo turno
                 VerificarGanador();
-                return $"¡El turno {contadorTurnos - 1} ha finalizado! \n" +
-                       $"Comienza el turno {contadorTurnos}.";
+                Console.WriteLine($"¡El turno {contadorTurnos - 1} ha finalizado! \n" +
+                       $"Comienza el turno {contadorTurnos}.");
+                return contadorTurnos;
             }
 
-            return "";
+            return contadorTurnos;
         }
-
+        
         public string VerificarGanador()
         {
             if (jugador1.PokemonesDerrotados())
@@ -78,8 +86,8 @@ namespace Library
             if (jugador2.PokemonesDerrotados())
             {
                 BatallaEnCurso = false;
-                return $"{jugador2.NombreJugador} ha sido derrotado" +
-                                              $"{jugador1.NombreJugador} GANÓ";
+                return $"{jugador2.NombreJugador} ha sido derrotado " +
+                       $"{jugador1.NombreJugador} GANÓ";
             }
             
             BatallaEnCurso = true;
@@ -105,7 +113,6 @@ namespace Library
         {
             return contadorTurnos;
         }
-
         
         /// <summary>
         /// Ejecuta el cambio de Pokemon y gestiona el cambio de turno.
@@ -154,7 +161,6 @@ namespace Library
 
             return $"{jugador.NombreJugador} es tu turno";
         }
-        
 
         /// <summary>
         /// Gestiona el turno actual

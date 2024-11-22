@@ -169,186 +169,201 @@
             de su índice, devuelva el pokémon esperado ya que su índice es válido.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.ElegirPokemonDelCatalogo_IndiceNegativo">
+        <member name="M:LibraryTests.JugadorPrincipalTest.ElegirPokemonDelCatalogo_IndiceNegativo">
             <summary>
             Este test verifica que al ingresar un índice fuera del rango esperado para elegir tu pokémon, devuelva null.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.ElegirPokemonDelEquipo_IndiceValido">
+        <member name="M:LibraryTests.JugadorPrincipalTest.ElegirPokemonDelEquipo_IndiceValido">
             <summary>
             Verifica que el jugador pueda elegir el pokémon que quiera de su equipo por el índice
             en este caso, el índice es válido y devuelve el pokémon elegido.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.ElegirPokemonDelEquipo_IndiceInvalido">
+        <member name="M:LibraryTests.JugadorPrincipalTest.ElegirPokemonDelEquipo_IndiceInvalido">
             <summary>
             En este caso, el índice está fuera del rango permitido entonces devolverá null.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.MostrarTurnoJugador">
+        <member name="M:LibraryTests.JugadorPrincipalTest.MostrarTurnoJugador">
             <summary>
             Muestra el turno actual del jugador.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.MostrarAtaquesDisponibles_IndiceValido">
+        <member name="M:LibraryTests.JugadorPrincipalTest.MostrarAtaquesDisponibles_IndiceValido">
             <summary>
             Verifica que muestre correctamente los ataques disponibles del pokémon elegido por su índice para la batalla
             En este caso, el índice es válido, entonces devuelve una lista de ataques disponibles para ese pokémon.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.MostrarAtaquesDisponibles_IndiceInvalido">
+        <member name="M:LibraryTests.JugadorPrincipalTest.MostrarAtaquesDisponibles_IndiceInvalido">
             <summary>
             Para este caso, el índice del pokémon elegido es inválido y devuelve el mensaje de error.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.MostrarEquipoConPokemonsValido">
+        <member name="M:LibraryTests.JugadorPrincipalTest.MostrarEquipoConPokemonsValido">
             <summary>
             Verifica que muestre todos los pokémones seleccionados para formar el equipo de 6 a través de su índice.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.MostrarEquipoConPokemonsInvalido">
+        <member name="M:LibraryTests.JugadorPrincipalTest.MostrarEquipoConPokemonsInvalido">
             <summary>
             Para este caso, no hay pokémones en el equipo entonces devuelve null.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.PokemonesDerrotados_TodosSinVida">
+        <member name="M:LibraryTests.JugadorPrincipalTest.PokemonesDerrotados_TodosSinVida">
             <summary>
             En este test, se prueba que todos los pokémones del equipo tienen su vida en 0/100 entonces el método
             PokemonesDerrotados() devuelve true y se termina la batalla asumiendo de ganador el jugador oponente.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.PokemonesDerrotados_AlMenosUnoConVida">
+        <member name="M:LibraryTests.JugadorPrincipalTest.PokemonesDerrotados_AlMenosUnoConVida">
             <summary>
             Si al menos uno de los pokémones del equipo tiene su vida > 0, devuelve false que significa que la batalla sigue. 
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.CambiarPokemonBatalla_IndiceValidoYPokemonNoActual">
+        <member name="M:LibraryTests.JugadorPrincipalTest.CambiarPokemonBatalla_IndiceValidoYPokemonNoActual">
             <summary>
             Esta prueba, verifica que, al querer cambiar de pokémon en una batalla, el índice ingresado sea válido
             (que no sea el del pokémon que está en batalla y que esté dentro del rango). También verifica que el jugador
             utilizó su turno haciendo el cambio.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.CambiarPokemonBatalla_IndiceValidoYPokemonActual">
+        <member name="M:LibraryTests.JugadorPrincipalTest.CambiarPokemonBatalla_IndiceValidoYPokemonActual">
             <summary>
             En este caso, el jugador ingresa el índice del pokémon que está actualmente en la batalla entonces devolverá un
             mensaje de que deberá ingresar otro índice.
             </summary>
         </member>
-        <member name="M:Tests.JugadorPrincipalTest.CambiarPokemonBatalla_IndiceInvalido">
+        <member name="M:LibraryTests.JugadorPrincipalTest.CambiarPokemonBatalla_IndiceInvalido">
             <summary>
             Y para este caso, el índice ingresado está fuera de rango entonces devolverá un mensaje comentando que el
             índice del pokémon es inválido.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.UsarAtaque_IndiceInvalido">
+        <member name="M:LibraryTests.JugadorPrincipalTest.UsarItem_IndiceValidoCuraTotal">
+            <summary>
+            Este test verifica que si un jugador desea usar un item, como Cura Total, devuelva que el turno del jugador
+            ya lo perdió utilizando el item y el pokémon ya no tiene el efecto activo.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.JugadorPrincipalTest.UsarItem_IndiceValidoRevivir">
+            <summary>
+            Este test verifica que si un jugador desea usar un item, como Revivir, devuelva que el turno del jugador
+            ya lo perdió utilizando el item y la vida actual del pokémon aumento un 50%.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.JugadorPrincipalTest.UsarItem_IndiceValidoPocion">
+            <summary>
+            Este test verifica que si un jugador desea usar un item, como Super Pocion, devuelva que el turno del jugador
+            ya lo perdió utilizando el item y la vida actual del pokémon aumente dependiendo de su vida actual anterior.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PokemonTest.UsarAtaque_IndiceInvalido">
             <summary>
             Este test, verifica que al utilizar el método UsarAtaque(), el índice ingresado del ataque que se quiere
             utilizar sea válido. En este caso, es negtivo entonces está fuera de rango, y devuelve un mensaje diciendo que
             ese ataque no es válido.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.UsarAtaque_CalculoDeDañoConPonderador">
+        <member name="M:LibraryTests.PokemonTest.UsarAtaque_CalculoDeDañoConPonderador">
             <summary>
             Para este caso, el índice es válido y el ataque es especial entonces verificamos que se calcule el daño esperado
             utilizando el ponderador.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.UsarAtaque_AtaqueEspecialNoDisponible">
+        <member name="M:LibraryTests.PokemonTest.UsarAtaque_AtaqueEspecialNoDisponible">
             <summary>
             Este caso, verifica que para este turno los ataques especiales no están disponibles.
             Devuelve un mensaje mencionándolo.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.UsarAtaque_AtaqueEspecialCalulcaDaño">
+        <member name="M:LibraryTests.PokemonTest.UsarAtaque_AtaqueEspecialCalulcaDaño">
             <summary>
             Y en este caso, el índice es válido pero el ataque no es especial entonces no utiliza el ponderador pero
             calcula el daño igualmente.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.RecibirDaño">
+        <member name="M:LibraryTests.PokemonTest.RecibirDaño">
             <summary>
             Este test, verifica el método RecibirDaño()
             Primero, comprueba que el pokémon no sea derrotado si su vida actual es mayor a 0 después de recibir el daño.
             También, comprueba que al aplicar un ataque su vida disminuye a 0 y el estado del pokémon pasa a ser Derrotado.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.MostrarVida_Formato">
+        <member name="M:LibraryTests.PokemonTest.MostrarVida_Formato">
             <summary>
             Este test verifica que muestre la vida en el formato pedido.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.AgregaAtaquesDelMismoTipoDePokemon_AgregandoOtrosTipos">
+        <member name="M:LibraryTests.PokemonTest.AgregaAtaquesDelMismoTipoDePokemon_AgregandoOtrosTipos">
             <summary>
             Este test, verifica que al utilizar el método AtaquesPorTipo() de un pokémon, muestre una lista con todos los
             ataques disponibles que tiene para ese tipo de pokémon, ya sean especiales o no, dependiendo del turno.
             Este caso, devolverá que la lista es incorrecta porque se agregó otro tipo que no es el del pokémon seleccionado.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.AgregaAtaquesDelMismoTipoDePokemon">
+        <member name="M:LibraryTests.PokemonTest.AgregaAtaquesDelMismoTipoDePokemon">
             <summary>
             Y este caso, la lista es correcta, ya que están todos los ataques disponibles para ese pokémon.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.ObtenerAtaquesDisponibles_SinEspeciales">
+        <member name="M:LibraryTests.PokemonTest.ObtenerAtaquesDisponibles_SinEspeciales">
             <summary>
             Esta prueba, comprueba que el método ObtenerAtaquesDisponibles() muestra los ataques disponibles dependiendo
             del turno, si ya utilizó un ataque especial debe esperar dos turnos patra volver a utilizarlo. Entonces, si el
             turno es impar los ataques disponibles serán todos menos los especiales.
             </summary>
         </member>
-        <member name="M:Tests.PokemonTest.ObtenerAtaquesDisponibles_ConEspeciales">
+        <member name="M:LibraryTests.PokemonTest.ObtenerAtaquesDisponibles_ConEspeciales">
             <summary>
             Y para esta prueba, verificamos que si el turno es par, muestre todos los ataques disponibles incluyendo los
             ataques especiales.
             </summary>
         </member>
-        <member name="M:Tests.AtaqueTest.CalcularDano_AtaqueEspecial">
+        <member name="M:LibraryTests.TipoPokemonTest.Agua_PonderadorOponenteTipoFuego">
             <summary>
-            Este test, verifica que el método CalcularDano() en la clase Ataque, calcula el daño esperado considerando el
-            daño base, el ponderador y la defensa del pokémon enemigo. Al utilizar el método verificamos si dan el mismo
-            resultado.
+            Este test verifica que el pokémon de tipo Agua al atacar a otro pokémon de tipo Fuego utiliza el ponderador.
             </summary>
         </member>
-        <member name="M:Tests.AtaqueTest.CalcularDano_NoEsEspecial">
+        <member name="M:LibraryTests.TipoPokemonTest.Agua_PonderadorOponenteTipoPlanta">
             <summary>
-            En el caso de que el ataque no sea especial, calculamos sin utilizar el ponderador.
+            Este test verifica que el pokémon de tipo Agua al atacar a otro pokémon de tipo Planta utiliza el ponderador.
             </summary>
         </member>
-        <member name="M:Tests.CatalogosTest.AgregarAtaques_VerificarSiAgregaTodos">
+        <member name="M:LibraryTests.TipoPokemonTest.Agua_PonderadorOponenteNeutro">
             <summary>
-            Esta prueba, verifica que agregue todos los ataques al catálogo de ataques.
+            Este test verifica que el pokémon de tipo Agua al atacar a otro pokémon que no sea de tipo Fuego, Hielo, Agua,
+            Planta o Electrico, el ponderador es neutro (1.0).
             </summary>
         </member>
-        <member name="M:Tests.CatalogosTest.AgregarPokemones">
+        <member name="M:LibraryTests.TipoPokemonTest.Electrico_PonderadorOponenteElectrico">
             <summary>
-            Este test, verifica que agregue todos los pokémones al catálogo de pokémones.
+            Este test verifica que un pokémon de tipo Electrico es inmune a otro de tipo Electrico, su ponderador será 0.
             </summary>
         </member>
-        <member name="M:Tests.CatalogosTest.MostrarCatalogoPokemons_VerificarMuestreTodos">
+        <member name="M:LibraryTests.TipoPokemonTest.Electrico_PonderadorOponenteTierra">
             <summary>
-            Este test, comprueba que el método MostrarCatalogo() de la clase CatalogoPokemons() muestre todos los pokémones
-            que hay en el catálogo, los que se han agregado en el método anterior.
+            Este test verifica que un pokémon de tipo Electrico es débil frente a otro de tipo Tierra, su ponderador será 0.5.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.DormirAplicarEfecto_VerificarEstadoYVidaActual">
+        <member name="M:LibraryTests.TipoPokemonTest.Electrico_PonderadorOponenteNeutro">
             <summary>
-            Este test verifica que al aplicar el efecto Dormir el estado del pokémon cambie a "Dormido" y que su vida
-            disminuya un 5% en cada turno.
+            Este test verifica que el pokémon de tipo Electrico al atacar a otro pokémon que no sea de tipo Electrico o
+            Tierra, el ponderador es neutro (1.0).
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.EnvenenarAplicarEfecto_VerificarEstadoYVidaActual">
+        <member name="M:LibraryTests.TipoPokemonTest.Fuego_PonderadorOponenteFuego">
             <summary>
-            Este test verifica que el estado del pokémon cambie a Envenenado cuando le apliquen el efecto y que su vida
-            disminuya un 5% en cada turno.
+            Este test verifica que un pokémon de tipo Fuego es fuerte frente a otro de tipo Fuego, su ponderador será 2.0.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.ParalizarAplicarEfecto_VerificarEstado">
+        <member name="M:LibraryTests.TipoPokemonTest.Fuego_PonderadorOponenteRoca">
             <summary>
-            En esta prueba verificamos el estado del pokémon luego de aplicar el efecto.
+            Este test verifica que un pokémon de tipo Fuego es débil frente a otro de tipo Roca, su ponderador será 0.5.
             </summary>
         </member>
-        <member name="M:Tests.EfectosTest.QuemarAplicarEfecto_VerificarEstado">
+        <member name="M:LibraryTests.TipoPokemonTest.Fuego_PonderadorOponenteNeutro">
             <summary>
             Este test verifica que el pokémon de tipo Fuego al atacar a otro pokémon que no sea de tipo Fuego, Planta,
             Tierra, Agua o Roca, el ponderador es neutro (1.0).
@@ -418,61 +433,97 @@
             Hielo o Agua, el ponderador es neutro (1.0).
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioUnoTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.PokemonsSeleccionadosSeMuestranEnPantalla">
             <summary>
-            Test1: Como jugador quiero elegir 6 Pokemoon del catalogo disponible.
+            Historia de Usuario 1.
+            Verificamos que el jugador puede seleccionar 6 Pokémons de una lista o catálogo y luego,
+            se muestre en pantalla el equipo elegido.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioDosTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.SeleccionarEquipo">
             <summary>
-            Historia de usuario 2.
-            Como jugador, quiero ver los ataques disponibles de mis Pokemones para poder elegir en cada turno
+            Verificamos que puede elegir hasta 6 pokémons para formar su equipo.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioTresTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.AtaquesDisponiblesPrimerTurno">
             <summary>
-            Como jugador, quiero ver la cantidad de vida (HP) de mis Pokémons y de los Pokémons oponentes para saber cuánta salud tienen.
+            Historia de Usuario 2.
+            Verificamos que el jugador vea los ataques disponibles de sus Pokemones para poder elegir en cada turno.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioCuatroTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.AtaquesDisponiblesSegundoTurno">
             <summary>
-            Como jugador, quiero atacar en mi turno y hacer daño basado en la efectividad de los tipos de Pokémon.
+            Se debe asegurar que los ataques especiales se puedan seleccionar solo cada 2 turnos.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioCincoTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.ActualizacionDeVidaEnCadaAtaque">
             <summary>
-            Como jugador, quiero saber de quién es el turno para estar seguro de cuándo atacar o esperar.
+            Historia de Usuario 3.
+            Verificamos que la vida de los Pokémons propios y del oponente se actualicen tras cada ataque.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioSeisTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.MostrarVidaEnFormatoNumerico">
             <summary>
-            Como jugador, quiero ganar la batalla cuando la vida de todos los Pokémons oponente llegue a cero.
+            Verificamos que la vida se muestre en formato numérico (ej. 20/50).
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioSieteTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.SeleccionarAtaqueBasadoEnEfectividad">
             <summary>
-            Como jugador, quiero poder cambiar de Pokémon durante una batalla.
+            Historia de Usuario 4.
+            Verificamos que como jugador, quiero atacar en mi turno y hacer daño basado en la efectividad de
+            los tipos de Pokémon.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioOcho">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.MostrarTurnoActual">
             <summary>
-            Como entrenador, quiero poder usar un ítem durante una batalla.
-            Al usar el ítem se pierde el turno
+            Historia de Usuario 5.
+            Verificamos que se muestre en pantalla de quién es el turno para estar seguro de cuándo atacar o esperar.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioNueveTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.DerrotaCuandoTotalPokemonsVidaCero">
             <summary>
-            Como entrenador, quiero unirme a la lista de jugadores esperando por un oponente.
+            Historia de Usuario 6.
+            Verificamos que la batalla se termine automáticamente cuando todos los Pokémons del oponente alcanza 0 de vida.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioDiezTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.MensajeGanador">
             <summary>
-            Se quiere probar que al entrnador le deje ver la lista de jugadores que se unieron a la lista.
+            Verificamos que se muestre un mensaje indicando el ganador de la batalla.
             </summary>
         </member>
-        <member name="T:Library.Tests.HistoriaUsuarioOnceTest">
+        <member name="M:Library.Tests.HistoriaUsuarioTest.CambiarPokemon">
             <summary>
-             Como entrenador, quiero iniciar una ballata con un jugador que está esperando por un oponente.
+            Historia de Usuario 7.
+            Verificamos que al cambiar de pokémon durante la batalla se pierde automáticamente el turno.
+            </summary>
+        </member>
+        <member name="M:Library.Tests.HistoriaUsuarioTest.UsarItem_PierdeTurno">
+            <summary>
+            Historia de Usuario 8.
+            Verificamos que al utilizar un item durante la batalla el jugador pierde su turno.
+            </summary>
+        </member>
+        <member name="M:Library.Tests.HistoriaUsuarioTest.ListaDeEsperaJugadores">
+            <summary>
+            Historia de Usuario 9.
+            Verificamos que al unirse a la lista de espera, el jugador reciba un mensaje de confirmación.
+            </summary>
+        </member>
+        <member name="M:Library.Tests.HistoriaUsuarioTest.MostrarListaDeEsperaPorOponente">
+            <summary>
+            Historia de Usuario 10.
+            Verificamos que se muestre la lista de espera con los jugadores que se unieron.
+            </summary>
+        </member>
+        <member name="M:Library.Tests.HistoriaUsuarioTest.NotificarInicio">
+            <summary>
+            Historia de Usuario 11.
+            Verificamos que al iniciar una batalla se le notifique a ambos jugadores.
+            </summary>
+        </member>
+        <member name="M:Library.Tests.HistoriaUsuarioTest.PrimerTurnoAleatorio">
+            <summary>
+            El primer turno se determina aleatoriamente.
             </summary>
         </member>
     </members>

@@ -64,7 +64,7 @@ namespace Library;
         /// <param name="indiceAtaque"></param>
         public void ElegirAtaque(IPokemon pokemon, IPokemon enemigo, int indiceAtaque)
         {
-            pokemon.UsarAtaque(indiceAtaque, enemigo); // Supongamos que elegimos un ataque del Pokémon
+            pokemon.UsarAtaque(indiceAtaque, enemigo, this); // Supongamos que elegimos un ataque del Pokémon
         }
 
         /// <summary>
@@ -88,9 +88,9 @@ namespace Library;
         /// Muestra el catálogo con todos los pokémones disponibles para formar un equipo
         /// </summary>
         /// <param name="catalogo"></param>
-        public void MostrarCatalogo()
+        public string MostrarCatalogo()
         {
-            CatalogoPokemon.MostrarCatalogo();
+            return CatalogoPokemon.MostrarCatalogo();
         }
 
         /// <summary>
