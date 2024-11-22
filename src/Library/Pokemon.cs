@@ -38,7 +38,7 @@ namespace Library;
         /// </summary>
         /// <param name="indiceAtaque"></param>
         /// <param name="enemigo"></param>
-        public string UsarAtaque(int indiceAtaque, IPokemon enemigo)           
+        public string UsarAtaque(int indiceAtaque, IPokemon enemigo, JugadorPrincipal jugador)           
         {
             if (indiceAtaque < 0 || indiceAtaque >= Ataques.Count)
             {
@@ -59,11 +59,10 @@ namespace Library;
             double danoTotal = danoInicial * ponderador;
             
             enemigo.RecibirDaño(danoTotal);
-
             
             turnoContadorEspecial++;
+            jugador.TurnoActual = false;
             
-        
             return $"{Nombre} usó {ataque.Nombre} y causó {danoTotal} puntos de daño.";
         }
         

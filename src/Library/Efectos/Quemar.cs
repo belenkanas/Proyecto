@@ -5,7 +5,7 @@ namespace Library;
 /// </summary>
 public class Quemar : AplicarDaño, IEfectos
 {
-    public string nombreEfecto {get; set;} = "Quemar";
+    public string nombreEfecto {get;} = "Quemar";
     
     /// <summary>
     /// // Numero de turnos que durara el efecto

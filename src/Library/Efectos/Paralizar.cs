@@ -6,7 +6,7 @@ namespace Library;
 /// </summary>
 public class Paralizar : IEfectos
 {
-    public string nombreEfecto {get; set;} = "Paralizar";
+    public string nombreEfecto {get;} = "Paralizar";
 
     public void AplicarEfecto (IPokemon objetivo)
     {
