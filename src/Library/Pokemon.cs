@@ -120,5 +120,9 @@ namespace Library;
                 return Ataques.Where(ataque => !ataque.EsEspecial).ToList();
             }
         }
+        public override string ToString()
+        {
+               return $"{Nombre}, Tipo: {TipoPokemon.NombreTipo}, Vida: {VidaActual}/{VidaTotal}";
+        }
 
     }
