@@ -22,16 +22,9 @@ public class ChoosePokemonCommand : ModuleBase<SocketCommandContext>
     {
         string displayName = Context.User.Username;
 
-        // Verifica si el jugador ya existe
-        if (!jugadores.ContainsKey(displayName))
-        {
-            await ReplyAsync("No tienes un equipo registrado. Usa el comando 'addpokemon2team' para agregar Pokémon.");
-            return;
-        }
+        Facade.Instance.RegisterPlayer(displayName);
 
-        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
-        
-        string resultado = jugadorPrincipal.ElegirPokemon(index).ToString();
+        string resultado = Facade.Instance.ElegirPokemon(displayName, index);
 
         await ReplyAsync(resultado);
     }
