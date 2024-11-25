@@ -74,6 +74,28 @@ public class EfectosTest
         Assert.That(pokemon.Estado, Is.EqualTo("Paralizado"));
         Assert.That(paralizar.nombreEfecto, Is.EqualTo("Paralizar"));
     }
+    
+    /// <summary>
+    /// En esta prueba verificamos que se cumpla el permiso para atacar del pokemon
+    /// el cual es aleatorio.
+    /// </summary>
+    [Test]
+    public void PuedeAtacar_RetornaValoresAleatorios()
+    {
+        int puedeAtacarVerdadero = 0;
+        int puedeAtacarFalso = 0;
+        
+        for (int i = 0; i < 1000; i++) // Probamos varios casos para capturar la mayor cantidad posible de casos verdadero y de casos falsos.
+        {
+            if (paralizar.PuedeAtacar())
+                puedeAtacarVerdadero++;
+            else
+                puedeAtacarFalso++;
+        }
+        
+        Assert.That(puedeAtacarVerdadero, Is.GreaterThan(0)); //Verifica que por lo menos una vez permite atacar
+        Assert.That(puedeAtacarFalso, Is.GreaterThan(0));// Verifica que por lo menos una vez no permite atacar.
+    }
 
     /// <summary>
     /// En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto ys u vida disminuya
