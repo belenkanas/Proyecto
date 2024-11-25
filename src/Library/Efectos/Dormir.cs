@@ -8,7 +8,7 @@ using Library;
 public class Dormir : AplicarDaño, IEfectos
 {
     public string nombreEfecto {get;} = "Dormir";
-    private int turnosRestante { get; set; }
+    public int turnosRestante { get; set; }
 
     /// <summary>
     /// Determina aleatoriamente cuantos turnos estará dormido el enemigo (entre 1 y 4)

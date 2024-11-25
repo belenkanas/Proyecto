@@ -42,6 +42,7 @@ public class ItemsTest
         
         Assert.That(pokemon.EfectoActivo, Is.Null);
         Assert.That(pokemon.Estado, Is.EqualTo("Normal"));
+        Assert.That(cura.NombreItem, Is.EqualTo("Cura Total"));
     }
     
     /// <summary>
@@ -108,6 +109,7 @@ public class ItemsTest
         double vidaEsperada = pokemon.VidaTotal * 0.5;
         
         Assert.That(vidaActual, Is.EqualTo(vidaEsperada));
+        Assert.That(revivir.NombreItem, Is.EqualTo("Revivir"));
     }
 
     /// <summary>
@@ -154,6 +156,7 @@ public class ItemsTest
         
         Assert.That(vidaActual, Is.EqualTo(vidaEsperada));
         Assert.That(pocion.usosRestantes, Is.EqualTo(3));
+        Assert.That(pocion.NombreItem, Is.EqualTo("Super Pocion"));
     }
 
     /// <summary>

@@ -11,9 +11,9 @@ public interface IPokemon
     public ITipo TipoPokemon { get; set; }              //Tipo del pokémon
     public double VidaActual { get; set; }                    //Vida del pokémon
     public double VidaTotal {get; set;}
-    public double Ataque { get; set; }                  //Valor de ataque del pokémon
+    public double Ataque { get; }                  //Valor de ataque del pokémon
     public double Defensa { get; set; }                 //Valor de defensa del pokémon
-    public double AtaqueEspecial { get; set; }          //Valor de ataque especial del pokémon
+    public double AtaqueEspecial { get; }          //Valor de ataque especial del pokémon
     public double DefensaEspecial { get; set; }         //Valor de defensa del pokémon
     public List<Ataque> Ataques {get; set;}
     public CatalogoAtaques Catalogo { get; set; }
