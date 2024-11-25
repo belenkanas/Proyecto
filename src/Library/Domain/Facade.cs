@@ -232,6 +232,20 @@ public class Facade
         return "No hay batalla activa";
     }
 
+    public string ElegirPokemon(string displayName, int pokemon)
+    {
+        
+        JugadorPrincipal jugador = jugadores[displayName];
+        // Verifica si el jugador ya existe
+        if (!jugadores.ContainsKey(displayName))
+        {
+            return "No tienes un equipo registrado. Usa el comando 'agregarpokemon' para agregar Pokémon a tu equipo.";
+        }
+        
+        string resultado = jugador.ElegirPokemon(pokemon).ToString();
+
+        return resultado;
+    }
     public string CambiarPokemon(string jugador, int indicePokemon)
     {
         if (batallasActivas.ContainsKey(jugador))
@@ -249,7 +263,7 @@ public class Facade
         // Verifica si el jugador ya existe
         if (!jugadores.ContainsKey(displayName))
         {
-            return "No tienes un equipo registrado. Usa el comando 'addpokemon2team' para agregar Pokémon.";
+            return "No tienes un equipo registrado. Usa el comando 'agregarpokemon' para agregar Pokémon.";
         }
 
         // Valida el índice del Pokémon en el equipo
@@ -273,7 +287,7 @@ public class Facade
         return "No estás en una batalla activa.";
     }
 
-public string AddPokemonToTeam(string playerName, int pokemonId)
+    public string AddPokemonToTeam(string playerName, int pokemonId)
     {
         if (!jugadores.ContainsKey(playerName))
         {
