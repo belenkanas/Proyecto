@@ -100,6 +100,12 @@
             En esta prueba verificamos el estado del pokémon luego de aplicar el efecto.
             </summary>
         </member>
+        <member name="M:LibraryTests.EfectosTest.PuedeAtacar_RetornaValoresAleatorios">
+            <summary>
+            En esta prueba verificamos que se cumpla el permiso para atacar del pokemon
+            el cual es aleatorio.
+            </summary>
+        </member>
         <member name="M:LibraryTests.EfectosTest.QuemarAplicarEfecto_VerificarEstado">
             <summary>
             En esta prueba verificamos que el estado del pokémon sea Quemado luego de aplicar el efecto ys u vida disminuya
