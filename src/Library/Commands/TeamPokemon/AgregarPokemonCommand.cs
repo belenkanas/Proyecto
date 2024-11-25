@@ -5,15 +5,15 @@ using Ucu.Poo.DiscordBot.Domain;
 namespace Ucu.Poo.DiscordBot.Commands;
 
 /// <summary>
-/// Esta clase implementa el comando 'addpokemon2team' del bot. Este comando le permite agregar al
-/// entrenador hasta 6 pokemons del catálogo de pokemons.
+/// Esta clase implementa el comando 'addpokemon2team' del bot. Este comando le permite agregar
+/// hasta 6 pokemons del catálogo de pokemons al equipo del jugador.
 /// </summary>
 // ReSharper disable once UnusedType.Global
 public class AgregarPokemonCommand : ModuleBase<SocketCommandContext>
 {
     /// <summary>
-    /// Implementa el comando 'addpokemon2team'. Este comando muestra la lista de
-    /// pókemons disponibles para usar en la batalla.
+    /// Implementa el comando 'agregarpokemon'. Este comando permite al jugador agregar
+    /// un Pokémon a su equipo.
     /// </summary>
     [Command("agregarpokemon")]
     [Summary("Le permite agregar hasta 6 pokemons al equipo del jugador.")]

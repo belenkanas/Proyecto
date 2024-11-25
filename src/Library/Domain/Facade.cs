@@ -39,6 +39,7 @@ public class Facade
     }
 
     private WaitingList WaitingList { get; }
+    
     private BattlesList BattlesList { get; }
 
     /// <summary>

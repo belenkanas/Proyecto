@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using Library;
 using Ucu.Poo.DiscordBot.Domain;
 using Ucu.Poo.DiscordBot.Services;
