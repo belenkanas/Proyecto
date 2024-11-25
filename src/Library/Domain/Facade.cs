@@ -302,4 +302,34 @@ public class Facade
             : "No se pudo agregar el Pokémon. Verifica el ID y que tengas espacio en el equipo.";
     }
 
+    public string MostrarVidaPokemon(string displayName, int idpokemon)
+    {
+        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
+        IPokemon pokemon = jugadorPrincipal.ElegirPokemon(idpokemon);
+        string resultado = pokemon.MostrarVida();
+        return resultado;
+    }
+
+    public string MostrarTurno(string jugador)
+    {
+        JugadorPrincipal jugadorPrincipal = jugadores[jugador];
+        batallasActivas.TryGetValue(jugador, out BatallaFacade batalla);
+        
+        string resultado = batalla.VerificarTurno(jugador).ToString();
+        return resultado;
+        
+    }
+
+    public string UsarItem(string displayName, int id)
+    {
+        JugadorPrincipal jugador = jugadores[displayName];
+
+        if (jugador.PokemonActual != null)
+        {
+            jugador.UsarItem(id, jugador.PokemonActual);
+            return ("Usaste un ítem en tu Pokémon.");
+        }
+        return ("No tienes un Pokémon en batalla. Usa el comando elegir pokemon");
+        
+    }
 }

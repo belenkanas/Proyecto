@@ -1,5 +1,6 @@
 ﻿using Discord.Commands;
 using Library;
+using Ucu.Poo.DiscordBot.Domain;
 
 namespace Ucu.Poo.DiscordBot.Commands;
 /// <summary>
@@ -16,14 +17,12 @@ public class ShowTurnCommand : ModuleBase<SocketCommandContext>
     /// </summary>
     [Command("mostrarturno")]
     [Summary("Permite que el jugador vea si es su turno o no")]
-    public async Task ExecuteAsync(int indiceAtaque)
+    public async Task ExecuteAsync()
     {
-        string displayName = CommandHelper.GetDisplayName(Context);
-        if (batallasEnCurso.TryGetValue(displayName, out BatallaFacade batalla))
-        {
-            string resultado = batalla.VerificarTurno(displayName).ToString();
-            await ReplyAsync(resultado);
+        string displayName = Context.User.Username;
+        Facade.Instance.RegisterPlayer(displayName);
 
-        }
+        string resultado = Facade.Instance.MostrarTurno(displayName);
+        await ReplyAsync(resultado);
     }
 }
