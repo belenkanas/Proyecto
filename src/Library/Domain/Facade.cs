@@ -288,4 +288,12 @@ public string AddPokemonToTeam(string playerName, int pokemonId)
             : "No se pudo agregar el Pokémon. Verifica el ID y que tengas espacio en el equipo.";
     }
 
+    public string MostrarInventarioItems(string displayName)
+    {
+        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
+        
+        string inventario = jugadorPrincipal.MostrarInventario();
+        return inventario;
+    }
+
 }
