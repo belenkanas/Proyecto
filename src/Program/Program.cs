@@ -1,19 +1,33 @@
-﻿//--------------------------------------------------------------------------------
-// <copyright file="Program.cs" company="Universidad Católica del Uruguay">
-//     Copyright (c) Programación II. Derechos reservados.
-// </copyright>
-//--------------------------------------------------------------------------------
-/*
+﻿
+
 using System;
 using Library;
+using Ucu.Poo.DiscordBot.Domain;
+using Ucu.Poo.DiscordBot.Services;
 
-namespace EntregaUno
+namespace EntregaUno;
+internal static class Program
 {
-    class Program
+    /// <summary>
+    /// Punto de entrada al programa.
+    /// </summary>
+    private static void Main()
     {
-        static void Main(string[] args)
-        {
-            
-        }
+        //DemoFacade();
+        DemoBot();
+    }
+
+    // private static void DemoFacade()
+    // {
+    //     Console.WriteLine(Facade.Instance.AddTrainerToWaitingList("player"));
+    //     Console.WriteLine(Facade.Instance.AddTrainerToWaitingList("opponent"));
+    //     Console.WriteLine(Facade.Instance.GetAllTrainersWaiting());
+    //     Console.WriteLine(Facade.Instance.StartBattle("player", "opponent"));
+    //     Console.WriteLine(Facade.Instance.GetAllTrainersWaiting());
+    // }
+
+    private static void DemoBot()
+    {
+        BotLoader.LoadAsync().GetAwaiter().GetResult();
     }
 }*/
