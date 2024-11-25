@@ -332,4 +332,12 @@ public class Facade
         return ("No tienes un Pokémon en batalla. Usa el comando elegir pokemon");
         
     }
+    public string MostrarInventarioItems(string displayName)
+    {
+        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
+        
+        string inventario = jugadorPrincipal.MostrarInventario();
+        return inventario;
+    }
+
 }
