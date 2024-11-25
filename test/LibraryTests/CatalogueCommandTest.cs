@@ -14,5 +14,9 @@ public class CatalogueCommandTest
     public void SetUp()
     {
         jugador = new JugadorPrincipal("Pedro");
+
+        jugador.ElegirDelCatalogo(0);
+        jugador.ElegirDelCatalogo(1);
+        jugador.ElegirDelCatalogo(2);
     }
 }
