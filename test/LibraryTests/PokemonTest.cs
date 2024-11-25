@@ -220,4 +220,13 @@ public class PokemonTest
         Assert.That("Rayo", Is.EqualTo(ataques[2].Nombre));  
         Assert.That("Trueno", Is.EqualTo(ataques[3].Nombre));
     }
+
+    [Test]
+    public void ToString_VerificarVida()
+    {
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        string resultado = $"Pikachu, Tipo: Electrico, Vida: 100/100";
+        
+        Assert.That(pokemon.ToString(), Is.EqualTo(resultado));
+    }
 }
