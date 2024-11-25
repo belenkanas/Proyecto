@@ -426,7 +426,7 @@
             permite al entrenador ver si es su turno o no.
             </summary>
         </member>
-        <member name="M:Ucu.Poo.DiscordBot.Commands.ShowTurnCommand.ExecuteAsync(System.Int32)">
+        <member name="M:Ucu.Poo.DiscordBot.Commands.ShowTurnCommand.ExecuteAsync">
             <summary>
             Implementa el comando 'mostrarturno'. Este comando permite que el entrenador
             vea si es su turno o no.

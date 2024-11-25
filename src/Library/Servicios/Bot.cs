@@ -39,7 +39,7 @@ public class Bot : IBot
 
     public async Task StartAsync(ServiceProvider services)
     {
-        string discordToken = "MTMxMDU5MjYzMDU5NzM1MzU5Mg.GGqWhL.A_-oH4fOlmvBidU69kDepaaLslLx0LOpiZfVSk" ?? throw new Exception("Falta el token");
+        string discordToken = "MTMxMDM3NjgyNTc2MzEzNTQ5MA.GV3YY8.dMAUSyEsxk2k9Ap0jDd_tXabWL3J_ACb7pFhjo" ?? throw new Exception("Falta el token");
 
         logger.LogInformation("Iniciando el con token {Token}", discordToken);
         

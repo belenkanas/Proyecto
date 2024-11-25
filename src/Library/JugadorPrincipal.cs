@@ -204,7 +204,7 @@ namespace Library;
             {
                 if (PokemonActual != EquipoPokemons[indice])
                 {
-                    PokemonActual = EquipoPokemons[indice];
+                    PokemonActual = (Pokemon)EquipoPokemons[indice];
                     TurnoActual = false;
                     return $"{NombreJugador} ha cambiado de pokémon a {PokemonActual.Nombre}";
                 }

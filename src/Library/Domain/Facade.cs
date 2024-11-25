@@ -241,10 +241,10 @@ public class Facade
         {
             return "No tienes un equipo registrado. Usa el comando 'agregarpokemon' para agregar Pokémon a tu equipo.";
         }
-        
-        string resultado = jugador.ElegirPokemon(pokemon).ToString();
+        IPokemon pokemonelegido = jugador.ElegirPokemon(pokemon);
+        string mensaje = $"¡{pokemonelegido.Nombre} ha sido elegido para la batalla!";
 
-        return resultado;
+        return mensaje;
     }
     public string CambiarPokemon(string jugador, int indicePokemon)
     {
