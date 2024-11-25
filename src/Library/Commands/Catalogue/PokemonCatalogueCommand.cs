@@ -1,5 +1,4 @@
 ﻿using Discord.Commands;
-using Library;
 using Ucu.Poo.DiscordBot.Domain;
 
 namespace Ucu.Poo.DiscordBot.Commands;
@@ -10,9 +9,6 @@ namespace Ucu.Poo.DiscordBot.Commands;
 /// </summary>
 public class PokemonCatalogueCommand : ModuleBase<SocketCommandContext>
 {
-    private static Dictionary<string, JugadorPrincipal> jugadores = new Dictionary<string, JugadorPrincipal>();
-    
-
     /// <summary>
     /// Implementa el comando 'catalogopokemons'. Este comando muestra la lista de
     /// pókemons disponibles para usar en la batalla.
@@ -22,13 +18,14 @@ public class PokemonCatalogueCommand : ModuleBase<SocketCommandContext>
     public async Task MostrarCatalogo()
     {
         string displayName = Context.User.Username;
-        
-        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
 
-        string resultado = jugadorPrincipal.MostrarCatalogo();
+        // Registrar al jugador si no existe
+        Facade.Instance.RegisterPlayer(displayName);
+
+        // Obtener el catálogo desde la clase Facade
+        string resultado = Facade.Instance.ShowPokemonCatalogue(displayName);
+
+        // Responder con el resultado
         await ReplyAsync(resultado);
     }
-    
-    
-    
 }
