@@ -11,7 +11,6 @@ namespace Ucu.Poo.DiscordBot.Commands;
 /// </summary>
 public class AttacksCatalogueCommand : ModuleBase<SocketCommandContext>
 {
-    public static Dictionary<string, JugadorPrincipal> jugadores = new Dictionary<string, JugadorPrincipal>();
 
     /// <summary>
     /// Implementa el comando 'catalogoataques'. Este comando muestra la lista de
@@ -19,30 +18,12 @@ public class AttacksCatalogueCommand : ModuleBase<SocketCommandContext>
     /// </summary>
     [Command("catalogoataques")]
     [Summary("Muestra los ataques disponibles para utilizar")]
-    public async Task<string> ExecuteAsync([Summary("Índice del pokemón en el equipo (1-6)")] int indice)
+    public async Task ExecuteAsync([Summary("Índice del pokemón en el equipo (1-6)")] int indice)
     {
         string displayName = Context.User.Username;
-        // Verifica si el jugador ya existe
-        if (!jugadores.ContainsKey(displayName))
-        {
-            string message = "No tienes un equipo registrado. Usa el comando 'addpokemon2team' para agregar Pokémon.";
-            await ReplyAsync(message);
-            return message;
-        }
+        Facade.Instance.RegisterPlayer(displayName);
 
-        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
-
-        // Valida el índice del Pokémon en el equipo
-        if (indice < 1 || indice > jugadorPrincipal.EquipoPokemons.Count)
-        {
-            string message = "Por favor, ingrese un índice válido de Pokémon en su equipo (1-6).";
-            await ReplyAsync(message);
-            return message;
-        }
-
-        // Muestra los ataques del Pokémon seleccionado
-        string ataques = jugadorPrincipal.MostrarAtaquesDisponibles(indice - 1); // Ajusta índice para base 0
+        string ataques = Facade.Instance.MostrarAtaques(displayName, indice); // Ajusta índice para base 0
         await ReplyAsync(ataques);
-        return ataques;
     }
 }

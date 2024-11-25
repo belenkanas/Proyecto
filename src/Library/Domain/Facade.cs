@@ -96,7 +96,7 @@ public class Facade
 
         if (string.IsNullOrWhiteSpace(equipo))
         {
-            return "Tu equipo está vacío. Usa el comando 'addpokemon2team' para agregar Pokémon.";
+            return "Tu equipo está vacío. Usa el comando 'agregarpokemon' para agregar Pokémon.";
         }
 
         return $"Equipo de {displayName}:\n{equipo}";
@@ -243,6 +243,26 @@ public class Facade
         return "No estás en una batalla activa.";
     }
 
+    public string MostrarAtaques(string displayName, int indice)
+    {
+        JugadorPrincipal jugador = jugadores[displayName];
+        // Verifica si el jugador ya existe
+        if (!jugadores.ContainsKey(displayName))
+        {
+            return "No tienes un equipo registrado. Usa el comando 'addpokemon2team' para agregar Pokémon.";
+        }
+
+        // Valida el índice del Pokémon en el equipo
+        if (indice < 1 || indice > jugador.EquipoPokemons.Count)
+        {
+            return "Por favor, ingrese un índice válido de Pokémon en su equipo (1-6).";
+            
+        }
+
+        // Muestra los ataques del Pokémon seleccionado
+        return jugador.MostrarAtaquesDisponibles(indice - 1); // Ajusta índice para base 0
+        
+    }
     public string VerificarEstadoBatalla(string jugador)
     {
         if (batallasActivas.ContainsKey(jugador))
