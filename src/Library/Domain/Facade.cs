@@ -5,30 +5,21 @@ namespace Ucu.Poo.DiscordBot.Domain;
 /// <summary>
 /// Esta clase recibe las acciones y devuelve los resultados que permiten
 /// implementar las historias de usuario.
-/// Acá se crean los jugadores, se les agregan los pokemones y los ataques respectivamente.
-/// Además, llama a las funciones necesarias para poder realizar ataques entre jugadores.
-/// Otras clases que implementan el bot usan esta <see cref="Facade"/> pero no conocen el resto de las clases del
-/// dominio. Esta clase es un singleton.
 /// </summary>
 public class Facade
 {
     private static Facade? _instance;
-    //Este diccionario permite gestionar múltiples batallas simultáneamente.
+    private Dictionary<string, JugadorPrincipal> jugadores;
     private Dictionary<string, BatallaFacade> batallasActivas;
-    
-    /// <summary>
-    /// Este constructor privado impide que otras clases puedan crear instancias de esta.
-    /// </summary>
+
     private Facade()
     {
         this.WaitingList = new WaitingList();
         this.BattlesList = new BattlesList();
+        this.jugadores = new Dictionary<string, JugadorPrincipal>();
         this.batallasActivas = new Dictionary<string, BatallaFacade>();
     }
 
-    /// <summary>
-    /// Obtiene la única instancia de la clase <see cref="Facade"/>.
-    /// </summary>
     public static Facade Instance
     {
         get
@@ -42,17 +33,76 @@ public class Facade
         }
     }
 
-    /// <summary>
-    /// Inicializa este singleton. Es necesario solo en los tests.
-    /// </summary>
     public static void Reset()
     {
         _instance = null;
     }
-    
+
     private WaitingList WaitingList { get; }
-    
     private BattlesList BattlesList { get; }
+
+    /// <summary>
+    /// Registra un nuevo jugador si no existe.
+    /// </summary>
+    /// <param name="displayName">El nombre del jugador.</param>
+    public void RegisterPlayer(string displayName)
+    {
+        if (!jugadores.ContainsKey(displayName))
+        {
+            jugadores[displayName] = new JugadorPrincipal(displayName);
+        }
+    }
+
+    /// <summary>
+    /// Muestra el catálogo de Pokémon de un jugador.
+    /// </summary>
+    /// <param name="displayName">El nombre del jugador.</param>
+    /// <returns>El catálogo de Pokémon.</returns>
+    public string ShowPokemonCatalogue(string displayName)
+    {
+        if (!jugadores.ContainsKey(displayName))
+        {
+            return $"{displayName} no está registrado. Usa el comando para registrarte.";
+        }
+
+        JugadorPrincipal jugador = jugadores[displayName];
+        string catalogo = jugador.MostrarCatalogo();
+
+        if (string.IsNullOrWhiteSpace(catalogo))
+        {
+            return "Tu catálogo de Pokémon está vacío.";
+        }
+
+        return $"Catálogo de Pokémon de {displayName}:\n{catalogo}";
+    }
+
+    /// <summary>
+    /// Muestra el equipo de un jugador.
+    /// </summary>
+    /// <param name="displayName">El nombre del jugador.</param>
+    /// <returns>El equipo de Pokémon del jugador.</returns>
+    
+
+    
+    public string ShowPlayerTeam(string displayName)
+    {
+        if (!jugadores.ContainsKey(displayName))
+        {
+            return $"{displayName} no está registrado. Usa el comando para registrarte.";
+        }
+
+        JugadorPrincipal jugador = jugadores[displayName];
+        string equipo = jugador.MostrarEquipo();
+
+        if (string.IsNullOrWhiteSpace(equipo))
+        {
+            return "Tu equipo está vacío. Usa el comando 'addpokemon2team' para agregar Pokémon.";
+        }
+
+        return $"Equipo de {displayName}:\n{equipo}";
+    }
+
+
 
     /// <summary>
     /// Agrega un jugador a la lista de espera.
@@ -65,7 +115,7 @@ public class Facade
         {
             return $"{displayName} agregado a la lista de espera";
         }
-        
+
         return $"{displayName} ya está en la lista de espera";
     }
 
@@ -102,7 +152,7 @@ public class Facade
         {
             result = result + trainer.DisplayName + "; ";
         }
-        
+
         return result;
     }
 
@@ -118,16 +168,12 @@ public class Facade
         {
             return $"{displayName} no está esperando";
         }
-        
+
         return $"{displayName} está esperando";
     }
 
-
     private string CreateBattle(string playerDisplayName, string opponentDisplayName)
     {
-        // Aunque playerDisplayName y opponentDisplayName no estén en la lista
-        // esperando para jugar los removemos igual para evitar preguntar si
-        // están para luego removerlos.
         this.WaitingList.RemoveTrainer(playerDisplayName);
         this.WaitingList.RemoveTrainer(opponentDisplayName);
 
@@ -137,7 +183,7 @@ public class Facade
         BatallaFacade batalla = new BatallaFacade(jugador, oponente);
         batallasActivas[playerDisplayName] = batalla;
         batallasActivas[opponentDisplayName] = batalla;
-        
+
         BattlesList.AddBattle(playerDisplayName, opponentDisplayName);
         return $"Comienza {playerDisplayName} vs {opponentDisplayName}";
     }
@@ -145,59 +191,33 @@ public class Facade
     /// <summary>
     /// Crea una batalla entre dos jugadores.
     /// </summary>
-    /// <param name="playerDisplayName">El primer jugador.</param>
-    /// <param name="opponentDisplayName">El oponente.</param>
-    /// <returns>Un mensaje con el resultado.</returns>
     public string StartBattle(string playerDisplayName, string? opponentDisplayName)
     {
-        // El símbolo ? luego de Trainer indica que la variable opponent puede
-        // referenciar una instancia de Trainer o ser null.
         Trainer? opponent;
-        
+
         if (!OpponentProvided() && !SomebodyIsWaiting())
         {
             return "No hay nadie esperando";
         }
-        
-        if (!OpponentProvided()) // && SomebodyIsWaiting
+
+        if (!OpponentProvided())
         {
             opponent = this.WaitingList.GetAnyoneWaiting();
-            
-            // El símbolo ! luego de opponent indica que sabemos que esa
-            // variable no es null. Estamos seguros porque SomebodyIsWaiting
-            // retorna true si y solo si hay usuarios esperando y en tal caso
-            // GetAnyoneWaiting nunca retorna null.
             return this.CreateBattle(playerDisplayName, opponent!.DisplayName);
         }
 
-        // El símbolo ! luego de opponentDisplayName indica que sabemos que esa
-        // variable no es null. Estamos seguros porque OpponentProvided hubiera
-        // retorna false antes y no habríamos llegado hasta aquí.
         opponent = this.WaitingList.FindTrainerByDisplayName(opponentDisplayName!);
-        
+
         if (!OpponentFound())
         {
             return $"{opponentDisplayName} no está esperando";
         }
-        
+
         return this.CreateBattle(playerDisplayName, opponent!.DisplayName);
-        
-        // Funciones locales a continuación para mejorar la legibilidad
 
-        bool OpponentProvided()
-        {
-            return !string.IsNullOrEmpty(opponentDisplayName);
-        }
-
-        bool SomebodyIsWaiting()
-        {
-            return this.WaitingList.Count != 0;
-        }
-
-        bool OpponentFound()
-        {
-            return opponent != null;
-        }
+        bool OpponentProvided() => !string.IsNullOrEmpty(opponentDisplayName);
+        bool SomebodyIsWaiting() => this.WaitingList.Count != 0;
+        bool OpponentFound() => opponent != null;
     }
 
     public string RealizarAtaque(string jugador, int indiceAtaque)
@@ -220,10 +240,9 @@ public class Facade
             batalla.CambiarPokemon(jugador, indicePokemon);
             return "Pokémon cambiado.";
         }
-        return "No estás en una batalla activa.";   
-        
+        return "No estás en una batalla activa.";
     }
-    
+
     public string VerificarEstadoBatalla(string jugador)
     {
         if (batallasActivas.ContainsKey(jugador))
@@ -233,5 +252,20 @@ public class Facade
         }
         return "No estás en una batalla activa.";
     }
-    
+
+public string AddPokemonToTeam(string playerName, int pokemonId)
+    {
+        if (!jugadores.ContainsKey(playerName))
+        {
+            return "Jugador no registrado. Usa algún comando para registrarte.";
+        }
+
+        JugadorPrincipal jugador = jugadores[playerName];
+        Pokemon pokemon = jugador.ElegirDelCatalogo(pokemonId);
+
+        return pokemon != null
+            ? $"¡{pokemon.Nombre} ha sido agregado a tu equipo!"
+            : "No se pudo agregar el Pokémon. Verifica el ID y que tengas espacio en el equipo.";
+    }
+
 }
