@@ -11,7 +11,7 @@ namespace Ucu.Poo.DiscordBot.Commands;
 /// </summary>
 public class AttacksCatalogueCommand : ModuleBase<SocketCommandContext>
 {
-    private static Dictionary<string, JugadorPrincipal> jugadores = new Dictionary<string, JugadorPrincipal>();
+    public static Dictionary<string, JugadorPrincipal> jugadores = new Dictionary<string, JugadorPrincipal>();
 
     /// <summary>
     /// Implementa el comando 'catalogoataques'. Este comando muestra la lista de
@@ -19,14 +19,15 @@ public class AttacksCatalogueCommand : ModuleBase<SocketCommandContext>
     /// </summary>
     [Command("catalogoataques")]
     [Summary("Muestra los ataques disponibles para utilizar")]
-    public async Task ExecuteAsync([Summary("Índice del pokemón en el equipo (1-6)")] int indice)
+    public async Task<string> ExecuteAsync([Summary("Índice del pokemón en el equipo (1-6)")] int indice)
     {
         string displayName = Context.User.Username;
         // Verifica si el jugador ya existe
         if (!jugadores.ContainsKey(displayName))
         {
-            await ReplyAsync("No tienes un equipo registrado. Usa el comando 'addpokemon2team' para agregar Pokémon.");
-            return;
+            string message = "No tienes un equipo registrado. Usa el comando 'addpokemon2team' para agregar Pokémon.";
+            await ReplyAsync(message);
+            return message;
         }
 
         JugadorPrincipal jugadorPrincipal = jugadores[displayName];
@@ -34,12 +35,14 @@ public class AttacksCatalogueCommand : ModuleBase<SocketCommandContext>
         // Valida el índice del Pokémon en el equipo
         if (indice < 1 || indice > jugadorPrincipal.EquipoPokemons.Count)
         {
-            await ReplyAsync("Por favor, ingrese un índice válido de Pokémon en su equipo (1-6).");
-            return;
+            string message = "Por favor, ingrese un índice válido de Pokémon en su equipo (1-6).";
+            await ReplyAsync(message);
+            return message;
         }
 
         // Muestra los ataques del Pokémon seleccionado
         string ataques = jugadorPrincipal.MostrarAtaquesDisponibles(indice - 1); // Ajusta índice para base 0
         await ReplyAsync(ataques);
+        return ataques;
     }
 }
