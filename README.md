@@ -25,14 +25,20 @@ Además, aunque ya habíamos trabajado con diseño orientado a objetos en otras 
    Para poder entender mejor la dinámica del proyecto planteado, al inicio de todo jugamos varias partidas en la plataforma [Pokémon Showdown](https://pokemonshowdown.com), con el fin de comprender el funcionamiento de los equipos, las estrategias e interacciones entre los distintos tipos de Pokemon y Ataques.
 2. Investigación sobre tipos de personajes:
    Siguiendo con la investigación del juego, para implementarlo tal cual la lógica original, nos basamos en distintos recursos que detallaban cómo interactuaban los distintos tipos entre sí, cuáles eran sus fortalezas y sus debilidades.
-• [Pokémaster - Tipos y debilidades](https://pokemaster.es/tipos-de-pokemon-todas-las-debilidades-pokemon-segun-el-tipo-elemental-no-121393/)
-• [Vandal - Tabla de Tipos](https://vandal.elespanol.com/reportaje/tabla-de-tipos-de-pokemon-fortalezas-y-debilidades-en-todos-los-juegos)
-• [Mundo Deportivo - Fortalezas y debilidades](https://www.mundodeportivo.com/alfabeta/guia/tabla-tipos-pokemon-fortalezas-debilidades)
-3. Recursos para implementar el ChatBot:
+   [Pokémaster - Tipos y debilidades](https://pokemaster.es/tipos-de-pokemon-todas-las-debilidades-pokemon-segun-el-tipo-elemental-no-121393/)
+
+   [Vandal - Tabla de Tipos](https://vandal.elespanol.com/reportaje/tabla-de-tipos-de-pokemon-fortalezas-y-debilidades-en-todos-los-juegos)
+
+   [Mundo Deportivo - Fortalezas y debilidades](https://www.mundodeportivo.com/alfabeta/guia/tabla-tipos-pokemon-fortalezas-debilidades)
+   
+4. Recursos para implementar el ChatBot:
    Para poder asegurarnos de un buen funcionamiento del Bot de Discord, seguimos los siguientes tutoriales, encontrados en internet como también brindados como material estudiantil.
+
    [Cómo crear tu Bot de Discord](https://www.youtube.com/watch?v=KsqcoNMXKqA)
+
    [PII_DiscordBot](https://github.com/ucudal/PII_DiscordBot_Demo.git)
-4. Herramientas de organización:
+   
+6. Herramientas de organización:
    Como último, pero no menos importante, implementamos una plantilla especial de [Trello](https://trello.com/invite/b/6703de37cf3960b68425477a/ATTI795f0bcf6e0f9f9f73480dac39304e30C5BEDD72/1erentrega-pii). Esto nos permitió visualizar el flujo de trabajo, asignar las responsabilidades y hacer un correcto seguimiento del proceso de manera efectiva.
 
 ## Reflexiones finales
