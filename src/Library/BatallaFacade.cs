@@ -262,5 +262,67 @@ namespace Library
         {
             return $"{jugador.NombreJugador} la batalla ha comenzado";
         }
+
+        /// <summary>
+        /// Verifica si el turno del jugador es verdadero, si es así tiene la opción de rendirse de la batalla y lanzará
+        /// un mensaje con el jugador oponente ganador. En caso contrario, la batalla sigue.
+        /// </summary>
+        /// <param name="jugador"></param>
+        /// <returns></returns>
+        public string RendirseBatalla(JugadorPrincipal jugador)
+        {
+            if (!jugador.TurnoActual) 
+            { 
+                return "La batalla sigue";
+            }
+            if (jugador == jugador1) 
+            {
+                BatallaEnCurso = false;
+                return $"{jugador2.NombreJugador} GANADOR";
+            }
+            else
+            {
+                BatallaEnCurso = false; 
+                return $"{jugador1.NombreJugador} GANADOR";
+            }
+        }
+
+        /// <summary>
+        /// Si es el turno del jugador muestra en la pantalla que es su turno y le pregunta si se quiere rendir,
+        /// en el caso de que elija la opción "Si" el jugador se rinde y gana su oponente (la batalla termina). Si
+        /// elije la opción "No" le mostrará los ataques que tiene disponibles el pokemon actual del jugador. Pero en
+        /// el caso de que sea su turno e ingrese otra opción diferente a "1" y "2", mostrará que la opción no es válida.
+        /// Si no es el turno del jugador, la batalla sigue, no podrá rendirse.
+        /// </summary>
+        /// <param name="jugador"></param>
+        /// <param name="opcion"></param>
+        /// <returns></returns>
+        public string Acciones(JugadorPrincipal jugador, string opcion)
+        {
+            if (jugador.TurnoActual)
+            {
+                Console.WriteLine($"Turno de {jugador1.NombreJugador}");
+                Console.WriteLine("¿Quiere rendirse?\n" +
+                                  "1. Si\n" +
+                                  "2. No");
+
+                if (opcion == "1")
+                {
+                    return RendirseBatalla(jugador);
+                }
+                else if (opcion == "2")
+                {
+                    jugador1.PokemonActual.AtaquesPorTipo();
+                    return jugador1.PokemonActual.Ataques.ToString();
+                }
+            }
+            else
+            {
+                return "La batalla sigue";
+            }
+            
+            return "Opción no válida"; 
+        }
+    
     }
 }

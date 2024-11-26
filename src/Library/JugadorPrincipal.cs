@@ -257,4 +257,18 @@ namespace Library;
 
             return cadena;
         }
+
+        /// <summary>
+        /// Si es el turno del jugador, tiene la opción de rendirse de la batalla. Sino la batalla seguirá.
+        /// </summary>
+        /// <returns></returns>
+        public bool Rendirse()
+        {
+            if (TurnoActual)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }

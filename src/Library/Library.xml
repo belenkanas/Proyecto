@@ -63,6 +63,26 @@
             una batalla
             </summary>
         </member>
+        <member name="M:Library.BatallaFacade.RendirseBatalla(Library.JugadorPrincipal)">
+            <summary>
+            Verifica si el turno del jugador es verdadero, si es así tiene la opción de rendirse de la batalla y lanzará
+            un mensaje con el jugador oponente ganador. En caso contrario, la batalla sigue.
+            </summary>
+            <param name="jugador"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.BatallaFacade.Acciones(Library.JugadorPrincipal,System.String)">
+            <summary>
+            Si es el turno del jugador muestra en la pantalla que es su turno y le pregunta si se quiere rendir,
+            en el caso de que elija la opción "Si" el jugador se rinde y gana su oponente (la batalla termina). Si
+            elije la opción "No" le mostrará los ataques que tiene disponibles el pokemon actual del jugador. Pero en
+            el caso de que sea su turno e ingrese otra opción diferente a "1" y "2", mostrará que la opción no es válida.
+            Si no es el turno del jugador, la batalla sigue, no podrá rendirse.
+            </summary>
+            <param name="jugador"></param>
+            <param name="opcion"></param>
+            <returns></returns>
+        </member>
         <member name="T:Library.CatalogoAtaques">
             <summary>
             Esta clase muestra la variedad de ataques disponibles para poder utilizar durante la batalla y el resto del programa.
@@ -229,6 +249,12 @@
             <summary>
             Muestra el inventario del jugador
             </summary>
+        </member>
+        <member name="M:Library.JugadorPrincipal.Rendirse">
+            <summary>
+            Si es el turno del jugador, tiene la opción de rendirse de la batalla. Sino la batalla seguirá.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Library.Pokemon">
             <summary>
