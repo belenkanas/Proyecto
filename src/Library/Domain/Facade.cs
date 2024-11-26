@@ -82,9 +82,6 @@ public class Facade
     /// </summary>
     /// <param name="displayName">El nombre del jugador.</param>
     /// <returns>El equipo de Pokémon del jugador.</returns>
-    
-
-    
     public string ShowPlayerTeam(string displayName)
     {
         if (!jugadores.ContainsKey(displayName))
