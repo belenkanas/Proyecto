@@ -25,6 +25,7 @@ Además, aunque ya habíamos trabajado con diseño orientado a objetos en otras 
    Para poder entender mejor la dinámica del proyecto planteado, al inicio de todo jugamos varias partidas en la plataforma [Pokémon Showdown](https://pokemonshowdown.com), con el fin de comprender el funcionamiento de los equipos, las estrategias e interacciones entre los distintos tipos de Pokemon y Ataques.
 2. Investigación sobre tipos de personajes:
    Siguiendo con la investigación del juego, para implementarlo tal cual la lógica original, nos basamos en distintos recursos que detallaban cómo interactuaban los distintos tipos entre sí, cuáles eran sus fortalezas y sus debilidades.
+
    [Pokémaster - Tipos y debilidades](https://pokemaster.es/tipos-de-pokemon-todas-las-debilidades-pokemon-segun-el-tipo-elemental-no-121393/)
 
    [Vandal - Tabla de Tipos](https://vandal.elespanol.com/reportaje/tabla-de-tipos-de-pokemon-fortalezas-y-debilidades-en-todos-los-juegos)
