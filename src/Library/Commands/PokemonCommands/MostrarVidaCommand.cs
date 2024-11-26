@@ -10,7 +10,6 @@ namespace Ucu.Poo.DiscordBot.Commands;
 /// </summary>
 public class MostrarVidaCommand : ModuleBase<SocketCommandContext>
 {
-    private static Dictionary<string, JugadorPrincipal> jugadores = new Dictionary<string, JugadorPrincipal>();
 
     /// <summary>
     /// Implementa el comando 'mostrarvida'. Este comando muestra la lista de
@@ -21,9 +20,8 @@ public class MostrarVidaCommand : ModuleBase<SocketCommandContext>
     public async Task ExecuteAsync(int indice)
     {
         string displayName = Context.User.Username;
-        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
-        IPokemon pokemon = jugadorPrincipal.ElegirPokemon(indice);
-        string resultado = pokemon.MostrarVida();
+        Facade.Instance.RegisterPlayer(displayName);
+        string resultado = Facade.Instance.MostrarVidaPokemon(displayName, indice);
         
         await ReplyAsync(resultado);
     }

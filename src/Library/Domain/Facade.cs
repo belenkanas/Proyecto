@@ -39,6 +39,7 @@ public class Facade
     }
 
     private WaitingList WaitingList { get; }
+    
     private BattlesList BattlesList { get; }
 
     /// <summary>
@@ -81,6 +82,9 @@ public class Facade
     /// </summary>
     /// <param name="displayName">El nombre del jugador.</param>
     /// <returns>El equipo de Pokémon del jugador.</returns>
+    
+
+    
     public string ShowPlayerTeam(string displayName)
     {
         if (!jugadores.ContainsKey(displayName))
@@ -93,7 +97,7 @@ public class Facade
 
         if (string.IsNullOrWhiteSpace(equipo))
         {
-            return "Tu equipo está vacío. Usa el comando 'addpokemon2team' para agregar Pokémon.";
+            return "Tu equipo está vacío. Usa el comando 'agregarpokemon' para agregar Pokémon.";
         }
 
         return $"Equipo de {displayName}:\n{equipo}";
@@ -229,6 +233,20 @@ public class Facade
         return "No hay batalla activa";
     }
 
+    public string ElegirPokemon(string displayName, int pokemon)
+    {
+        
+        JugadorPrincipal jugador = jugadores[displayName];
+        // Verifica si el jugador ya existe
+        if (!jugadores.ContainsKey(displayName))
+        {
+            return "No tienes un equipo registrado. Usa el comando 'agregarpokemon' para agregar Pokémon a tu equipo.";
+        }
+        IPokemon pokemonelegido = jugador.ElegirPokemon(pokemon);
+        string mensaje = $"¡{pokemonelegido.Nombre} ha sido elegido para la batalla!";
+
+        return mensaje;
+    }
     public string CambiarPokemon(string jugador, int indicePokemon)
     {
         if (batallasActivas.ContainsKey(jugador))
@@ -240,6 +258,26 @@ public class Facade
         return "No estás en una batalla activa.";
     }
 
+    public string MostrarAtaques(string displayName, int indice)
+    {
+        JugadorPrincipal jugador = jugadores[displayName];
+        // Verifica si el jugador ya existe
+        if (!jugadores.ContainsKey(displayName))
+        {
+            return "No tienes un equipo registrado. Usa el comando 'agregarpokemon' para agregar Pokémon.";
+        }
+
+        // Valida el índice del Pokémon en el equipo
+        if (indice < 1 || indice > jugador.EquipoPokemons.Count)
+        {
+            return "Por favor, ingrese un índice válido de Pokémon en su equipo (1-6).";
+            
+        }
+
+        // Muestra los ataques del Pokémon seleccionado
+        return jugador.MostrarAtaquesDisponibles(indice - 1); // Ajusta índice para base 0
+        
+    }
     public string VerificarEstadoBatalla(string jugador)
     {
         if (batallasActivas.ContainsKey(jugador))
@@ -249,4 +287,58 @@ public class Facade
         }
         return "No estás en una batalla activa.";
     }
+
+    public string AddPokemonToTeam(string playerName, int pokemonId)
+    {
+        if (!jugadores.ContainsKey(playerName))
+        {
+            return "Jugador no registrado. Usa algún comando para registrarte.";
+        }
+
+        JugadorPrincipal jugador = jugadores[playerName];
+        Pokemon pokemon = jugador.ElegirDelCatalogo(pokemonId);
+
+        return pokemon != null
+            ? $"¡{pokemon.Nombre} ha sido agregado a tu equipo!"
+            : "No se pudo agregar el Pokémon. Verifica el ID y que tengas espacio en el equipo.";
+    }
+
+    public string MostrarVidaPokemon(string displayName, int idpokemon)
+    {
+        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
+        IPokemon pokemon = jugadorPrincipal.ElegirPokemon(idpokemon);
+        string resultado = pokemon.MostrarVida();
+        return resultado;
+    }
+
+    public string MostrarTurno(string jugador)
+    {
+        JugadorPrincipal jugadorPrincipal = jugadores[jugador];
+        batallasActivas.TryGetValue(jugador, out BatallaFacade batalla);
+        
+        string resultado = batalla.VerificarTurno(jugador).ToString();
+        return resultado;
+        
+    }
+
+    public string UsarItem(string displayName, int id)
+    {
+        JugadorPrincipal jugador = jugadores[displayName];
+
+        if (jugador.PokemonActual != null)
+        {
+            jugador.UsarItem(id, jugador.PokemonActual);
+            return ("Usaste un ítem en tu Pokémon.");
+        }
+        return ("No tienes un Pokémon en batalla. Usa el comando elegir pokemon");
+        
+    }
+    public string MostrarInventarioItems(string displayName)
+    {
+        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
+        
+        string inventario = jugadorPrincipal.MostrarInventario();
+        return inventario;
+    }
+
 }

@@ -426,19 +426,19 @@
             permite al entrenador ver si es su turno o no.
             </summary>
         </member>
-        <member name="M:Ucu.Poo.DiscordBot.Commands.ShowTurnCommand.ExecuteAsync(System.Int32)">
+        <member name="M:Ucu.Poo.DiscordBot.Commands.ShowTurnCommand.ExecuteAsync">
             <summary>
             Implementa el comando 'mostrarturno'. Este comando permite que el entrenador
             vea si es su turno o no.
             </summary>
         </member>
-        <member name="T:Ucu.Poo.DiscordBot.Commands.AddPokemon2TeamCommand">
+        <member name="T:Ucu.Poo.DiscordBot.Commands.AgregarPokemonCommand">
             <summary>
             Esta clase implementa el comando 'addpokemon2team' del bot. Este comando le permite agregar
             hasta 6 pokemons del catálogo de pokemons al equipo del jugador.
             </summary>
         </member>
-        <member name="M:Ucu.Poo.DiscordBot.Commands.AddPokemon2TeamCommand.ExecuteAsync(System.Int32)">
+        <member name="M:Ucu.Poo.DiscordBot.Commands.AgregarPokemonCommand.ExecuteAsync(System.Int32)">
             <summary>
             Implementa el comando 'agregarpokemon'. Este comando permite al jugador agregar
             un Pokémon a su equipo.
@@ -464,14 +464,12 @@
         </member>
         <member name="T:Ucu.Poo.DiscordBot.Commands.ShowTeamCommand">
             <summary>
-            Esta clase implementa el comando 'equipo' del bot. Este comando le
-            permite al entrenador ver los pokemons de su equipo.
+            Implementa el comando 'equipo' del bot para mostrar los Pokémon del equipo del jugador.
             </summary>
         </member>
         <member name="M:Ucu.Poo.DiscordBot.Commands.ShowTeamCommand.MostrarEquipo">
             <summary>
-            Implementa el comando 'equipo'. Este comando muestra el equipo
-            de pokemones formados por el jugador.
+            Implementa el comando 'equipo'.
             </summary>
         </member>
         <member name="M:Ucu.Poo.DiscordBot.Commands.UseItemCommand.ExecuteAsync(System.Int32)">

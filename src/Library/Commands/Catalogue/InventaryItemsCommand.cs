@@ -21,10 +21,9 @@ public class InventaryItemsCommand : ModuleBase<SocketCommandContext>
     public async Task MostrarItems()
     {
         string displayName = Context.User.Username;
+        Facade.Instance.RegisterPlayer(displayName);
         
-        JugadorPrincipal jugadorPrincipal = jugadores[displayName];
-        
-        string inventario = jugadorPrincipal.MostrarInventario();
+        string inventario = Facade.Instance.MostrarInventarioItems(displayName);
         await ReplyAsync(inventario);
     }
 }

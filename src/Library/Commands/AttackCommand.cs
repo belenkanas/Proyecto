@@ -11,7 +11,6 @@ namespace Ucu.Poo.DiscordBot.Commands;
 /// </summary>
 public class AttackCommand : ModuleBase<SocketCommandContext>
 {
-    private static Dictionary<string, BatallaFacade> batallasEnCurso;
     /// <summary>
     /// Implementa el comando 'attack'. Este comando permite que el entrenador
     /// elija un ataque y lo utilice en la partida.
@@ -20,23 +19,13 @@ public class AttackCommand : ModuleBase<SocketCommandContext>
     [Summary("Permite que el jugador realice un ataque en la partida")]
     public async Task ExecuteAsync(int indiceAtaque)
     {
-        string displayName = CommandHelper.GetDisplayName(Context);
+        string displayName = Context.User.Username;
+        
+        Facade.Instance.RegisterPlayer(displayName);
 
-        if (batallasEnCurso.TryGetValue(displayName, out BatallaFacade batalla))
-        {
-            string resultado = batalla.RealizarAtaque(displayName, indiceAtaque).ToString();
-            await ReplyAsync(resultado);
-            
-            string ganador = batalla.VerificarGanador();
-            if (!string.IsNullOrEmpty(ganador))
-            {
-                await ReplyAsync(ganador);
-                batallasEnCurso.Remove(displayName);
-            }
-        }
-        else
-        {
-            await ReplyAsync("No estás en una batalla.");
-        }
+        string result = Facade.Instance.RealizarAtaque(displayName, indiceAtaque);
+        
+        await ReplyAsync(result);
+        
     }
 }
