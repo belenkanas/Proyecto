@@ -313,9 +313,16 @@ public class Facade
         JugadorPrincipal jugadorPrincipal = jugadores[jugador];
         batallasActivas.TryGetValue(jugador, out BatallaFacade batalla);
         
-        string resultado = batalla.VerificarTurno(jugador).ToString();
-        return resultado;
-        
+        if (batalla.VerificarTurno(jugador) == true)
+        {
+            string resultado = "Es tu turno!";
+            return resultado;
+        }
+        else
+        {
+            string resultado = "No es tu turno";
+            return resultado;
+        }
     }
 
     public string UsarItem(string displayName, int id)
