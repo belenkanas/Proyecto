@@ -257,4 +257,14 @@ namespace Library;
 
             return cadena;
         }
+
+        public bool Rendirse()
+        {
+            if (this.TurnoActual == true)
+            {
+                return TurnoActual = true;
+            }
+
+            return TurnoActual = false;
+        }
     }

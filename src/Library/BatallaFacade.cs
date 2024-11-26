@@ -262,5 +262,25 @@ namespace Library
         {
             return $"{jugador.NombreJugador} la batalla ha comenzado";
         }
+
+        public string JugadorSeRinde(JugadorPrincipal jugador)
+        {
+            if (jugador == jugador1)
+            {
+                jugador.Rendirse();
+                jugador.PokemonesDerrotados();
+                this.BatallaEnCurso = false;
+                return $"{jugador2.NombreJugador} ha ganado";
+            }
+            else if(jugador == jugador2)
+            {
+                jugador.Rendirse();
+                jugador.PokemonesDerrotados();
+                this.BatallaEnCurso = false;
+                return $"{jugador1.NombreJugador} ha ganado";
+            }
+
+            return "Opcion no valida";
+        }
     }
 }
