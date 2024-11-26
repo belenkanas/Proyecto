@@ -4,15 +4,19 @@ Tomando en cuenta todas las reflexiones, aprendizajes y estrategias de trabajo q
 
 ## Desafíos más difíciles de la entrega
 1. Diseño de interfaces y clases de dominio:
+   
    Aunque ahora mirando hacia atrás ya tenemos mucho más claro las clases fundamentales del código, la decisión sobre cuáles serían las clases de dominio y cómo interectuarían entre sí fue uno de los aspectos más complejos del proyecto. Decidir e implementar dichas clases, como las abstractas también, requirió un análisis profundo por parte del equipo.
 
 2. Definición de responsabilidades:
+   
    Junto con el punto anterior, implementar un diseño eficaz, bien organizado y difícil de "romper" fue un reto importante. En otras palabras, asegurar que cada clase y cada método de ella cumpla un rol específico no fue lo único que nos generó trabajo pensar, sino que también la correcta asignación de responsabilidades fue un punto clave para poder mantener un código ordenado y funcional.
 
-3. Introducción al patrón de diseño "Fachada" (Façade)
+3. Introducción al patrón de diseño "Fachada" (Façade):
+   
    Nos enfrentamos a varios conceptos nuevos, entre ellos, el concepto de "Fachada". Entender su propósito y su funcionamiento para simplificar la interacción entre clases nos tomó tiempo, pero resultó ser bastante valioso para la estructura final del proyecto.
 
 4. Implementación de ChatBot
+   
    En un principio, al ser un concepto totalmente nuevo para varios del equipo, no comprendíamos bien cómo hacerlo funcionar o las distintas conecciones que tenía con el código del proyecto, pero luego de un arduo trabajo hemos podido entenderlo mejor.
 
 ## Cosas nuevas aprendidas durante el proyecto.
