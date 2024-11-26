@@ -2,9 +2,9 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>Proyecto</UserSecretsId>
     <Nullable>enable</Nullable>
     <RootNamespace>Ucu.Poo.DiscordBot</RootNamespace>
+    <UserSecretsId>Proyecto</UserSecretsId>
   </PropertyGroup>
   <PropertyGroup>
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
