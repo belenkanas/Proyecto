@@ -40,6 +40,22 @@ public class JugadorPrincipalTest
     }
 
     /// <summary>
+    /// Verificamos que no puede agregar más de 6 pokémones a su equipo.
+    /// </summary>
+    [Test]
+    public void ElegirPokemonDelCatalogo_MasDe6NoDeja()
+    {
+        jugador1.ElegirDelCatalogo(1);
+        jugador1.ElegirDelCatalogo(2);
+        jugador1.ElegirDelCatalogo(3);
+        jugador1.ElegirDelCatalogo(4);
+        jugador1.ElegirDelCatalogo(5);
+        jugador1.ElegirDelCatalogo(6);
+        
+        Assert.That(jugador1.ElegirDelCatalogo(7), Is.EqualTo(null));
+    }
+
+    /// <summary>
     /// Verifica que el jugador pueda elegir el pokémon que quiera de su equipo por el índice
     /// en este caso, el índice es válido y devuelve el pokémon elegido.
     /// </summary>
@@ -295,5 +311,41 @@ public class JugadorPrincipalTest
         
         Assert.That(jugador1.TurnoActual, Is.EqualTo(false));
         Assert.That(vida, Is.EqualTo(vidaEsperada));
+    }
+
+    /// <summary>
+    /// Verificamos que muestre todos los items del inventario, Super Pocion, Revivir y Cura Total
+    /// </summary>
+    [Test]
+    public void MostrarInventarioItems()
+    {
+        string inventario = jugador1.MostrarInventario();
+
+        string resultadoEsperado = "Inventario de Items:\n1. Super Pocion \n2. Revivir \n3. Cura Total \n";
+        
+        Assert.That(inventario, Is.EqualTo(resultadoEsperado));
+    }
+
+    /// <summary>
+    /// Verificamos el turno del jugador para obtener si tiene la posibilidad de rendirse o no. En este caso, si
+    /// puede rendirse porque esta en su turno.
+    /// </summary>
+    [Test]
+    public void Rendirse_TurnoTrue()
+    {
+        jugador1.TurnoActual = true;
+        
+        Assert.That(jugador1.Rendirse(), Is.EqualTo(true));
+    }
+    
+    /// <summary>
+    /// En este caso, no puede rendirse porque es el turno del otro oponente.
+    /// </summary>
+    [Test]
+    public void Rendirse_TurnoFalse()
+    {
+        jugador1.TurnoActual = false;
+        
+        Assert.That(jugador1.Rendirse(), Is.EqualTo(false));
     }
 }

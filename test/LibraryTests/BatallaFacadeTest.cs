@@ -104,6 +104,20 @@ public class BatallaFacadeTest
         Assert.That(turno, Is.EqualTo(true));
         Assert.That(batalla.VerificarTurno(jugador2.NombreJugador), Is.EqualTo(false));
     }
+    
+    [Test]
+    public void VerificarTurno2()
+    {
+        jugador.TurnoActual = false;
+        jugador2.TurnoActual = true;
+
+        BatallaFacade batalla = new BatallaFacade(jugador, jugador2);
+
+        bool turno = batalla.VerificarTurno(jugador2.NombreJugador);
+        
+        Assert.That(turno, Is.EqualTo(true));
+        Assert.That(batalla.VerificarTurno(jugador2.NombreJugador), Is.EqualTo(true));
+    }
 
     /// <summary>
     /// Este test verifica que si los dos jugadores atacan en una ronda, jugarán la segunda ronda de la batalla. Así
@@ -172,6 +186,23 @@ public class BatallaFacadeTest
         Assert.That(jugador.TurnoActual, Is.EqualTo(false)); 
         Assert.That(respuesta, Is.EqualTo($"{jugador.NombreJugador} ha perdido su turno al cambiar de Pokémon."));
     }
+    
+    [Test]
+    public void CambiarPokemon_IndiceValidoYCambiaTurnoPokemon2()
+    {
+        BatallaFacade batalla = new BatallaFacade(jugador, jugador2);
+        IPokemon pokemon = jugador2.ElegirPokemon(0);
+        jugador2.PokemonActual = pokemon;
+        
+        batalla.CambiarPokemon(jugador2.NombreJugador, 1);
+        IPokemon pokemonActual = jugador2.ElegirPokemon(1);
+
+        string respuesta = batalla.VerificarFinTurno(jugador2);
+        
+        Assert.That(jugador2.PokemonActual, Is.EqualTo(pokemonActual));
+        Assert.That(jugador2.TurnoActual, Is.EqualTo(false)); 
+        Assert.That(respuesta, Is.EqualTo($"{jugador2.NombreJugador} ha perdido su turno al cambiar de Pokémon."));
+    }
 
     /// <summary>
     /// En esta prueba verificamos que el jugador ya está en la lista de espera y muestra la lista de espera.
@@ -210,6 +241,52 @@ public class BatallaFacadeTest
         Assert.That(batalla.NotificarInicio(jugador), Is.EqualTo($"{jugador.NombreJugador} la batalla ha comenzado"));
         Assert.That(batalla.NotificarInicio(jugador2), Is.EqualTo($"{jugador2.NombreJugador} la batalla ha comenzado"));
         Assert.That(batalla.IniciarBatallaListaDeEspera(), Is.EqualTo($"No hay jugadores suficientes para comenzar una batalla"));
+    }
+    
+    /// <summary>
+    /// Verificamos que al tratar de rendirse mientras no es el turno del jugador, la batalla sigue.
+    /// </summary>
+    [Test]
+    public void RendirseBatalla_TurnoIncorrecto()
+    {
+        BatallaFacade batalla = new BatallaFacade(jugador, jugador2);
+        jugador.TurnoActual = true;
+        jugador2.TurnoActual = false;
+        string result = batalla.Acciones(jugador2, "1");
+        
+        Assert.That(result, Is.EqualTo("La batalla sigue"));
+        Assert.That(batalla.BatallaEnCurso, Is.EqualTo(true)); 
+    }
+
+    /// <summary>
+    /// Verificamos que si pone una opción diferente de 1 o 2, lanza que la opción no es válida.
+    /// </summary>
+    [Test]
+    public void RendirseBatalla_OpcionNoValidaAcciones()
+    {
+        BatallaFacade batalla = new BatallaFacade(jugador, jugador2);
+        jugador.TurnoActual = true;
+        jugador2.TurnoActual = false;
+        string result = batalla.Acciones(jugador, "3");
+        
+        Assert.That(result, Is.EqualTo("Opción no válida"));
+    }
+
+    /// <summary>
+    /// Verificamos que si ingresa la opción "No" cuando se le pregunta al jugador si se quiere rendir, debe mostrar
+    /// los ataques disponibles que tiene para su pokémon actual.
+    /// </summary>
+    [Test]
+    public void RendirseBatalla_MuestraAtaques()
+    {
+        BatallaFacade batalla = new BatallaFacade(jugador, jugador2);
+        jugador.TurnoActual = true;
+        jugador2.TurnoActual = false;
+        IPokemon pokemon = jugador.ElegirPokemon(0);
+        jugador.PokemonActual = pokemon;
+        string result = batalla.Acciones(jugador, "2");
+        
+        Assert.That(result, Is.EqualTo(pokemon.Ataques.ToString()));
     }
     
 }

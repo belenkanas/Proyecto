@@ -340,4 +340,35 @@ public class HistoriaUsuarioTest
         
         Assert.That(jugador1.TurnoActual || jugador2.TurnoActual, Is.True);
     }
+
+    /// <summary>
+    /// Historia de Usuario 12.
+    /// Verificamos que el jugador se puede rendir mientras esté en su turno, la batalla finaliza y lanza un mensaje
+    /// con el ganador.
+    /// </summary>
+    [Test]
+    public void RendirseBatalla_TurnoCorrecto()
+    {
+        BatallaFacade batalla = new BatallaFacade(jugador1, jugador2);
+        jugador1.TurnoActual = false;
+        jugador2.TurnoActual = true;
+        string result = batalla.Acciones(jugador2, "1");
+        
+        Assert.That(result, Is.EqualTo("Ana GANADOR"));
+        Assert.That(jugador2.TurnoActual, Is.EqualTo(true));
+        Assert.That(batalla.BatallaEnCurso, Is.EqualTo(false));
+    }
+    
+    [Test]
+    public void RendirseBatalla_TurnoCorrecto2()
+    {
+        BatallaFacade batalla = new BatallaFacade(jugador1, jugador2);
+        jugador1.TurnoActual = true;
+        jugador2.TurnoActual = false;
+        string result = batalla.Acciones(jugador1, "1");
+        
+        Assert.That(result, Is.EqualTo("Belén GANADOR"));
+        Assert.That(jugador1.TurnoActual, Is.EqualTo(true));
+        Assert.That(batalla.BatallaEnCurso, Is.EqualTo(false));
+    }
 }

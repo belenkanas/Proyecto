@@ -67,6 +67,22 @@
             En esta prueba verificamos que el jugador logra unirse a la lista de espera y muestra la lista completa.
             </summary>
         </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.RendirseBatalla_TurnoIncorrecto">
+            <summary>
+            Verificamos que al tratar de rendirse mientras no es el turno del jugador, la batalla sigue.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.RendirseBatalla_OpcionNoValidaAcciones">
+            <summary>
+            Verificamos que si pone una opción diferente de 1 o 2, lanza que la opción no es válida.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BatallaFacadeTest.RendirseBatalla_MuestraAtaques">
+            <summary>
+            Verificamos que si ingresa la opción "No" cuando se le pregunta al jugador si se quiere rendir, debe mostrar
+            los ataques disponibles que tiene para su pokémon actual.
+            </summary>
+        </member>
         <member name="M:LibraryTests.CatalogosTest.AgregarAtaques_VerificarSiAgregaTodos">
             <summary>
             Esta prueba, verifica que agregue todos los ataques al catálogo de ataques.
@@ -174,6 +190,11 @@
             Este test verifica que al ingresar un índice fuera del rango esperado para elegir tu pokémon, devuelva null.
             </summary>
         </member>
+        <member name="M:LibraryTests.JugadorPrincipalTest.ElegirPokemonDelCatalogo_MasDe6NoDeja">
+            <summary>
+            Verificamos que no puede agregar más de 6 pokémones a su equipo.
+            </summary>
+        </member>
         <member name="M:LibraryTests.JugadorPrincipalTest.ElegirPokemonDelEquipo_IndiceValido">
             <summary>
             Verifica que el jugador pueda elegir el pokémon que quiera de su equipo por el índice
@@ -257,6 +278,22 @@
             <summary>
             Este test verifica que si un jugador desea usar un item, como Super Pocion, devuelva que el turno del jugador
             ya lo perdió utilizando el item y la vida actual del pokémon aumente dependiendo de su vida actual anterior.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.JugadorPrincipalTest.MostrarInventarioItems">
+            <summary>
+            Verificamos que muestre todos los items del inventario, Super Pocion, Revivir y Cura Total
+            </summary>
+        </member>
+        <member name="M:LibraryTests.JugadorPrincipalTest.Rendirse_TurnoTrue">
+            <summary>
+            Verificamos el turno del jugador para obtener si tiene la posibilidad de rendirse o no. En este caso, si
+            puede rendirse porque esta en su turno.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.JugadorPrincipalTest.Rendirse_TurnoFalse">
+            <summary>
+            En este caso, no puede rendirse porque es el turno del otro oponente.
             </summary>
         </member>
         <member name="M:LibraryTests.PokemonTest.UsarAtaque_IndiceInvalido">
@@ -524,6 +561,13 @@
         <member name="M:Library.Tests.HistoriaUsuarioTest.PrimerTurnoAleatorio">
             <summary>
             El primer turno se determina aleatoriamente.
+            </summary>
+        </member>
+        <member name="M:Library.Tests.HistoriaUsuarioTest.RendirseBatalla_TurnoCorrecto">
+            <summary>
+            Historia de Usuario 12.
+            Verificamos que el jugador se puede rendir mientras esté en su turno, la batalla finaliza y lanza un mensaje
+            con el ganador.
             </summary>
         </member>
     </members>
