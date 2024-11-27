@@ -371,4 +371,36 @@ public class HistoriaUsuarioTest
         Assert.That(jugador1.TurnoActual, Is.EqualTo(true));
         Assert.That(batalla.BatallaEnCurso, Is.EqualTo(false));
     }
+
+    /// <summary>
+    /// Historia de Usuario 13.
+    /// Verificamos que registre el correcto movimiento y los agregue a la lista.
+    /// </summary>
+    /// <returns></returns>
+    [Test]
+    public void RegistrarMovimiento_Correcto()
+    {
+        BatallaFacade batalla = new BatallaFacade(jugador1, jugador2);
+        jugador1.PokemonActual = jugador1.ElegirPokemon(0);
+        jugador2.PokemonActual = jugador2.ElegirPokemon(2);
+        batalla.RegistrarMovimiento(jugador1, jugador2, 3);
+
+        string resultado = batalla.ObtenerHistorialMovimientos();
+        double dañoInfligido = jugador2.PokemonActual.VidaTotal - jugador2.PokemonActual.VidaActual;
+        string resultadoEsperado = $"Turno 1: Ana (Squirtle) usó Hidrobomba contra Charizard e infligió {dañoInfligido} de daño.";
+        Assert.That(resultado, Is.EqualTo(resultadoEsperado));
+        Assert.That(batalla.historialMovimientos, Contains.Item(resultadoEsperado));
+    }
+
+    /// <summary>
+    /// En el caso de que no haya movimientos previos, verificamos de que no los cuente.
+    /// </summary>
+    [Test]
+    public void ObtenerHistorialMovimientos_SinMovimientos()
+    {
+        BatallaFacade batalla = new BatallaFacade(jugador1, jugador2);
+        string resultado = batalla.ObtenerHistorialMovimientos();
+        
+        Assert.That(resultado, Is.EqualTo("No se han registrado movimientos aún."));
+    }
 }

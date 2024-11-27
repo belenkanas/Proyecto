@@ -82,8 +82,9 @@ namespace Library
             return contadorTurnos;
         }
         
-        private void RegistrarMovimiento(JugadorPrincipal atacante, JugadorPrincipal defensor, int indiceAtaque)
+        public void RegistrarMovimiento(JugadorPrincipal atacante, JugadorPrincipal defensor, int indiceAtaque)
         {
+            atacante.PokemonActual.AtaquesPorTipo();
             string nombreAtaque = atacante.PokemonActual.Ataques[indiceAtaque].Nombre;
             double dañoInfligido = defensor.PokemonActual.VidaTotal - defensor.PokemonActual.VidaActual;
 
