@@ -3,6 +3,8 @@ using NUnit.Framework;
 
 namespace LibraryTests;
 
+//Ahora esto quedo mal porque trabaje con los tests para la clase prohibir.cs y no con las que hice separado
+
 [TestFixture]
 [TestOf(typeof(prohibiciones))]
 public class prohibicionesTest
