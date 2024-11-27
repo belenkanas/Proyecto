@@ -315,10 +315,18 @@ public class JugadorPrincipal : IJugador
         if (indiceRestriccion <= Restricciones.Count())
         {
             Restricciones[indiceRestriccion].UsarRestriccion(this, nombre);
-            return MostrarCatalogo();
+            if (indiceRestriccion >= 0 && indiceRestriccion < 3)
+            {
+                return MostrarCatalogo();
+            }
+            else if (indiceRestriccion == 3)
+            {
+                return MostrarInventario();
+            }
+            
         }
-
-        return "Restriccion Inválida";
+        
+        return "No se eligen restricciones, no se inicia batalla";
     }
 
     

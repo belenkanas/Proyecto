@@ -374,6 +374,32 @@
             Para eso, tiene que elegir el índice 1 de la lista de restricciones disponibles, y como resultado le aparecerá el catalogo de pokemones de solo el tipo deseado.
             </summary>
         </member>
+        <member name="M:LibraryTests.RestriccionesTest.SinTipoPokemon">
+            <summary>
+            Para este test, se comprobará que el jugador no quiere que el tipo de pokemon Agua le aparezca entre las opciones a
+            utilizar. Si no le aparece en el catalogo de pokemons, por consecuencia (y dependencia de Ataques con TipoPokemon), tampoco podrá usar ataques de este tipo.
+            Se debería comprobar que al jugador le aparece el catálogo pokemons sin el tipo "Agua".
+            </summary>
+        </member>
+        <member name="M:LibraryTests.RestriccionesTest.RestriccionPokemon">
+            <summary>
+            Para este test, el jugador prefiere que cierto pokemon nunca aparezca como opción para jugar. Para eso se lo elimina del
+            catalogo de pokemons, y por dependencias, no apareceran sus ataques ni se lo podrá usar en toda la partida.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.RestriccionesTest.RestriccionItem">
+            <summary>
+            Para este test, el jugador elige no jugar con cierto tipo de item, en este caso el de Cura Total. Para eso, se le quitará la opcion al InventarioItems que tiene
+            acceso el jugador, por lo que más adelante no lo podrá utilizar en la partida.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.RestriccionesTest.NoSeEligenRestricciones">
+            <summary>
+            Para este test, el jugador no elige ninguna restriccion planteada, por lo que, como indica la historia de usuario, no se da por iniciada la partida.
+            Se comprobará que el índice que elige el usuario no es uno de los de la lista (puede elegir un numero negativo como uno mayor a 3 para indicar su desacuerdo),
+            y que por dicha eleccion la batalla no estará activa.
+            </summary>
+        </member>
         <member name="M:LibraryTests.TipoPokemonTest.Agua_PonderadorOponenteTipoFuego">
             <summary>
             Este test verifica que el pokémon de tipo Agua al atacar a otro pokémon de tipo Fuego utiliza el ponderador.
