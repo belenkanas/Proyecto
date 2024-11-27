@@ -14,6 +14,7 @@ namespace Library;
         public CuraTotal Cura { get; }
         public Revivir Revivir { get; }
         public SuperPocion Pocion { get; }
+        public string Reglas { get; set; }
 
         public JugadorPrincipal(string nombre)
         {
@@ -25,6 +26,7 @@ namespace Library;
             Revivir = new Revivir();
             Pocion = new SuperPocion();
             InventarioItems = new List<IItem> { Pocion, Revivir, Cura };
+            Reglas = "";
         }
         
         /// <summary>
@@ -276,5 +278,127 @@ namespace Library;
             }
 
             return false;
+        }
+        
+        public string ProhibirTipos(ITipo tipo)
+        {
+            string restriccion = "";
+            foreach (IPokemon pokemon in CatalogoPokemon.Catalogo)
+            {
+                if (tipo.NombreTipo == "Agua")
+                {
+                    restriccion += "Pokemones de tipo Agua están restringidos\n";
+                    CatalogoPokemon.Catalogo.Remove(pokemon);
+                    return Reglas += restriccion;
+                }
+                else if (tipo.NombreTipo == "Electrico")
+                {
+                    restriccion += "Pokemones de tipo Eléctrico están restringidos\n";
+                    CatalogoPokemon.Catalogo.Remove(pokemon);
+                    return Reglas += restriccion;
+                }
+                else if (tipo.NombreTipo == "Fuego")
+                {
+                    restriccion += "Pokemones de tipo Fuego están restringidos\n";
+                    CatalogoPokemon.Catalogo.Remove(pokemon);
+                    return Reglas += restriccion;
+                }
+                else if (tipo.NombreTipo == "Hielo")
+                {
+                    restriccion += "Pokemones de tipo Hielo están restringidos\n";
+                    CatalogoPokemon.Catalogo.Remove(pokemon);
+                    return Reglas += restriccion;
+                }
+                else if (tipo.NombreTipo == "Planta")
+                {
+                    restriccion += "Pokemones de tipo Planta están restringidos\n";
+                    CatalogoPokemon.Catalogo.Remove(pokemon);
+                    return Reglas += restriccion;
+                }
+                else if (tipo.NombreTipo == "Roca")
+                {
+                    restriccion += "Pokemones de tipo Roca están restringidos\n";
+                    CatalogoPokemon.Catalogo.Remove(pokemon);
+                    return Reglas += restriccion;
+                }
+                else if (tipo.NombreTipo == "Tierra")
+                {
+                    restriccion += "Pokemones de tipo Tierra están restringidos\n";
+                    CatalogoPokemon.Catalogo.Remove(pokemon);
+                    return Reglas += restriccion;
+                }
+            }
+            return Reglas;
+        }
+        
+        public string ProhibirPokemonesEnEspecifico(string nombre)
+        {
+            string restriccion = "";
+            foreach (IPokemon pokemon in CatalogoPokemon.Catalogo)
+            {
+                if (nombre == pokemon.Nombre)
+                {
+                    restriccion += $"El pokémon {pokemon.Nombre} está restringido";
+                    CatalogoPokemon.Catalogo.Remove(pokemon);
+                    Reglas += restriccion;
+                    return Reglas;
+                }
+            }
+
+            return Reglas;
+        }
+
+        public string ProhibirItems(string nombreItem)
+        {
+            string restriccion = "";
+            if (nombreItem == Cura.NombreItem)
+            {
+                Cura.usosRestantes = 0;
+                InventarioItems.Remove(Cura);
+                restriccion += "Cura Total está restringido";
+                Reglas += restriccion;
+                return Reglas;
+            }
+            else if (nombreItem == Revivir.NombreItem)
+            {
+                Revivir.usosRestantes = 0;
+                InventarioItems.Remove(Revivir);
+                restriccion += "Revivir está restringido";
+                Reglas += restriccion;
+                return Reglas;
+            }
+            else if (nombreItem == Pocion.NombreItem)
+            {
+                Pocion.usosRestantes = 0;
+                InventarioItems.Remove(Pocion);
+                restriccion += "Super Poción está restringido";
+                Reglas += restriccion;
+                return Reglas;
+            }
+            else
+            {
+                Console.WriteLine("No existe ese item");
+                return Reglas;
+            }
+        }
+
+        public bool AceptaReglas(string opcion)
+        {
+            Console.WriteLine("¿Aceptas las reglas?\n" +
+                              "1. Si" +
+                              "2. No");
+            if (opcion == "1")
+            {
+                return true;
+            }
+            else if (opcion == "2")
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Opción inválida");
+                return false;
+            }
         }
     }

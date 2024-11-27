@@ -577,5 +577,10 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Library.Tests.HistoriaUsuarioTest.ObtenerHistorialMovimientos_SinMovimientos">
+            <summary>
+            En el caso de que no haya movimientos previos, verificamos de que no los cuente.
+            </summary>
+        </member>
     </members>
 </doc>

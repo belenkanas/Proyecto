@@ -351,6 +351,22 @@ namespace Library
             
             return "Opción no válida"; 
         }
-    
+
+        public string ReglasPersonalizadas()
+        {
+            return jugador1.Reglas + jugador1.MostrarCatalogo() + jugador1.MostrarInventario();
+        }
+
+        public void Acepta(JugadorPrincipal oponente)
+        {
+            if (oponente.AceptaReglas("1"))
+            {
+                IniciarBatalla();
+            }
+            else
+            {
+                BatallaEnCurso = false;   
+            }
+        }
     }
 }
