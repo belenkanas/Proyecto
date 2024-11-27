@@ -223,8 +223,7 @@ public class Facade
         if (batallasActivas.ContainsKey(jugador))
         {
             BatallaFacade batalla = batallasActivas[jugador];
-            batalla.RealizarAtaque(jugador, indiceAtaque);
-            return $"Ataque realizado";
+            return batalla.RealizarAtaque(jugador, indiceAtaque);
         }
 
         return "No hay batalla activa";

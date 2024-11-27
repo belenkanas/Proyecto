@@ -21,10 +21,16 @@ public class AttackCommand : ModuleBase<SocketCommandContext>
     {
         string displayName = Context.User.Username;
         
+        //Registra al jugador si aun no esta registrado
         Facade.Instance.RegisterPlayer(displayName);
 
         string result = Facade.Instance.RealizarAtaque(displayName, indiceAtaque);
         
+        // Verifica si se pudo realizar el ataque.
+        if (string.IsNullOrEmpty(result))
+        {
+            result = "El ataque no pudo realizarse. Verifica el estado de la batalla.";
+        }
         await ReplyAsync(result);
         
     }

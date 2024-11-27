@@ -46,20 +46,18 @@ namespace Library
         {
             if (jugador1.NombreJugador == nombreJugador)
             {
-                jugador1.ElegirAtaque(jugador1.PokemonActual, jugador2.PokemonActual, indiceAtaque);
                 jugador1Ataco = true; // Indicamos que el jugador 1 atacó
                 VerificarAtaques();
-                return $"La vida de {jugador2.PokemonActual.Nombre} es {jugador2.PokemonActual.MostrarVida()}";
+                return (jugador1.ElegirAtaque(jugador1.PokemonActual, jugador2.PokemonActual, indiceAtaque));
             }
             else if (jugador2.NombreJugador == nombreJugador)
             {
-                jugador2.ElegirAtaque(jugador2.PokemonActual, jugador1.PokemonActual, indiceAtaque);
                 jugador2Ataco = true; // Indicamos que el jugador 2 atacó
                 VerificarAtaques();
-                return $"La vida de {jugador1.PokemonActual.Nombre} es {jugador1.PokemonActual.MostrarVida()}";
+                return (jugador2.ElegirAtaque(jugador2.PokemonActual, jugador1.PokemonActual, indiceAtaque));
             }
             
-            return "";
+            return "No se pudo identificar al jugador que realiza el ataque";
         }
         
         
