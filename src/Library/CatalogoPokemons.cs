@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace Library;
 
 /// <summary>
@@ -50,4 +52,28 @@ public class CatalogoPokemons
 
         return resultado;
     }
+
+
+    public string RestriccionSoloUnTipo(string nombreTipoPokemon)
+    {
+        foreach (IPokemon pokemon in Catalogo)
+        {
+            if (pokemon.TipoPokemon.NombreTipo != nombreTipoPokemon)
+            {
+                Catalogo.Remove(pokemon);
+            }
+        }
+
+        return MostrarCatalogo();
+    }
+    
+
+    
+
+    public void Remove(IPokemon pokemon)
+    {
+        Catalogo.Remove(pokemon);
+    }
+
+    
 }

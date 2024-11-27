@@ -358,6 +358,22 @@
             ataques especiales.
             </summary>
         </member>
+        <member name="T:LibraryTests.RestriccionesTest">
+            <summary>
+            En esta clase de test se va a probar que el catálogo de Restricciones sea correcto, y que la eleccion de la misma muestre lo esperado.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.RestriccionesTest.PresentacionRestricciones">
+            <summary>
+            Se comprueba que los distintos tipos de restricciones se muestren en pantalla a la hora de iniciar la partida.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.RestriccionesTest.SoloTipoPokemon">
+            <summary>
+            Se comprueba que luego de elegir solo un tipo de pokemon para jugar en la pantalla, el catalogo de pokemons disponibles para el jugador sean solo de ese tipo.
+            Para eso, tiene que elegir el índice 1 de la lista de restricciones disponibles, y como resultado le aparecerá el catalogo de pokemones de solo el tipo deseado.
+            </summary>
+        </member>
         <member name="M:LibraryTests.TipoPokemonTest.Agua_PonderadorOponenteTipoFuego">
             <summary>
             Este test verifica que el pokémon de tipo Agua al atacar a otro pokémon de tipo Fuego utiliza el ponderador.
@@ -576,6 +592,11 @@
             Verificamos que registre el correcto movimiento y los agregue a la lista.
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:Library.Tests.HistoriaUsuarioTest.ObtenerHistorialMovimientos_SinMovimientos">
+            <summary>
+            En el caso de que no haya movimientos previos, verificamos de que no los cuente.
+            </summary>
         </member>
     </members>
 </doc>
