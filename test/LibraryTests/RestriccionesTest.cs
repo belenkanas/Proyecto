@@ -136,5 +136,8 @@ public class RestriccionesTest
         string resultado = "No se eligen restricciones, no se inicia batalla";
         
         Assert.That(noRestriccion, Is.EqualTo(resultado));
+        //Tambien deberia indicarse que BatallaActiva es false, pero no me dio tiempo de resolverlo.
     }
+    
+    //Algunos errores con los test de restricciones indica que no se podía resolver el recorrido de los tipos Pokemon e Item en cada método.
 }
