@@ -1,14 +1,23 @@
+using System.Diagnostics.Eventing.Reader;
+using System.Threading.Channels;
+
 namespace Library;
     /// <summary>
     /// Esta clase representa al usuario, quien hará uso de los distintos pokemones para su batalla
     /// </summary>
     public class JugadorPrincipal : IJugador
     {
+        private bool SePuedeUsar = true;
         public string NombreJugador { get; set; }
         public List<IPokemon> EquipoPokemons { get; set; }
         public List<IItem> InventarioItems { get; set; }
         public bool TurnoActual { get; set; }
         public IPokemon PokemonActual { get; set; }
+        public List<Restrictions> restrictedtypes { get;  }
+        public List<Restrictions> restrictedpokemons { get;  }
+        public List<Restrictions> restricteditems { get;  }
+        
+        public string Tipo { get; set; }
 
         public CatalogoPokemons CatalogoPokemon { get; set; }
         public CuraTotal Cura { get; }
@@ -25,6 +34,7 @@ namespace Library;
             Revivir = new Revivir();
             Pocion = new SuperPocion();
             InventarioItems = new List<IItem> { Pocion, Revivir, Cura };
+            
         }
         
         /// <summary>
@@ -139,10 +149,18 @@ namespace Library;
                 if (EquipoPokemons.Count == 1)
                 {
                     PokemonActual = pokemon;
+                } 
+
+                if (!restrictedpokemons.Contains(pokemon) && !restrictedtypes.Contains(Tipo))
+                {
+                    EquipoPokemons.Add(pokemon);
+                    return (Pokemon)pokemon;
                 }
-               
-                EquipoPokemons.Add(pokemon);
-                return (Pokemon)pokemon;
+                else
+                {
+                    Console.WriteLine("Ese pokemon fue restringido al comienzo de la batalla");
+                    return null;
+                }
             }
             else
             {
@@ -225,21 +243,44 @@ namespace Library;
             else
             {
                 IItem item = InventarioItems[indiceItem];
-                if (item == Cura)
+                if (item == Cura && !restricteditems.Contains(item))
                 {
                     Cura.Usar(pokemon);
                     TurnoActual = false; // Al usar un ítem, se pierde el turno
                     return pokemon.VidaActual;
+                    SePuedeUsar = true;
+                    if (restricteditems.Contains(item))
+                    {
+                        SePuedeUsar = false;
+                        return pokemon.VidaActual;
+                    }
                 }
-                else if (item == Revivir)
+                else if (item == Revivir && !restricteditems.Contains(item))
                 {
                     TurnoActual = false; // Al usar un ítem, se pierde el turno
                     return Revivir.Usar(pokemon.VidaActual, pokemon.VidaTotal);
+                    SePuedeUsar = true;
+                    if (restricteditems.Contains(item))
+                    {
+                        SePuedeUsar = false;
+                        return pokemon.VidaActual;
+                    }
                 }
-                else
+                else if (item == Pocion && !restricteditems.Contains(item))
                 {
                     TurnoActual = false; // Al usar un ítem, se pierde el turno
                     return Pocion.Usar(pokemon.VidaActual, pokemon.VidaTotal);
+                    SePuedeUsar = true;
+                    if (restricteditems.Contains(item))
+                    {
+                       SePuedeUsar = false;
+                       return pokemon.VidaActual;
+                    }
+                }
+                if (SePuedeUsar = false)
+                {
+                    Console.WriteLine("Este item fue restringido en el comienzo de la batalla");
+                    return pokemon.VidaActual;
                 }
             }
         }

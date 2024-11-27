@@ -5,8 +5,7 @@ namespace Library;
 /// </summary>
 public interface ITipo
 {
-    public string NombreTipo { get;  }         //Nombre del tipo de pokémon
-    
+    public string NombreTipo { get;  } //Nombre del tipo de pokémon
     
     /// <summary>
     /// Mediante este método, se analiza frente a qué tipos es debil el pokemon y con cuales es fuerte.

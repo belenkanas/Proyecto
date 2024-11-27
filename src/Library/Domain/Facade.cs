@@ -18,6 +18,7 @@ public class Facade
         this.BattlesList = new BattlesList();
         this.jugadores = new Dictionary<string, JugadorPrincipal>();
         this.batallasActivas = new Dictionary<string, BatallaFacade>();
+        this.restrictedpokemons = new List<Restrictions>();
     }
 
     public static Facade Instance
