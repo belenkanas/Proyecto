@@ -1,4 +1,4 @@
-/*using System.Reflection;
+using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,9 +29,9 @@ public class Bot : IBot
             AlwaysDownloadUsers = true,
             GatewayIntents = 
                 GatewayIntents.AllUnprivileged
-                | GatewayIntents.MessageContent/*
-                | GatewayIntents.GuildMembers*/
-        /*};
+                | GatewayIntents.MessageContent
+                | GatewayIntents.GuildMembers
+        };
 
         client = new DiscordSocketClient(config);
         commands = new CommandService();
@@ -78,4 +78,4 @@ public class Bot : IBot
                 serviceProvider);
         }
     }
-}*/
+}

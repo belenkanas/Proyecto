@@ -26,4 +26,4 @@ public class AttacksCatalogueCommand : ModuleBase<SocketCommandContext>
         string ataques = Facade.Instance.MostrarAtaques(displayName, indice); // Ajusta índice para base 0
         await ReplyAsync(ataques);
     }
-}
+} 

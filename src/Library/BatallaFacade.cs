@@ -10,6 +10,9 @@ namespace Library
     {
         public JugadorPrincipal jugador1 { get; private set; }
         public JugadorPrincipal jugador2 { get; private set; }
+        public List<string> historialMovimientos;
+
+        
         public int contadorTurnos; // Contador de turnos
         public bool jugador1Ataco; // Indicador de que el jugador 1 atacó en este turno
         public bool jugador2Ataco; // Indicador de que el jugador 2 atacó en este turno
@@ -19,11 +22,13 @@ namespace Library
         {
             this.jugador1 = jugador1; //El constructor toma como parámetro a los rivales de la partida
             this.jugador2 = jugador2;
+           
             contadorTurnos = 1; // Inicializamos el contador de turnos en 1
             jugador1Ataco = false; // Inicializamos en falso, porque aún no ha atacado
             jugador2Ataco = false; // Inicializamos en falso, porque aún no ha atacado
             BatallaEnCurso = true;
             listaDeEspera = new List<JugadorPrincipal>() { jugador1, jugador2 };
+            historialMovimientos = new List<string>();
         }
         
         public string IniciarBatalla() //Muestra el inicio del juego, especificando el nombre del jugador y el pokemon elegido.
@@ -56,6 +61,8 @@ namespace Library
             
             return "";
         }
+        
+        
 
         // Verificamos si ambos jugadores ya han atacado para completar el turno
         public int VerificarAtaques()
@@ -73,6 +80,28 @@ namespace Library
             }
 
             return contadorTurnos;
+        }
+        
+        private void RegistrarMovimiento(JugadorPrincipal atacante, JugadorPrincipal defensor, int indiceAtaque)
+        {
+            string nombreAtaque = atacante.PokemonActual.Ataques[indiceAtaque].Nombre;
+            double dañoInfligido = defensor.PokemonActual.VidaTotal - defensor.PokemonActual.VidaActual;
+
+            string movimiento = $"Turno {contadorTurnos}: {atacante.NombreJugador} ({atacante.PokemonActual.Nombre}) " +
+                                $"usó {nombreAtaque} contra {defensor.PokemonActual.Nombre} e infligió {dañoInfligido} de daño.";
+
+            historialMovimientos.Add(movimiento);
+        }
+
+        // Método que obtiene el historial de los movimientos realizados
+        public string ObtenerHistorialMovimientos()
+        {
+            if (historialMovimientos.Count == 0)
+            {
+                return "No se han registrado movimientos aún.";
+            }
+
+            return string.Join("\n", historialMovimientos);
         }
         
         public string VerificarGanador()
