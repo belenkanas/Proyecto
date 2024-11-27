@@ -11,7 +11,7 @@ public interface IJugador
     public bool TurnoActual { get; set; }               //Mediante este bool se indica si el turno es del jugador o de su oponente.
     public IPokemon PokemonActual { get; set; }
     public IPokemon ElegirPokemon(int indice);                        //Método para que el jugador elija el pokemon con el que quiere atacar
-    public void ElegirAtaque(IPokemon pokemon, IPokemon enemigo, int indiceAtaque);                         //Método para elegir el ataque del pokémon seleccionado
+    public string ElegirAtaque(IPokemon pokemon, IPokemon enemigo, int indiceAtaque);                         //Método para elegir el ataque del pokémon seleccionado
     public bool MostrarTurno();                         //Método que devuelve un valor booleano con el turno correspondiente al jugador
     public string MostrarCatalogo();
     public string MostrarAtaquesDisponibles(int indice);

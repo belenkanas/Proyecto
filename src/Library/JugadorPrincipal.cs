@@ -64,12 +64,13 @@ namespace Library;
         /// <param name="pokemon"></param>
         /// <param name="enemigo"></param>
         /// <param name="indiceAtaque"></param>
-        public void ElegirAtaque(IPokemon pokemon, IPokemon enemigo, int indiceAtaque)
+        public string ElegirAtaque(IPokemon pokemon, IPokemon enemigo, int indiceAtaque)
         {
             var msg = PokemonActual.UsarAtaque(indiceAtaque, enemigo, this); // Supongamos que elegimos un ataque del Pokémon
             var a = pokemon;
             var b = enemigo;
             Console.WriteLine(msg);
+            return pokemon.UsarAtaque(indiceAtaque, enemigo, this); // Supongamos que elegimos un ataque del Pokémon
         }
 
         /// <summary>

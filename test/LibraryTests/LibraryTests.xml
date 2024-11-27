@@ -570,5 +570,12 @@
             con el ganador.
             </summary>
         </member>
+        <member name="M:Library.Tests.HistoriaUsuarioTest.RegistrarMovimiento_Correcto">
+            <summary>
+            Historia de Usuario 13.
+            Verificamos que registre el correcto movimiento y los agregue a la lista.
+            </summary>
+            <returns></returns>
+        </member>
     </members>
 </doc>
