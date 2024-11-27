@@ -352,7 +352,34 @@ namespace Library
             return "Opción no válida"; 
         }
 
-       
+        /// <summary>
+        /// Se mostrará en el inicio de la batalla, hace un llamado a la función que tiene cualquier jugador.
+        /// </summary>
+        /// <returns></returns>
+        public string MostrarRestricciones()
+        {
+            return jugador1.MostrarRestricciones();
+            BatallaEnCurso = true;
+        }
+
+        /// <summary>
+        /// Si la restriccion que el jugador eligio no fue valida, la batalla no se inicia, por ende, no estará en curso.
+        /// </summary>
+        /// <param name="ind">Indice de restriccion que elige, es para verificar que elija la correcta</param>
+        /// <param name="nombre">Nombre de item, pokemon que quiere que se amolde a la restriccion.</param>
+        /// <returns></returns>
+        public bool EligioRestricciones(int ind, string nombre)
+        {
+            if (jugador1.ElegirRestriccion(ind, nombre) == "No se eligen restricciones, no se inicia batalla" ||
+                jugador2.ElegirRestriccion(ind, nombre) == "No se eligen restricciones, no se inicia batalla")
+            {
+                return BatallaEnCurso = false;
+            }
+
+            jugador1.ElegirRestriccion(ind, nombre);
+            jugador2.ElegirRestriccion(ind, nombre);
+            return BatallaEnCurso = true;
+        }
     
     }
     

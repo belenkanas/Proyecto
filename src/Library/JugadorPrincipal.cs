@@ -297,6 +297,10 @@ public class JugadorPrincipal : IJugador
         return false;
     }
 
+    /// <summary>
+    /// Mensaje que se le mostrará al jugador antes de iniciar la batalla, indicandole las restricciones disponibles.
+    /// </summary>
+    /// <returns></returns>
     public string MostrarRestricciones()
     {
         string restricciones = $"Restricciones: \n";
