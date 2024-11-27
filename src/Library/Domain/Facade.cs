@@ -226,7 +226,7 @@ public class Facade
     {
         if (batallasActivas.ContainsKey(jugador))
         {
-            Console.WriteLine(jugador);
+            Console.WriteLine(jugador); 
             BatallaFacade batalla = batallasActivas[jugador];
             var msg = batalla.RealizarAtaque(jugador, indiceAtaque);
             return msg;
