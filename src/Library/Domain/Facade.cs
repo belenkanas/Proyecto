@@ -172,16 +172,20 @@ public class Facade
 
     private string CreateBattle(string playerDisplayName, string opponentDisplayName)
     {
+        
         this.WaitingList.RemoveTrainer(playerDisplayName);
         this.WaitingList.RemoveTrainer(opponentDisplayName);
 
-        JugadorPrincipal jugador = new JugadorPrincipal(playerDisplayName);
-        JugadorPrincipal oponente = new JugadorPrincipal(opponentDisplayName);
-
+        // JugadorPrincipal jugador = new JugadorPrincipal(playerDisplayName);
+        // JugadorPrincipal oponente = new JugadorPrincipal(opponentDisplayName);
+        
+        JugadorPrincipal jugador = jugadores[playerDisplayName];
+        JugadorPrincipal oponente = jugadores[opponentDisplayName];
+        
         BatallaFacade batalla = new BatallaFacade(jugador, oponente);
         batallasActivas[playerDisplayName] = batalla;
         batallasActivas[opponentDisplayName] = batalla;
-
+        Console.WriteLine(batallasActivas[playerDisplayName]);
         BattlesList.AddBattle(playerDisplayName, opponentDisplayName);
         return $"Comienza {playerDisplayName} vs {opponentDisplayName}";
     }
@@ -222,8 +226,10 @@ public class Facade
     {
         if (batallasActivas.ContainsKey(jugador))
         {
+            Console.WriteLine(jugador);
             BatallaFacade batalla = batallasActivas[jugador];
-            return batalla.RealizarAtaque(jugador, indiceAtaque);
+            var msg = batalla.RealizarAtaque(jugador, indiceAtaque);
+            return msg;
         }
 
         return "No hay batalla activa";
@@ -233,6 +239,7 @@ public class Facade
     {
         
         JugadorPrincipal jugador = jugadores[displayName];
+        
         // Verifica si el jugador ya existe
         if (!jugadores.ContainsKey(displayName))
         {

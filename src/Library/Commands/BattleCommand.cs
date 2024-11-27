@@ -39,7 +39,8 @@ public class BattleCommand : ModuleBase<SocketCommandContext>
         string result;
         if (opponentUser != null)
         {
-            result = Facade.Instance.StartBattle(displayName, opponentUser.DisplayName);
+            string discordUserName = Context.User.Username;
+            result = Facade.Instance.StartBattle(discordUserName, opponentUser.DisplayName);
             await Context.Message.Author.SendMessageAsync(result);
             await opponentUser.SendMessageAsync(result);
         }
