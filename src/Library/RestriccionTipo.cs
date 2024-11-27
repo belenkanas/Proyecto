@@ -17,7 +17,7 @@ public class restriccionTipo
         }
     }
 
-    public bool EsPermitido(string nombrePokemon)
+    public bool EstaElTipoPermitido(string nombrePokemon)
     {
         foreach (var pokemon in tiposProhibidos)
         {
