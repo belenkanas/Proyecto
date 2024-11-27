@@ -70,7 +70,7 @@ namespace Library;
             var a = pokemon;
             var b = enemigo;
             Console.WriteLine(msg);
-            return pokemon.UsarAtaque(indiceAtaque, enemigo, this); // Supongamos que elegimos un ataque del Pokémon
+            return PokemonActual.UsarAtaque(indiceAtaque, enemigo, this); // Supongamos que elegimos un ataque del Pokémon
         }
 
         /// <summary>
