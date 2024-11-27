@@ -42,8 +42,10 @@ namespace Library;
                 {
                     throw new ArgumentOutOfRangeException("Debe ingresar un valor entre 0 y "+ (EquipoPokemons.Count - 1));
                 }
-                
-                return PokemonActual = EquipoPokemons[indice];
+
+                PokemonActual = EquipoPokemons[indice];
+                PokemonActual.Ataques = EquipoPokemons[indice].Ataques;
+                return PokemonActual;
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -64,7 +66,10 @@ namespace Library;
         /// <param name="indiceAtaque"></param>
         public void ElegirAtaque(IPokemon pokemon, IPokemon enemigo, int indiceAtaque)
         {
-            pokemon.UsarAtaque(indiceAtaque, enemigo, this); // Supongamos que elegimos un ataque del Pokémon
+            var msg = PokemonActual.UsarAtaque(indiceAtaque, enemigo, this); // Supongamos que elegimos un ataque del Pokémon
+            var a = pokemon;
+            var b = enemigo;
+            Console.WriteLine(msg);
         }
 
         /// <summary>
