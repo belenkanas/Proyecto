@@ -23,8 +23,8 @@ public class ChoosePokemonCommand : ModuleBase<SocketCommandContext>
         string displayName = Context.User.Username;
 
         Facade.Instance.RegisterPlayer(displayName);
-
-        string resultado = Facade.Instance.ElegirPokemon(displayName, index);
+        string discordUserName = Context.User.Username;
+        string resultado = Facade.Instance.ElegirPokemon(discordUserName, index);
 
         await ReplyAsync(resultado);
     }
