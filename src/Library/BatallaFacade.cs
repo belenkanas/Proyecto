@@ -351,6 +351,21 @@ namespace Library
             
             return "Opción no válida"; 
         }
+
+               /*
+        public void ProhibirPokemon(string nombrePokemon)
+        {
+            prohibiciones.pokemonesProhibidos(nombrePokemon);
+        }
+        public void ProhibirTipo(Type tipoPokemon)
+        {
+            prohibiciones.tiposProhibidos(tipoPokemon);
+        }
+        public void ProhibirItem(string nombreItem)
+        {
+            prohibiciones.itemsProhibidos(nombreItem);
+        }
+*/
     
     }
 }
